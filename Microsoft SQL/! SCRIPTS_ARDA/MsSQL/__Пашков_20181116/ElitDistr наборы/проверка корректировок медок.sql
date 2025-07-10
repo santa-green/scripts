@@ -1,0 +1,323 @@
+--выборка по РН
+SELECT * FROM (
+SELECT TAB1_A1 Pos,TAB1_A13 ProdName, N2_11 NNN, N11 DNN, TAB1_A14 UM, TAB1_A15 Qty, TAB1_A16 Price ,  TAB1_A10 SumCC, 1 TypeDoc
+FROM ElitDistr.dbo.at_t_Medoc 
+	UNION ALL
+SELECT TAB1_A01 Pos,TAB1_A3 ProdName, N2_11 NNN,N2 DNN,TAB1_A4 UM ,TAB1_A5 Qty,TAB1_A6 Price, TAB1_A013 SumCC,  2 TypeDoc
+FROM ElitDistr.dbo.at_t_Medoc_RET 
+) s1
+--where NNN = 8827 and DNN = '2017-10-27 00:00:00' 	
+--where NNN = 8984 and DNN = '2017-10-27 00:00:00' 	
+--where NNN = 1294 and DNN = '2017-11-03 00:00:00.000' 	
+where NNN = 9918 and DNN = '2017-05-30 00:00:00.000' 	
+	
+ORDER BY TypeDoc, cast(pos as int) 
+
+
+--выборка по РН
+SELECT * FROM (
+SELECT TAB1_A1 Pos,TAB1_A13 ProdName, N2_11 NNN, N11 DNN, TAB1_A14 UM, TAB1_A15 Qty, TAB1_A16 Price ,  TAB1_A10 SumCC, 1 TypeDoc
+FROM ElitDistr.dbo.at_t_Medoc 
+	UNION ALL
+SELECT TAB1_A01 Pos,TAB1_A3 ProdName, N2_11 NNN,N2 DNN,TAB1_A4 UM ,TAB1_A5 Qty,TAB1_A6 Price, TAB1_A013 SumCC,  2 TypeDoc
+FROM ElitDistr.dbo.at_t_Medoc_RET 
+) s1
+where NNN = 8827 and DNN = '2017-10-27 00:00:00' 	
+--and ProdName = 'Вино F. La Linda. Торонтес 2016 біле 0,75*12'
+ORDER BY TypeDoc, cast(pos as int) 
+
+
+
+--Генератор скриптов по обновлению at_t_Medoc
+IF OBJECT_ID (N'tempdb..#UPMedoc', N'U') IS NOT NULL DROP TABLE #UPMedoc
+
+SELECT TAB1_A01 Pos,TAB1_A3 ProdName, N2_11 NNN,N2 DNN,TAB1_A4 UM ,TAB1_A5 Qty,TAB1_A6 Price, TAB1_A013 SumCC,  2 TypeDoc
+,(SELECT TAB1_A13 FROM ElitDistr.dbo.at_t_Medoc rn where rn.N2_11 = r.N2_11 and rn.N11 = r.N2 and rn.TAB1_A1 = r.TAB1_A01) ProdName_in_RN
+ INTO #UPMedoc
+FROM ElitDistr.dbo.at_t_Medoc_RET r
+where 
+--N2_11 = 8827 and N2 = '2017-10-27 00:00:00' and
+--N2_11 = 1294 and N2 = '2017-11-03 00:00:00.000' and
+isnull((SELECT TAB1_A13 FROM ElitDistr.dbo.at_t_Medoc rn where rn.N2_11 = r.N2_11 and rn.N11 = r.N2 and rn.TAB1_A1 = r.TAB1_A01),'') <> TAB1_A3	
+ORDER BY TypeDoc, cast(TAB1_A01 as int) 
+
+
+
+SELECT * FROM #UPMedoc ORDER BY ProdName_in_RN  --3614
+
+SELECT * FROM #UPMedoc WHERE ProdName_in_RN IS NOT NULL  ORDER BY ProdName_in_RN
+
+SELECT DISTINCT ProdName FROM #UPMedoc ORDER BY  1
+
+
+
+SELECT *,'UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = ''' + ProdName + ''' WHERE TAB1_A13 = ''' + ProdName_in_RN + ''' AND N2_11 = '+NNN+' AND N11 = '''+ CONVERT( varchar, DNN, 112)  + '''' + ' AND TAB1_A1 = ''' + pos + ''''
+FROM #UPMedoc WHERE ProdName_in_RN IS NOT NULL --ORDER BY ProdName_in_RN
+AND ProdName not LIKE '%''%'  
+AND ProdName_in_RN  LIKE '%Лікер Аперол%'
+--AND ProdName  LIKE '%Вермут%'
+--AND ProdName_in_RN  LIKE '%''%'
+
+
+
+IF 1=0
+BEGIN
+
+BEGIN TRAN
+
+--2018-11-05
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Aujoux. Ліс Блан біле сухе 0,75*12' WHERE TAB1_A13 = 'Вино Aujoux. Ліс Блан біле напівсолодке 0,75*12' AND N2_11 = 5651 AND N11 = '20170619'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Decordi. Піно Гріджо Делле Венеція біле 0,75*6' WHERE TAB1_A13 = 'Вино Decordi. Соаве 2014 біле 0,75*6' AND N2_11 = 8248 AND N11 = '20170424'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Decordi. Піно Гріджо Делле Венеція біле 0,75*6' WHERE TAB1_A13 = 'Вино Decordi. Соаве 2014 біле 0,75*6' AND N2_11 = 8248 AND N11 = '20170424'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Decordi. Піно Гріджо Делле Венеція біле 0,75*6' WHERE TAB1_A13 = 'Вино Decordi. Санджовезе Марке червоне 0,75*6' AND N2_11 = 8248 AND N11 = '20170424'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Favaios. Енкостас де Фавайос червоне 0,75*12' WHERE TAB1_A13 = 'Вино Favaios. Енкостас де Фавайос біле 0,75*12' AND N2_11 = 5651 AND N11 = '20170619'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 85 AND N11 = '20170901'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 3401 AND N11 = '20170912'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 9559 AND N11 = '20170530'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 2605 AND N11 = '20170609'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 2456 AND N11 = '20170808'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 4869 AND N11 = '20170616'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 8709 AND N11 = '20170425'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 808 AND N11 = '20170704'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 5036 AND N11 = '20170516'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1432 AND N11 = '20170606'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 4007 AND N11 = '20170315'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 7242 AND N11 = '20170324'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 5759 AND N11 = '20170919'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 340 AND N11 = '20170901'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 4674 AND N11 = '20170414'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 340 AND N11 = '20170801'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1964 AND N11 = '20170608'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 2605 AND N11 = '20170609'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 8484 AND N11 = '20170926'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 8950 AND N11 = '20170526'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1000 AND N11 = '20170905'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 7507 AND N11 = '20170922'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 5141 AND N11 = '20170815'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1427 AND N11 = '20170505'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 5104 AND N11 = '20170915'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 8025 AND N11 = '20170822'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 8849 AND N11 = '20170425'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 2755 AND N11 = '20170609'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1931 AND N11 = '20171006'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1294 AND N11 = '20171103'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 3211 AND N11 = '20171010'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1938 AND N11 = '20170407'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 9706 AND N11 = '20170530'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 6290 AND N11 = '20170818'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 497 AND N11 = '20170404'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 6580 AND N11 = '20170818'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 7387 AND N11 = '20171024'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 9915 AND N11 = '20170530'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1662 AND N11 = '20170804'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 3569 AND N11 = '20170613'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 6579 AND N11 = '20170818'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 330 AND N11 = '20170801'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1523 AND N11 = '20170804'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 1249 AND N11 = '20170505'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' AND N2_11 = 8335 AND N11 = '20170926'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2016 біле 0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2016 біле  0,75*6' AND N2_11 = 816 AND N11 = '20180403'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 4654 AND N11 = '20171013'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 7720 AND N11 = '20170822'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 8335 AND N11 = '20170926'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 7515 AND N11 = '20170623'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 9668 AND N11 = '20171229'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 4869 AND N11 = '20170616'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 486 AND N11 = '20171003'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 9810 AND N11 = '20171031'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 4655 AND N11 = '20171013'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 3462 AND N11 = '20170512'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 8484 AND N11 = '20170926'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 7752 AND N11 = '20170725'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 2143 AND N11 = '20171107'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 6779 AND N11 = '20171121'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 5651 AND N11 = '20170619'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 3614 AND N11 = '20170411'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія рожеве 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія рожеве 0,75*6' AND N2_11 = 7824 AND N11 = '20171226'
+
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Лікер Апероль Аперетиво 11% 0,7*6' WHERE TAB1_A13 = 'Лікер Апероль Аперетиво 11% 1,0 *6 ' AND N2_11 = 9918 AND N11 = '20170530'
+
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011 біле 0,75*12' WHERE TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011, біле 0,75*12' AND N2_11 = 2720 AND N11 = '20170908' AND TAB1_A1 = '1'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Сільвер 38% 0,7*12' WHERE TAB1_A13 = 'Текіла Сієрра Сільвер 38%  0,7*12' AND N2_11 = 7705 AND N11 = '20171024' AND TAB1_A1 = '1'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Лікер Апероль Аперетиво 11% 0,7*6' WHERE TAB1_A13 = 'Лікер Апероль Аперетиво 11% 1,0 *6 ' AND N2_11 = 9918 AND N11 = '20170530' AND TAB1_A1 = '1'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011 біле 0,75*12' WHERE TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011, біле 0,75*12' AND N2_11 = 2720 AND N11 = '20170908' AND TAB1_A1 = '2'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Сільвер 38% 1,0*12' WHERE TAB1_A13 = 'Текіла Сієрра Сільвер 38%  1,0*12' AND N2_11 = 6060 AND N11 = '20170919' AND TAB1_A1 = '2'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Ch. Beaulon. Піно де Шарант 5 років біле 0,75*6' WHERE TAB1_A13 = 'Вино Ch. Beaulon. Піно де Шарант 5 років біле  0,75*6' AND N2_11 = 6677 AND N11 = '20180220' AND TAB1_A1 = '2'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кальвадос Пер Маглуар VSOP 0,5*12' WHERE TAB1_A13 = 'Кальвадос Пер Маглуар VSOP  0,5*12' AND N2_11 = 5441 AND N11 = '20180216' AND TAB1_A1 = '3'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Aujoux. Ліс Руж червоне напівсолодке 0,75*12' WHERE TAB1_A13 = 'Вино ігристе Zonin. Просекко Брют 1821 біле спуманте 0,75*6' AND N2_11 = 1294 AND N11 = '20171103' AND TAB1_A1 = '4'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кальвадос Пер Маглуар VSOP 0,5*12' WHERE TAB1_A13 = 'Кальвадос Пер Маглуар VSOP  0,5*12' AND N2_11 = 5583 AND N11 = '20180216' AND TAB1_A1 = '5'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кальвадос Пер Маглуар VSOP 0,5*12' WHERE TAB1_A13 = 'Кальвадос Пер Маглуар VSOP  0,5*12' AND N2_11 = 6313 AND N11 = '20180320' AND TAB1_A1 = '5'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Віскі Шотл Спейберн 10 років 40% 0,7*6 у тубусі' WHERE TAB1_A13 = 'Коньяк Шато Монтіфо VSОР Преміум 40% Аріана 0,7*6 в коробці' AND N2_11 = 5257 AND N11 = '20170517' AND TAB1_A1 = '6'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Caudrina Di Romano Dogliotti. П`ємонд Шардоне Мей 2014 біле 0,75*6' WHERE TAB1_A13 = 'Вино Caudrina Di Romano Dogliotti. Москато ДеАсті Ля Кодріно 2016 біле 0,75*12' AND N2_11 = 8955 AND N11 = '20170526' AND TAB1_A1 = '7'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино B.Manoux. Шато Бо Сіт 2005, червоне 0,75*6' WHERE TAB1_A13 = 'Вино B.Manoux. Шато Бо Сіт 2005, червоне  0,75*6' AND N2_11 = 7706 AND N11 = '20170524' AND TAB1_A1 = '8'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Арманьяк Лобад 1975 0,7*6 в дерев. коробці' WHERE TAB1_A13 = 'Арманьяк Лобад 1975  0,7*6 в дерев. коробці' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '9'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 3 роки (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 3 роки (Куба) 40% 0,7*6' AND N2_11 = 9499 AND N11 = '20170728' AND TAB1_A1 = '10'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' AND N2_11 = 9915 AND N11 = '20170530' AND TAB1_A1 = '10'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 3 роки (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 3 роки (Куба) 40% 0,7*6' AND N2_11 = 9499 AND N11 = '20170728' AND TAB1_A1 = '10'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 5 років (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 5 років (Куба) 40% 0,7*6' AND N2_11 = 9499 AND N11 = '20170728' AND TAB1_A1 = '11'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 5 років (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 5 років (Куба) 40% 0,7*6' AND N2_11 = 9499 AND N11 = '20170728' AND TAB1_A1 = '11'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 7 років (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 7 років (Куба) 40% 0,7*6' AND N2_11 = 9499 AND N11 = '20170728' AND TAB1_A1 = '12'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Zonin. Просекко Фріззанте біле 0,75*6' WHERE TAB1_A13 = 'Вино Luis Felipe Edwards. Каберне Совіньон Гран Резерва Фемілі Селекшн 2014 червоне 0,75*12' AND N2_11 = 7092 AND N11 = '20170721' AND TAB1_A1 = '12'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сауза Хорнітос 0,7*6' WHERE TAB1_A13 = 'Текіла Сауза Хорнітос  0,7*6' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '13'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сауза Хорнітос 0,7*6' WHERE TAB1_A13 = 'Текіла Сауза Хорнітос  0,7*6' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '15'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Горілка Скай 0,7*6' WHERE TAB1_A13 = 'Горілка Фінляндія Платинум 0,7*6 в тубусі ' AND N2_11 = 5763 AND N11 = '20170518' AND TAB1_A1 = '15'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Favaios. Енкостас де Фавайос червоне 0,75*6' WHERE TAB1_A13 = 'Вино В.Ricasoli. Рокка Гуічарда Кьянті Классіко Резерва 2013 червоне 0,75*6' AND N2_11 = 7081 AND N11 = '20171121' AND TAB1_A1 = '17'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Decordi. Ламбруско Розато Амабіле рожеве 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 7092 AND N11 = '20170721' AND TAB1_A1 = '19'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Castello d`Albola. Кьянті Классіко 2014 DOCG, червоне 0,75*6' WHERE TAB1_A13 = 'Вино Castello d`Albola. Кьянті Классіко 2014 DOCG, червоне  0,75*6' AND N2_11 = 1471 AND N11 = '20180206' AND TAB1_A1 = '19'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Michele Satta. Мішель Сатта Больгері Розато 2012 рожеве 0,75*6' WHERE TAB1_A13 = 'Вино Michele Satta. Мішель Сатта Больгері Розато 2012 рожеве сухе 0,75*6' AND N2_11 = 3810 AND N11 = '20170513' AND TAB1_A1 = '20'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' AND N2_11 = 5104 AND N11 = '20170915' AND TAB1_A1 = '21'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' AND N2_11 = 5104 AND N11 = '20170915' AND TAB1_A1 = '21'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Lake Chalice. Мальборо Піно Грі Зе Нест 2014 біле 0,75*6' WHERE TAB1_A13 = 'Вино Colmar. Ріслінг 2013 біле 0,75*6' AND N2_11 = 9530 AND N11 = '20171128' AND TAB1_A1 = '21'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Lake Chalice. Мальборо Піно Грі Зе Нест 2014 біле 0,75*6' WHERE TAB1_A13 = 'Вино Colmar. Ріслінг 2013 біле 0,75*6' AND N2_11 = 9530 AND N11 = '20171128' AND TAB1_A1 = '21'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13% 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13%  0,75*12' AND N2_11 = 8169 AND N11 = '20170926' AND TAB1_A1 = '22'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне  0,75*12' AND N2_11 = 9518 AND N11 = '20180130' AND TAB1_A1 = '22'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Argiolas. Костера 2013 червоне 0,75*12' WHERE TAB1_A13 = 'Вино ігристе Zonin. Просекко Брют 1821 біле спуманте 0,375*12' AND N2_11 = 9530 AND N11 = '20171128' AND TAB1_A1 = '23'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Alto Adige. Мюллер Тюрго 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Alto Adige. Лагрейн 2015 червоне 0,75*6' AND N2_11 = 4151 AND N11 = '20180213' AND TAB1_A1 = '23'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" в зернах Бріліо 1 кг.*6 NV' WHERE TAB1_A13 = 'Кава "Бруно" в зернах Бріліо 1 кг.*6  NV' AND N2_11 = 4001 AND N11 = '20170315' AND TAB1_A1 = '25'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Арманьяк Лобад 1969 0,7*6 в дерев. коробці' WHERE TAB1_A13 = 'Арманьяк Лобад 1969  0,7*6 в дерев. коробці' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '26'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Silvio Nardi. Брунелло ді Монтальчіно Манакьяра 2006 червоне 14% 0,75*6' WHERE TAB1_A13 = 'Вино Silvio Nardi. Брунелло ді Монтальчіно Манакьяра 2006 червоне 14%  0,75*6' AND N2_11 = 7706 AND N11 = '20170524' AND TAB1_A1 = '26'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" в зернах Рікко 1 кг.*6 NV' WHERE TAB1_A13 = 'Кава "Бруно" в зернах Рікко 1 кг.*6  NV' AND N2_11 = 4001 AND N11 = '20170315' AND TAB1_A1 = '26'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 100% агава 40% 0,7*6' WHERE TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 40%  0,7*6' AND N2_11 = 8247 AND N11 = '20170424' AND TAB1_A1 = '27'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино ігристе Contessa Matilde.  Ламбруско делль Емілія біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Contessa Matilde. Ламбруско делль Емілія біле 0,75*6' AND N2_11 = 7720 AND N11 = '20170822' AND TAB1_A1 = '28'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне  0,75*12' AND N2_11 = 654 AND N11 = '20180302' AND TAB1_A1 = '29'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Tagaro. Піньятаро Негроамаро 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Tagaro. Піньятаро Негроамано 2015 червоне 0,75*6' AND N2_11 = 9911 AND N11 = '20170929' AND TAB1_A1 = '29'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Tagaro. Піньятаро Негроамаро 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Tagaro. Піньятаро Негроамано 2015 червоне 0,75*6' AND N2_11 = 9911 AND N11 = '20170929' AND TAB1_A1 = '29'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Chateau Favray. Пюї Фюме 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Bruma del Estrecho. Парахе Марін 2015 червоне 0,75*6' AND N2_11 = 831 AND N11 = '20170602' AND TAB1_A1 = '30'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Abtei Himmerod. Рислінг Шпітліз Лібліх 2016 біле 0,75*6' WHERE TAB1_A13 = 'Вино Abtei Himmerod. Рислінг Шпатлезе Лібліх 2016 біле 0,75*6' AND N2_11 = 7081 AND N11 = '20171121' AND TAB1_A1 = '30'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Bruma del Estrecho. Парахе Марін 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Bruma del Estrecho. Парахе Лас Чосас Вінас Вієхас 2015 червоне 0,75*6' AND N2_11 = 831 AND N11 = '20170602' AND TAB1_A1 = '31'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Rocca Bruno. Барбареско 2008 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Rocca Bruno. Барбареско 2008 червоне  0,75*12' AND N2_11 = 7706 AND N11 = '20170524' AND TAB1_A1 = '31'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Bruma del Estrecho. Парахе Лас Чосас Вінас Вієхас 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Bodegas Eidosela. Едосела Албаріно 2016 біле 0,75*6' AND N2_11 = 831 AND N11 = '20170602' AND TAB1_A1 = '32'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Bodegas Eidosela. Арбаструм Кондадо до Те 2016 біле 0,75*6' WHERE TAB1_A13 = 'Вино Bodega del Abad. Готін дел Ріс Годелло 2014 біле 0,75*6' AND N2_11 = 831 AND N11 = '20170602' AND TAB1_A1 = '34'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13% 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13%  0,75*12' AND N2_11 = 825 AND N11 = '20170704' AND TAB1_A1 = '35'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Conde. Шардоне 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Maculan. Феррата Шардоне Венето 2015 біле 0,75*12' AND N2_11 = 9516 AND N11 = '20170829' AND TAB1_A1 = '37'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 3 роки (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 3 роки (Куба) 40% 0,7*6' AND N2_11 = 9199 AND N11 = '20170728' AND TAB1_A1 = '37'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 5 років (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 5 років (Куба) 40% 0,7*6' AND N2_11 = 9199 AND N11 = '20170728' AND TAB1_A1 = '38'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Арманьяк Лобад 1974 0,7*6 в дерев. коробці' WHERE TAB1_A13 = 'Арманьяк Лобад 1974  0,7*6 в дерев. коробці' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '38'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" в зернах Бріліо 1 кг.*6 NV' WHERE TAB1_A13 = 'Кава "Бруно" в зернах Бріліо 1 кг.*6  NV' AND N2_11 = 3054 AND N11 = '20170512' AND TAB1_A1 = '38'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" в зернах Бріліо 1 кг.*6 NV' WHERE TAB1_A13 = 'Кава "Бруно" в зернах Бріліо 1 кг.*6  NV' AND N2_11 = 3054 AND N11 = '20170512' AND TAB1_A1 = '39'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Ром Рон Васілон 7 років (Куба) 40% 0,7*6' WHERE TAB1_A13 = 'Ром Рон Басілон 7 років (Куба) 40% 0,7*6' AND N2_11 = 9199 AND N11 = '20170728' AND TAB1_A1 = '39'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Jean Balmont. Шардоне 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Jean Balmont. Совіньон 2016 біле 0,75*6' AND N2_11 = 831 AND N11 = '20170602' AND TAB1_A1 = '39'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Jean Balmont. Шардоне 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Jean Balmont. Совіньон 2016 біле 0,75*6' AND N2_11 = 831 AND N11 = '20170602' AND TAB1_A1 = '39'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' AND N2_11 = 808 AND N11 = '20170704' AND TAB1_A1 = '39'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Jean Balmont. Шардоне 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Jean Balmont. Совіньон 2016 біле 0,75*6' AND N2_11 = 831 AND N11 = '20170602' AND TAB1_A1 = '39'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" в зернах Рікко 1 кг.*6 NV' WHERE TAB1_A13 = 'Кава "Бруно" в зернах Рікко 1 кг.*6  NV' AND N2_11 = 3054 AND N11 = '20170512' AND TAB1_A1 = '40'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" в зернах Рікко 1 кг.*6 NV' WHERE TAB1_A13 = 'Кава "Бруно" в зернах Рікко 1 кг.*6  NV' AND N2_11 = 3054 AND N11 = '20170512' AND TAB1_A1 = '41'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Jean Balmont. Мерло 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Fantasia. Фраголіно Бьянко біле 0,75*6' AND N2_11 = 9516 AND N11 = '20170829' AND TAB1_A1 = '42'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Арманьяк Лобад 1974 0,7*6 в дерев. коробці' WHERE TAB1_A13 = 'Арманьяк Лобад 1974  0,7*6 в дерев. коробці' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '43'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 100% агава 40% 0,7*6' WHERE TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 40%  0,7*6' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '44'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне  0,75*12' AND N2_11 = 9809 AND N11 = '20171229' AND TAB1_A1 = '48'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Арманьяк Лобад 1976 0,7*6 в дерев. коробці' WHERE TAB1_A13 = 'Арманьяк Лобад 1976  0,7*6 в дерев. коробці' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '50'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" мелена Турецька Традиція 125 гр.*36 у коробці Будиночок' WHERE TAB1_A13 = 'Вода Волвік мінеральна 0,5*24' AND N2_11 = 1396 AND N11 = '20170606' AND TAB1_A1 = '52'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Принц Поліньяк VS 40% 0,7*6 в коробці' WHERE TAB1_A13 = 'Коньяк Аш Моні VS 40% 0,7*6 в коробці' AND N2_11 = 4008 AND N11 = '20170315' AND TAB1_A1 = '52'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Принц Поліньяк VSOP 40% 0,7*12 в коробці' WHERE TAB1_A13 = 'Коньяк Аш Моні VSOP 40% 0,7*12 в коробці' AND N2_11 = 4008 AND N11 = '20170315' AND TAB1_A1 = '53'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Вальполічелла Классіко 2016 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Fevre Domain. Шаблі Прем`єр Крю Борой 2015 біле 0,75 * 12' AND N2_11 = 9530 AND N11 = '20171128' AND TAB1_A1 = '53'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Il Poggione. Россо ді Тоскана 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Il Poggione. Ло Сбранкато Росато 2016 рожеве 0,75*6' AND N2_11 = 3063 AND N11 = '20170711' AND TAB1_A1 = '54'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Сільвер 38% 0,35*6' WHERE TAB1_A13 = 'Текіла Сієрра Сільвер 38%  0,35*6' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '54'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Принц Поліньяк XO Роял 40% 0,7*6 в коробці' WHERE TAB1_A13 = 'Коньяк Аш Моні XO Роял 40% 0,7*6 в коробці' AND N2_11 = 4008 AND N11 = '20170315' AND TAB1_A1 = '54'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Fevre Domain. Шаблі Прем`єр Крю Борой 2015 біле 0,75 * 12' WHERE TAB1_A13 = 'Вино JMDF. Монтадо Тінто 2016 червоне 0,75*6' AND N2_11 = 9530 AND N11 = '20171128' AND TAB1_A1 = '54'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Б.і Ф. Мерсо 2010 біле 0,75*12' WHERE TAB1_A13 = 'Вино Б.і Ф. Мерсо 2010 біле  0,75*12' AND N2_11 = 7706 AND N11 = '20170524' AND TAB1_A1 = '55'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Б.і Ф. Ешезо 2008 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Б.і Ф. Ешезо 2008, червоне 0,75*12' AND N2_11 = 7706 AND N11 = '20170524' AND TAB1_A1 = '56'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Б.і Ф. Ешезо 2008 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Б.і Ф. Ешезо 2008, червоне 0,75*12' AND N2_11 = 7706 AND N11 = '20170524' AND TAB1_A1 = '56'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011 біле 0,75*12' WHERE TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011, біле 0,75*12' AND N2_11 = 8247 AND N11 = '20170424' AND TAB1_A1 = '59'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Кава "Бруно" в монодозах Еспрессо Подз 7 гр.*18шт.*18 у коробці' WHERE TAB1_A13 = 'Вода Евіан мінеральна 0,33*24 АКЦІЯ' AND N2_11 = 1396 AND N11 = '20170606' AND TAB1_A1 = '64'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Лікер Де Кайпер Мандарин Наполеон 38% 0,7*6' WHERE TAB1_A13 = 'Вино ігристе Paul Chollet. Креман Де Бургонь Брют Зеро біле 0,75*6' AND N2_11 = 808 AND N11 = '20170704' AND TAB1_A1 = '73'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 40% 0,7*6' WHERE TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 40%  0,7*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '81'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті КВВЯ 8 років 40% 0,5*12' WHERE TAB1_A13 = 'Вино ігристе Vicente Gandia. Кава Брют, біле 0,75*6' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '91'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011 біле 0,75*12' WHERE TAB1_A13 = 'Вино C.Macul. Антігуас Резервас Шардоне 2011, біле 0,75*12' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '91'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Граппа Ноніно. УЕ. Іль Просеко 0,7*6 у коробці' WHERE TAB1_A13 = 'Вино Azelia. Бароло Брікко Фіаско 2001 червоне 0,75*6' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '109'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 40% 0,7*6' WHERE TAB1_A13 = 'Текіла Сієрра Антігуо Анехо 40%  0,7*6' AND N2_11 = 1432 AND N11 = '20170606' AND TAB1_A1 = '114'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Віскі Шотл А Нок 12 років 40% 0,7*6 в тубусі' WHERE TAB1_A13 = 'Віскі Шотл Ханкі Банністер 21 рік 40% 0,7*6 у коробці New Design' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '148'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино B.Manoux. Шато Понтак Лінч 2007 червоне 0,75*6' WHERE TAB1_A13 = 'Вино B.Manoux. Шато Понтак Лінч 2007 червоне  0,75*6' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '221'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Aujoux. Ліс Руж червоне напівсолодке 0,75*12' WHERE TAB1_A13 = 'Вино Bergaglio Nicola. Гаві дель Комуне ді Гаві Міная 2014 біле 0,75*12' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '237'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Michele Satta. Мішель Сатта Больгері Розато 2012 рожеве 0,75*6' WHERE TAB1_A13 = 'Вино Michele Satta. Мішель Сатта Больгері Розато 2012 рожеве сухе 0,75*6' AND N2_11 = 3809 AND N11 = '20170513' AND TAB1_A1 = '239'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' AND N2_11 = 1432 AND N11 = '20170606' AND TAB1_A1 = '246'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле  0,75*6' WHERE TAB1_A13 = 'Вино Zonin. Піно Гріджио Фріулі Акілея 2015 біле 0,75*6' AND N2_11 = 1432 AND N11 = '20170606' AND TAB1_A1 = '246'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Б.і Ф. Ешезо 2008 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Б.і Ф. Ешезо 2008, червоне 0,75*12' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '350'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Urlar. Совіньон Блан 2014 біле 0,75*12' WHERE TAB1_A13 = 'Вино Acheron. Совіньон Блан 2014 біле 0,75*12' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '356'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Tommasi. Речьото делла Вальполічелла Класіко Фіорато 2013 червоне 0,375*12' WHERE TAB1_A13 = 'Віскі Шотл Балблер 2005 року 46% 0,7*6 в коробці' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '394'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Castello del Poggio. Москато д`Асті 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино ігристе Zonin. Просекко Дресскод Вайт біле 0,75*6' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '435'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Alias. Шато Лагранж 2009, червоне 0,75*12' WHERE TAB1_A13 = 'Вино Alias. Шато Бішвель 2009, червоне 0,75*12' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '435'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Лікер Апероль Аперетиво 11% 1,0 *6' WHERE TAB1_A13 = 'Лікер Американ Хоней 35,5% 0,7*6 ' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '485'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Горілка Скай 0,5*12 ' WHERE TAB1_A13 = 'Горілка Скай 0,7*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '490'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Горілка Скай 0,7*6' WHERE TAB1_A13 = 'Вино Luis Felipe Edwards. Лейт Харвест Віонье Совіньон Блан 2013 біле 0,375*12' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '491'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино В.Ricasoli. Броліо Кьянті Классіко 2012 червоне 0,375*12' WHERE TAB1_A13 = 'Вино Cusumano. Неро Д`Авола 2014 червоне 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '520'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Арманьяк Лобад 1980 0,7*1 в дерев. коробці' WHERE TAB1_A13 = 'Арманьяк Шато Лобад VSOP Магнум 1,5*3 в коробці' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '537'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Арманьяк Лобад 1980 0,7*1 в дерев. коробці' WHERE TAB1_A13 = 'Арманьяк Шато Лобад VSOP Магнум 1,5*3 в коробці' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '537'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Quintarelli. Б`янко Секо 2014 біле 0,75*6' WHERE TAB1_A13 = 'Вино Quintarelli. Вальполічелла Классіко Суперіоре 2007 червоне 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '548'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13% 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13%  0,75*12' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '575'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Шампанське Adam-Jaeger. Розе Селексіон рожеве 0,75*6' WHERE TAB1_A13 = 'Вино Domaine Claudie Jobard. Рюллі Монтань Ля Фолі 2014 біле 0,75*6' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '601'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Лікер Де Кайпер Мандарин Наполеон 38% 0,7*6' WHERE TAB1_A13 = 'Джин Рютте Селері (селера) 43% 0,7*6' AND N2_11 = 2832 AND N11 = '20170511' AND TAB1_A1 = '628'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Cusumano. Сіра 2014 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Cusumano. Iнсолiя 2015 біле 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '674'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Fevre Domain. Шаблі Прем`єр Крю Фуршом 2012 біле 0,75*12' WHERE TAB1_A13 = 'Вино Fevre Domain. Шаблі Прем`єр Крю Вейон 2013 біле 0,75 * 12' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '689'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13% 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13%  0,75*12' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '743'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13% 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Де Пельрен Помероль 2013 червоне 13%  0,75*12' AND N2_11 = 3614 AND N11 = '20170411' AND TAB1_A1 = '752'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Совіньон 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Lake Chalice. Мальборо Совіньон Блан Нест 2015 біле 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '761'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Совіньон 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Lake Chalice. Мальборо Совіньон Блан Нест 2015 біле 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '761'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Совіньон 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Lake Chalice. Мальборо Совіньон Блан Нест 2015 біле 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '761'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Совіньон 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Lake Chalice. Мальборо Совіньон Блан Нест 2015 біле 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '761'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Міленаріо Екстра Анехо 100% агава 41,5% 0,7*3 в коробці' WHERE TAB1_A13 = 'Текіла Сієрра Міленаріо Екстра Анехо 41,5% 0,7*3 в коробці' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '839'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Кот де Роль 2011 червоне  0,75*12' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '847'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Маркіз де Паті Бордо 2014 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Нодо 2015 біле 0,75*12' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '849'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Шардоне 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Kiwi Cuvee. Шираз 2014 червоне 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '879'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Шардоне 2015 біле 0,75*6' WHERE TAB1_A13 = 'Вино Kiwi Cuvee. Шираз 2014 червоне 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '879'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Tommasi. Речьото делла Вальполічелла Класіко Фіорато 2013 червоне 0,375*12' WHERE TAB1_A13 = 'Віскі Шотл А Нок Раскан 46% 0,7*6 в тубусі' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '895'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Піно Нуар 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Colmar. Гєвюрцтрамінер 2015 біле 0,375*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '1017'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Kiwi Cuvee. Піно Нуар 2015 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Colmar. Гєвюрцтрамінер 2015 біле 0,375*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '1017'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Р.Ж. Маркіз де Паті Мерло 2015 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Р.Ж. Маркіз де Паті Бордо 2014 червоне 0,75*12' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '1020'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '1068'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Colli di Lapio. Ірпінія Тауразіні Д.К`яра 2014 червоне 0,75*12' WHERE TAB1_A13 = 'Вино Colli di Lapio. Тауразі Андреа 2011 червоне 0,75*12' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '1076'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Шампанське Adam-Jaeger. Розе Селексіон рожеве 0,75*6' WHERE TAB1_A13 = 'Шампанське Adam-Jaeger. Мілезім Блан де Блан 2007 біле 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '1169'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Chateau de La Maltroye. Шассань Монраше 2013 червоне 0,75*6' WHERE TAB1_A13 = 'Вино Chateau de La Maltroye. Шассань Монраше Прем`є Крю Кло дю Шато де ла Малтрой Монополь 2013 червоне 0,75*6' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '1174'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Decordi. Соаве 2014 біле 0,75*6' WHERE TAB1_A13 = 'Вино Decordi. Піно Гріджо Делле Венеція біле 0,75*6' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '1183'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Лікер Де Кайпер Мандарин Наполеон 38% 0,7*6' WHERE TAB1_A13 = 'Лікер Де Кайпер Мандарин Наполеон ХО 40% 0,7*4' AND N2_11 = 5651 AND N11 = '20170619' AND TAB1_A1 = '1196'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Текіла Сієрра Антігуо Плата 100% агава 40% 0,7*6' WHERE TAB1_A13 = 'Текіла Сієрра Антігуо Плата 40% 0,7*6' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '1219'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Decordi. Піно Гріджо Делле Венеція біле 0,75*6' WHERE TAB1_A13 = 'Вино Р.Ж. Шато Дейрем Валентин 2012 червоне 0,75*12' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '1276'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Вино Decordi. Санджовезе Марке червоне 0,75*6' WHERE TAB1_A13 = 'Вино Fevre Domain. Шаблі Прем`єр Крю Фуршом 2013 біле 0,75*12' AND N2_11 = 8248 AND N11 = '20170424' AND TAB1_A1 = '1279'
+
+
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті КВВК 8 років 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті КВВЯ 8 років 40% 0,5*12' AND N2_11 = 1323 AND N11 = '20171205'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті КВВК 8 років 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті КВВЯ 8 років 40% 0,5*12' AND N2_11 = 4653 AND N11 = '20171013'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті КВВК 8 років 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті КВВЯ 8 років 40% 0,5*12' AND N2_11 = 7690 AND N11 = '20171024'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті КВВК 8 років 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті КВВЯ 8 років 40% 0,5*12' AND N2_11 = 8984 AND N11 = '20171027'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 2105 AND N11 = '20180306'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті КВВК 8 років 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті КВВЯ 8 років 40% 0,5*12' AND N2_11 = 8827 AND N11 = '20171027'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 4654 AND N11 = '20171013'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 2805 AND N11 = '20171208'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 1196 AND N11 = '20171205'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 2097 AND N11 = '20180306'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 3595 AND N11 = '20171212'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 7607 AND N11 = '20180323'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 1427 AND N11 = '20170505'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 3669 AND N11 = '20180112'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 4857 AND N11 = '20171215'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 1964 AND N11 = '20170608'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 5 років 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 5 років 40%  0,5*12' AND N2_11 = 3414 AND N11 = '20171212'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 1969 AND N11 = '20171107'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 4655 AND N11 = '20171013'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 4152 AND N11 = '20180213'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 5847 AND N11 = '20171219'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 8169 AND N11 = '20170926'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 4398 AND N11 = '20171114'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 3929 AND N11 = '20180313'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 5159 AND N11 = '20171215'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 7364 AND N11 = '20170623'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 3717 AND N11 = '20171212'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 8509 AND N11 = '20171227'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 5036 AND N11 = '20170516'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 7556 AND N11 = '20171222'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 3462 AND N11 = '20170512'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 4003 AND N11 = '20170315'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 478 AND N11 = '20170704'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 825 AND N11 = '20170704'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 1432 AND N11 = '20170606'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 2832 AND N11 = '20170511'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 5651 AND N11 = '20170619'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 3614 AND N11 = '20170411'
+UPDATE ElitDistr.dbo.at_t_Medoc SET TAB1_A13 = 'Коньяк Агмарті 3 роки 40% 0,5*12' WHERE TAB1_A13 = 'Коньяк Агмарті 3 роки 40%  0,5*12' AND N2_11 = 8248 AND N11 = '20170424'
+
+ROLLBACK TRAN
+	
+END
+
+
+

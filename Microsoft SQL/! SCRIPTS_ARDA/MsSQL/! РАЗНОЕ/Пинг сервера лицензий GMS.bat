@@ -1,0 +1,1 @@
+ping -t s-gms-lics.const.alef.ua

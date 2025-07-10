@@ -1,0 +1,5 @@
+SELECT * FROM r_comps WHERE compid = 7151
+
+SELECT * FROM r_Uni WHERE RefTypeID = 6680116 and RefName like '%пакко%'
+SELECT * FROM r_Comps m WHERE m.CompID = 7151
+SELECT * FROM dbo.ALEF_EDI_ORDERS_2 m WITH(NOLOCK) WHERE m.ZEO_ORDER_NUMBER = '10667133'

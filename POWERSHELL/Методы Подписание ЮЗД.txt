@@ -1,0 +1,46 @@
+НН отправляете подписанную и зашифрованную. 
+ 
+Підписання документів:
+1. Виконуємо ініціалізацію ком-об’єкта – метод Initialize:
+caType = "UA1";    
+Initialize(caType);
+2. Встановлюємо графічий режим бібліотеки = False:
+SetUIMode(False);
+3. Виконуємо знищення в пам’яті особистого ключа (для бухгалтера, директора, печатки) – метод ResetPrivateKey, в який передається відповідний тип ключа.
+4. встановлюємо признак необхідності використання транспортного та криптозаголовків = False:
+useHeaders = False;
+SetFilesOptions(useHeaders);
+5. Встановлюємо ключ бухгалтера або директора – метод SetPrivateKey, в який передається відповідний тип ключа
+6. Встановлюємо ключ печатки – метод SetPrivateKey.
+7. Наносимо на файл (або масив файлів) підпис бухгалтера – метод SignFilesByAccountant.
+Або наносимо підпис директора – метод SignFilesByDirector.
+8. Наносимо на файл (або масив файлів) підпис печатки – метод SignFilesByDigitalStamp. 
+ 
+Шифрування документів:
+1.Виконуємо ініціалізацію ком-об’єкта – метод Initialize:
+caType = "UA1"; 
+Initialize(caType);
+2. Встановлюємо графічий режим бібліотеки = False:
+SetUIMode(False);
+3.Виконуємо Знищення в пам’яті особистого ключа (для бухгалтера, директора, печатки) – метод ResetPrivateKey.
+4. Встановлюємо признак необхідності використання транспортного та криптозаголовків = True:
+useHeaders = True;
+SetFilesOptions(useHeaders);
+5. Встановлюємо ключ бухгалтера або директора – метод SetPrivateKey, в який передається відповідний тип ключа.
+6. Встановлюємо ключ печатки – метод SetPrivateKey, в який передається відповідний тип ключа.
+Якщо печатка має декілька ключів (1 для підпису та 1 для шифрування), то послідовно встановлюємо всі ключі печатки. 
+7. Виконуэмо шифрування:
+FilesCFA - масив файлів для шифрування або 1 файл (повний шлях до файлу);
+serverCertIDs - масив сертифікатів, на які здійснюється шифрування файлів (Податкових накладних);
+serverCertIDsArr = COMОбъект("EUTaxServiceFile.ObjectsArray");
+serverCertIDsArr.AddObject(EUTaxService_СертификатДФС);
+serverCertIDsArr.AddObject(EUTaxService_СертификатExite);
+  useAccountant = True;
+  useDirector = False;
+  useDigitalStamp = True;
+  appendCryptoHeaders = True;
+  appendTransportHeader  = False;
+  emailAddress   = "pn@exite.ua";
+ProtectFilesEx(FilesCFA, useAccountant, useDirector, useDigitalStamp, appendCryptoHeaders, appendTransportHeader, emailAddress, serverCertIDs);
+ 
+Детальний опис всіх методів та констант - у файлі "EUTaxServiceFileDescription_290115.doc".

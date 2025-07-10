@@ -1,0 +1,260 @@
+CREATE TRIGGER  M1_T_rec
+ON dbo.T_rec
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+CREATE TRIGGER  M2_T_recD
+ON dbo.T_recD
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+-- приход
+
+CREATE TRIGGER  M3_T_Cret
+ON dbo.T_Cret
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+CREATE TRIGGER  M4_T_CretD
+ON dbo.T_CretD
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+--возврат
+
+
+CREATE TRIGGER  M5_T_ven
+ON dbo.T_ven
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+CREATE TRIGGER  M6_T_venA
+ON dbo.T_venA
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+CREATE TRIGGER  M7_T_venD
+ON dbo.T_venD
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+-- инвентаризаци€
+CREATE TRIGGER  M8_T_Exp
+ON dbo.T_Exp
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+CREATE TRIGGER  M9_T_ExpD
+ON dbo.T_ExpD
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+-- расход
+
+CREATE TRIGGER  M10_T_Epp
+ON dbo.T_Epp
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+CREATE TRIGGER  M11_T_EppD
+ON dbo.T_EppD
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+if SYSTEM_USER IN
+(
+ 'sa'
+)
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END
+
+-- расход в ÷ѕ
+

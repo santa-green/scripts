@@ -1,0 +1,108 @@
+
+DISABLE TRIGGER ALL ON r_DiscDC; delete  r_DiscDC; ENABLE  TRIGGER ALL ON r_DiscDC;
+DISABLE TRIGGER ALL ON r_Banks; delete  r_Banks; ENABLE  TRIGGER ALL ON r_Banks;
+DISABLE TRIGGER ALL ON r_Currs; delete  r_Currs; ENABLE  TRIGGER ALL ON r_Currs;
+DISABLE TRIGGER ALL ON r_Ours; delete  r_Ours; ENABLE  TRIGGER ALL ON r_Ours;
+DISABLE TRIGGER ALL ON r_OursAC; delete  r_OursAC; ENABLE  TRIGGER ALL ON r_OursAC;
+DISABLE TRIGGER ALL ON r_OurValues; delete  r_OurValues; ENABLE  TRIGGER ALL ON r_OurValues;
+DISABLE TRIGGER ALL ON r_OursCC; delete  r_OursCC; ENABLE  TRIGGER ALL ON r_OursCC;
+DISABLE TRIGGER ALL ON r_DCards; delete  r_DCards; ENABLE  TRIGGER ALL ON r_DCards;
+DISABLE TRIGGER ALL ON r_DCardKin; delete  r_DCardKin; ENABLE  TRIGGER ALL ON r_DCardKin;
+DISABLE TRIGGER ALL ON r_DCTypeG; delete  r_DCTypeG; ENABLE  TRIGGER ALL ON r_DCTypeG;
+DISABLE TRIGGER ALL ON r_DCTypes; delete  r_DCTypes; ENABLE  TRIGGER ALL ON r_DCTypes;
+DISABLE TRIGGER ALL ON r_Spends; delete  r_Spends; ENABLE  TRIGGER ALL ON r_Spends;
+DISABLE TRIGGER ALL ON r_Taxes; delete  r_Taxes; ENABLE  TRIGGER ALL ON r_Taxes;
+DISABLE TRIGGER ALL ON r_TaxRates; delete  r_TaxRates; ENABLE  TRIGGER ALL ON r_TaxRates;
+DISABLE TRIGGER ALL ON r_Deps; delete  r_Deps; ENABLE  TRIGGER ALL ON r_Deps;
+DISABLE TRIGGER ALL ON r_POSPays; delete  r_POSPays; ENABLE  TRIGGER ALL ON r_POSPays;
+
+DISABLE TRIGGER ALL ON r_PLs; delete  r_PLs; ENABLE  TRIGGER ALL ON r_PLs;
+DISABLE TRIGGER ALL ON ir_PLProdGrs; delete  ir_PLProdGrs; ENABLE  TRIGGER ALL ON ir_PLProdGrs;
+DISABLE TRIGGER ALL ON r_Comps; delete  r_Comps; ENABLE  TRIGGER ALL ON r_Comps;
+DISABLE TRIGGER ALL ON r_CompsAdd; delete  r_CompsAdd; ENABLE  TRIGGER ALL ON r_CompsAdd;
+DISABLE TRIGGER ALL ON r_CompsAC; delete  r_CompsAC; ENABLE  TRIGGER ALL ON r_CompsAC;
+DISABLE TRIGGER ALL ON r_CompValues; delete  r_CompValues; ENABLE  TRIGGER ALL ON r_CompValues;
+DISABLE TRIGGER ALL ON r_CompContacts; delete  r_CompContacts; ENABLE  TRIGGER ALL ON r_CompContacts;
+DISABLE TRIGGER ALL ON r_CompsCC; delete  r_CompsCC; ENABLE  TRIGGER ALL ON r_CompsCC;
+DISABLE TRIGGER ALL ON r_CompGrs1; delete  r_CompGrs1; ENABLE  TRIGGER ALL ON r_CompGrs1;
+DISABLE TRIGGER ALL ON r_CompGrs2; delete  r_CompGrs2; ENABLE  TRIGGER ALL ON r_CompGrs2;
+DISABLE TRIGGER ALL ON r_CompGrs3; delete  r_CompGrs3; ENABLE  TRIGGER ALL ON r_CompGrs3;
+DISABLE TRIGGER ALL ON r_CompGrs4; delete  r_CompGrs4; ENABLE  TRIGGER ALL ON r_CompGrs4;
+DISABLE TRIGGER ALL ON r_CompGrs5; delete  r_CompGrs5; ENABLE  TRIGGER ALL ON r_CompGrs5;
+DISABLE TRIGGER ALL ON r_Codes1; delete  r_Codes1; ENABLE  TRIGGER ALL ON r_Codes1;
+DISABLE TRIGGER ALL ON r_Codes2; delete  r_Codes2; ENABLE  TRIGGER ALL ON r_Codes2;
+DISABLE TRIGGER ALL ON r_Codes3; delete  r_Codes3; ENABLE  TRIGGER ALL ON r_Codes3;
+DISABLE TRIGGER ALL ON r_Codes4; delete  r_Codes4; ENABLE  TRIGGER ALL ON r_Codes4;
+DISABLE TRIGGER ALL ON r_Codes5; delete  r_Codes5; ENABLE  TRIGGER ALL ON r_Codes5;
+DISABLE TRIGGER ALL ON at_r_Regions; delete  at_r_Regions; ENABLE  TRIGGER ALL ON at_r_Regions;
+DISABLE TRIGGER ALL ON r_Levies; delete  r_Levies; ENABLE  TRIGGER ALL ON r_Levies;
+DISABLE TRIGGER ALL ON r_LevyCR; delete  r_LevyCR; ENABLE  TRIGGER ALL ON r_LevyCR;
+DISABLE TRIGGER ALL ON r_LevyRates; delete  r_LevyRates; ENABLE  TRIGGER ALL ON r_LevyRates;
+DISABLE TRIGGER ALL ON r_Stocks; delete  r_Stocks; ENABLE  TRIGGER ALL ON r_Stocks;
+DISABLE TRIGGER ALL ON r_StockCRProds; delete  r_StockCRProds; ENABLE  TRIGGER ALL ON r_StockCRProds;
+DISABLE TRIGGER ALL ON ir_StockSubs; delete  ir_StockSubs; ENABLE  TRIGGER ALL ON ir_StockSubs;
+DISABLE TRIGGER ALL ON ir_StockFilters; delete  ir_StockFilters; ENABLE  TRIGGER ALL ON ir_StockFilters;
+DISABLE TRIGGER ALL ON r_StockGs; delete  r_StockGs; ENABLE  TRIGGER ALL ON r_StockGs;
+DISABLE TRIGGER ALL ON r_Emps; delete  r_Emps; ENABLE  TRIGGER ALL ON r_Emps;
+DISABLE TRIGGER ALL ON r_States; delete  r_States; ENABLE  TRIGGER ALL ON r_States;
+DISABLE TRIGGER ALL ON r_StateDocs; delete  r_StateDocs; ENABLE  TRIGGER ALL ON r_StateDocs;
+DISABLE TRIGGER ALL ON r_StateDocsChange; delete  r_StateDocsChange; ENABLE  TRIGGER ALL ON r_StateDocsChange;
+DISABLE TRIGGER ALL ON r_StateRuleUsers; delete  r_StateRuleUsers; ENABLE  TRIGGER ALL ON r_StateRuleUsers;
+DISABLE TRIGGER ALL ON r_StateRules; delete  r_StateRules; ENABLE  TRIGGER ALL ON r_StateRules;
+DISABLE TRIGGER ALL ON r_Prods; delete  r_Prods; ENABLE  TRIGGER ALL ON r_Prods;
+DISABLE TRIGGER ALL ON r_ProdAC; delete  r_ProdAC; ENABLE  TRIGGER ALL ON r_ProdAC;
+DISABLE TRIGGER ALL ON r_ProdMA; delete  r_ProdMA; ENABLE  TRIGGER ALL ON r_ProdMA;
+DISABLE TRIGGER ALL ON r_ProdMQ; delete  r_ProdMQ; ENABLE  TRIGGER ALL ON r_ProdMQ;
+DISABLE TRIGGER ALL ON r_ProdME; delete  r_ProdME; ENABLE  TRIGGER ALL ON r_ProdME;
+DISABLE TRIGGER ALL ON r_ProdValues; delete  r_ProdValues; ENABLE  TRIGGER ALL ON r_ProdValues;
+DISABLE TRIGGER ALL ON r_ProdCV; delete  r_ProdCV; ENABLE  TRIGGER ALL ON r_ProdCV;
+DISABLE TRIGGER ALL ON r_ProdEC; delete  r_ProdEC; ENABLE  TRIGGER ALL ON r_ProdEC;
+DISABLE TRIGGER ALL ON r_ProdMS; delete  r_ProdMS; ENABLE  TRIGGER ALL ON r_ProdMS;
+DISABLE TRIGGER ALL ON r_ProdMSE; delete  r_ProdMSE; ENABLE  TRIGGER ALL ON r_ProdMSE;
+DISABLE TRIGGER ALL ON r_ProdLV; delete  r_ProdLV; ENABLE  TRIGGER ALL ON r_ProdLV;
+DISABLE TRIGGER ALL ON r_ProdMP; delete  r_ProdMP; ENABLE  TRIGGER ALL ON r_ProdMP;
+DISABLE TRIGGER ALL ON t_PInP; delete  t_PInP; ENABLE  TRIGGER ALL ON t_PInP;
+DISABLE TRIGGER ALL ON ir_ProdOpers; delete  ir_ProdOpers; ENABLE  TRIGGER ALL ON ir_ProdOpers;
+DISABLE TRIGGER ALL ON ir_ProdMPA; delete  ir_ProdMPA; ENABLE  TRIGGER ALL ON ir_ProdMPA;
+DISABLE TRIGGER ALL ON ir_OperTypes; delete  ir_OperTypes; ENABLE  TRIGGER ALL ON ir_OperTypes;
+DISABLE TRIGGER ALL ON r_ProdG; delete  r_ProdG; ENABLE  TRIGGER ALL ON r_ProdG;
+DISABLE TRIGGER ALL ON r_ProdA; delete  r_ProdA; ENABLE  TRIGGER ALL ON r_ProdA;
+DISABLE TRIGGER ALL ON at_r_ProdsAmort; delete  at_r_ProdsAmort; ENABLE  TRIGGER ALL ON at_r_ProdsAmort;
+DISABLE TRIGGER ALL ON r_ProdBG; delete  r_ProdBG; ENABLE  TRIGGER ALL ON r_ProdBG;
+DISABLE TRIGGER ALL ON r_ProdC; delete  r_ProdC; ENABLE  TRIGGER ALL ON r_ProdC;
+DISABLE TRIGGER ALL ON r_ProdG1; delete  r_ProdG1; ENABLE  TRIGGER ALL ON r_ProdG1;
+DISABLE TRIGGER ALL ON r_ProdG2; delete  r_ProdG2; ENABLE  TRIGGER ALL ON r_ProdG2;
+DISABLE TRIGGER ALL ON r_ProdG3; delete  r_ProdG3; ENABLE  TRIGGER ALL ON r_ProdG3;
+DISABLE TRIGGER ALL ON at_r_ProdG4; delete  at_r_ProdG4; ENABLE  TRIGGER ALL ON at_r_ProdG4;
+DISABLE TRIGGER ALL ON at_r_ProdG5; delete  at_r_ProdG5; ENABLE  TRIGGER ALL ON at_r_ProdG5;
+DISABLE TRIGGER ALL ON at_r_ProdG6; delete  at_r_ProdG6; ENABLE  TRIGGER ALL ON at_r_ProdG6;
+DISABLE TRIGGER ALL ON at_r_ProdG7; delete  at_r_ProdG7; ENABLE  TRIGGER ALL ON at_r_ProdG7;
+DISABLE TRIGGER ALL ON r_Uni; delete  r_Uni; ENABLE  TRIGGER ALL ON r_Uni;
+DISABLE TRIGGER ALL ON r_UniTypes; delete  r_UniTypes; ENABLE  TRIGGER ALL ON r_UniTypes;
+DISABLE TRIGGER ALL ON r_PayForms; delete  r_PayForms; ENABLE  TRIGGER ALL ON r_PayForms;
+DISABLE TRIGGER ALL ON r_CRs; delete  r_CRs; ENABLE  TRIGGER ALL ON r_CRs;
+DISABLE TRIGGER ALL ON r_CRMM; delete  r_CRMM; ENABLE  TRIGGER ALL ON r_CRMM;
+DISABLE TRIGGER ALL ON r_CRDeskG; delete  r_CRDeskG; ENABLE  TRIGGER ALL ON r_CRDeskG;
+DISABLE TRIGGER ALL ON r_CRMP; delete  r_CRMP; ENABLE  TRIGGER ALL ON r_CRMP;
+DISABLE TRIGGER ALL ON r_CRPOSPays; delete  r_CRPOSPays; ENABLE  TRIGGER ALL ON r_CRPOSPays;
+DISABLE TRIGGER ALL ON r_CRShed; delete  r_CRShed; ENABLE  TRIGGER ALL ON r_CRShed;
+DISABLE TRIGGER ALL ON r_CRUniInput; delete  r_CRUniInput; ENABLE  TRIGGER ALL ON r_CRUniInput;
+DISABLE TRIGGER ALL ON r_OperCRs; delete  r_OperCRs; ENABLE  TRIGGER ALL ON r_OperCRs;
+DISABLE TRIGGER ALL ON r_Opers; delete  r_Opers; ENABLE  TRIGGER ALL ON r_Opers;
+
+
+
+DISABLE TRIGGER ALL ON z_LogDiscRec; delete  z_LogDiscRec; ENABLE  TRIGGER ALL ON z_LogDiscRec;
+
+DISABLE TRIGGER ALL ON r_Discs; delete  r_Discs; ENABLE  TRIGGER ALL ON r_Discs;
+
+
+DISABLE TRIGGER ALL ON z_LogState; delete  dbo.z_LogState ; ENABLE  TRIGGER ALL ON z_LogState;
+
+DISABLE TRIGGER ALL ON r_Users; delete  r_Users where UserName  in ('sa'); ENABLE  TRIGGER ALL ON r_Users;
+
+
+
+DISABLE TRIGGER ALL ON r_DeskG; delete  r_DeskG; ENABLE  TRIGGER ALL ON r_DeskG;
+
+DISABLE TRIGGER ALL ON z_replicain; delete  z_replicain; ENABLE  TRIGGER ALL ON z_replicain;

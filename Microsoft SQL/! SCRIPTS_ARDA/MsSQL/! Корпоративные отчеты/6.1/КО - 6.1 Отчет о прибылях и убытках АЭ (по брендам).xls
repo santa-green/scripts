@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<?fr-application created="FastReport"?>
+<?fr-application homesite="http://www.fast-report.com"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+<DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+<Title></Title>
+<Author></Author>
+<Created>20.08.2019T16:47:23Z</Created>
+<Version>...</Version>
+</DocumentProperties>
+<ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+<ProtectStructure>False</ProtectStructure>
+<ProtectWindows>False</ProtectWindows>
+</ExcelWorkbook>
+<Styles>
+<Style ss:ID="s0">
+<Font ss:FontName="Arial" ss:Size="9" ss:Color="#000000" ss:Italic="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s1">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+</Borders>
+</Style>
+<Style ss:ID="s2">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000" ss:Bold="1"/>
+<Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s3">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s4">
+<Font ss:FontName="Arial" ss:Size="10" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+<Style ss:ID="s5">
+<Font ss:FontName="Arial" ss:Size="9" ss:Color="#000000"/>
+<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+<Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+<Borders>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000" />
+</Borders>
+</Style>
+</Styles>
+<Worksheet ss:Name="Page1">
+<Table ss:ExpandedColumnCount="13" ss:ExpandedRowCount="13" x:FullColumns="1" x:FullRows="1">
+<Column ss:AutoFitWidth="0" ss:Width="2.75"/>
+<Column ss:AutoFitWidth="0" ss:Width="13.73"/>
+<Column ss:AutoFitWidth="0" ss:Width="93.39"/>
+<Column ss:AutoFitWidth="0" ss:Width="13.73"/>
+<Column ss:AutoFitWidth="0" ss:Width="60.55"/>
+<Column ss:AutoFitWidth="0" ss:Width="94.49"/>
+<Column ss:AutoFitWidth="0" ss:Width="108.57"/>
+<Column ss:AutoFitWidth="0" ss:Width="93.56"/>
+<Column ss:AutoFitWidth="0" ss:Width="93.56"/>
+<Column ss:AutoFitWidth="0" ss:Width="57.41"/>
+<Column ss:AutoFitWidth="0" ss:Width="36.15"/>
+<Column ss:AutoFitWidth="0" ss:Width="92.94"/>
+<Row ss:Height="9.61">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" ss:MergeAcross="5" ss:MergeDown="2" ss:StyleID="s1" >
+<Data ss:Type="String">Отчет о прибылях и убытках за отчетный период направления АЛЕФ-Эксклюзив  (по брендам)</Data>
+</Cell>
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="13.73">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" ss:MergeAcross="1" ss:StyleID="s0" >
+<Data ss:Type="String">Валюта отчета: USD</Data>
+</Cell>
+<Cell ss:Index="4" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="4.12">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="6.87">
+<Cell ss:Index="1" />
+<Cell ss:Index="2" />
+<Cell ss:Index="3" />
+<Cell ss:Index="4" />
+<Cell ss:Index="5" />
+<Cell ss:Index="6" />
+<Cell ss:Index="7" />
+<Cell ss:Index="8" />
+<Cell ss:Index="9" />
+<Cell ss:Index="10" />
+<Cell ss:Index="11" />
+<Cell ss:Index="12" />
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="38.45">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s2" >
+<Data ss:Type="String">№</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s2" >
+<Data ss:Type="String">Данные</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s2" >
+<Data ss:Type="String">Алеф-Эксклюзив проект (Италия + Шотландия)</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s2" >
+<Data ss:Type="String">Алеф-Эксклюзив проект (Испания + Португалия)</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s2" >
+<Data ss:Type="String">Алеф-Эксклюзив проект (Новый Свет)</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s2" >
+<Data ss:Type="String">Алеф-Эксклюзив проект (Франция + Германия)</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s2" >
+<Data ss:Type="String">Алеф-Эксклюзив проект (прочий асс.)</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s2" >
+<Data ss:Type="String">ИТОГО</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">1</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">Объем продаж, в бут. (шт.)</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s4" >
+<Data ss:Type="Number">27149.00</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s4" >
+<Data ss:Type="Number">26629.00</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s4" >
+<Data ss:Type="Number">8317.00</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s4" >
+<Data ss:Type="Number">18085.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s4" >
+<Data ss:Type="Number">-3.00</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s4" >
+<Data ss:Type="Number">80177.00</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">2</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">Объем продаж, $ в ценах отгрузки</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s4" >
+<Data ss:Type="Number">220481.10</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s4" >
+<Data ss:Type="Number">123902.50</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s4" >
+<Data ss:Type="Number">62744.86</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s4" >
+<Data ss:Type="Number">156048.35</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s4" >
+<Data ss:Type="Number">-297.13</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s4" >
+<Data ss:Type="Number">562879.68</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">3</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">Доля в продажах,%</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s4" >
+<Data ss:Type="Number">39.17</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s4" >
+<Data ss:Type="Number">22.01</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s4" >
+<Data ss:Type="Number">11.15</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s4" >
+<Data ss:Type="Number">27.72</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s4" >
+<Data ss:Type="Number">-0.05</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s4" >
+<Data ss:Type="Number">100.00</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">4</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">% общей наценки</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s4" >
+<Data ss:Type="Number">67.15</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s4" >
+<Data ss:Type="Number">75.10</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s4" >
+<Data ss:Type="Number">72.82</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s4" >
+<Data ss:Type="Number">43.46</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s4" >
+<Data ss:Type="Number">0.72</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s4" >
+<Data ss:Type="Number">62.00</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">5</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">Объем продаж по себестоимости $</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s4" >
+<Data ss:Type="Number">131906.00</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s4" >
+<Data ss:Type="Number">70759.00</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s4" >
+<Data ss:Type="Number">36307.00</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s4" >
+<Data ss:Type="Number">108775.00</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s4" >
+<Data ss:Type="Number">-295.00</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s4" >
+<Data ss:Type="Number">347452.00</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">6</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">ср. цена продажи 1 бут. ($)</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s4" >
+<Data ss:Type="Number">8.12</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s4" >
+<Data ss:Type="Number">4.65</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s4" >
+<Data ss:Type="Number">7.54</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s4" >
+<Data ss:Type="Number">8.63</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s4" >
+<Data ss:Type="Number">99.04</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s4" >
+<Data ss:Type="Number">7.02</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+<Row ss:Height="16.48">
+<Cell ss:Index="1" ss:MergeAcross="1" ss:StyleID="s3" >
+<Data ss:Type="String">7</Data>
+</Cell>
+<Cell ss:Index="3" ss:MergeAcross="2" ss:StyleID="s5" >
+<Data ss:Type="String">ср. с/с 1 бут. ($)</Data>
+</Cell>
+<Cell ss:Index="6" ss:StyleID="s4" >
+<Data ss:Type="Number">4.86</Data>
+</Cell>
+<Cell ss:Index="7" ss:StyleID="s4" >
+<Data ss:Type="Number">2.66</Data>
+</Cell>
+<Cell ss:Index="8" ss:StyleID="s4" >
+<Data ss:Type="Number">4.37</Data>
+</Cell>
+<Cell ss:Index="9" ss:StyleID="s4" >
+<Data ss:Type="Number">6.01</Data>
+</Cell>
+<Cell ss:Index="10" ss:MergeAcross="1" ss:StyleID="s4" >
+<Data ss:Type="Number">98.33</Data>
+</Cell>
+<Cell ss:Index="12" ss:StyleID="s4" >
+<Data ss:Type="Number">4.33</Data>
+</Cell>
+<Cell ss:Index="13" />
+</Row>
+</Table>
+<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+<PageSetup>
+<Layout x:Orientation="Landscape"/>
+<PageMargins x:Bottom="0.38" x:Left="0.38" x:Right="0.38" x:Top="0.38"/>
+</PageSetup>
+</WorksheetOptions>
+<PageBreaks xmlns="urn:schemas-microsoft-com:office:excel">
+<RowBreaks>
+</RowBreaks>
+</PageBreaks>
+</Worksheet>
+</Workbook>

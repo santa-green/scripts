@@ -1,0 +1,28 @@
+BEGIN TRAN
+    EXEC ap_Rkiper_Import_Sale
+    SELECT * FROM t_Sale WHERE ChID = 1800026873
+    SELECT * FROM t_Sale WHERE ChID = 1800028233
+    SELECT * FROM t_SaleD WHERE ChID = 1800026873
+    SELECT * FROM t_SaleD WHERE ChID = 1800028233
+    SELECT * FROM t_SaleDLV WHERE ChID = 1800026873
+    SELECT * FROM t_SaleDLV WHERE ChID = 1800028233
+    --SELECT 't_Sale'; SELECT * FROM t_SalePays WHERE ChID = 1800028233
+    --SELECT 't_Sale'; SELECT * FROM t_SalePays WHERE ChID = 1800026873
+    --SELECT 't_Sale'; SELECT * FROM t_MonRec WHERE DocID = 231530
+/*
+    SELECT * FROM t_Sale WHERE ChID BETWEEN 1800000000 AND 1899999999
+    SELECT * FROM t_MonRec WHERE ChID BETWEEN 1800000000 AND 1899999999
+*/ROLLBACK TRAN;
+
+/*select system_user
+setuser
+a_tRem_CheckNegativeRems_IU*/
+
+setuser 'pvm0'
+
+begin tran
+    SELECT * FROM t_SaleD WHERE ChID = 1800026873
+    delete from t_SaleD WHERE ChID = 1800026873 and SrcPosID in (4, 5)
+    SELECT * FROM t_SaleD WHERE ChID = 1800026873
+rollback tran
+

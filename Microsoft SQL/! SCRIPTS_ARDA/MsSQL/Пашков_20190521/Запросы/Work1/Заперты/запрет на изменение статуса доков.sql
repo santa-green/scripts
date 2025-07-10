@@ -1,0 +1,22 @@
+CREATE TRIGGER  M22_T_rec
+ON dbo.T_rec
+FOR INSERT, UPDATE, DELETE
+AS
+
+BEGIN
+
+SET NOCOUNT ON
+
+   
+IF UPDATE(DocStatID)  AND SUSER_SNAME() <> 'mik'
+
+
+BEGIN
+
+RAISERROR 30001 N'¬ы не имеете права измен€ть данный документ'
+
+ROLLBACK TRANSACTION
+
+END
+
+END

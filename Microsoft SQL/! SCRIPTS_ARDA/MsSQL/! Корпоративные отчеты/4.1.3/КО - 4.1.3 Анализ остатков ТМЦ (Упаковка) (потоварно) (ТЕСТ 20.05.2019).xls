@@ -1,0 +1,1802 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Created>2019-05-21T12:55:23Z</Created>
+  <Version>14.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>10005</WindowHeight>
+  <WindowWidth>10005</WindowWidth>
+  <WindowTopX>120</WindowTopX>
+  <WindowTopY>135</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:CharSet="204" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63505728">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63505504">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63505524">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63505544">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63505564">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63505584">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63505604">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63475036">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63475056">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63475076">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63475096">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63475116">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63475136">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="m63475156">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Verdana" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s79">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="#,##0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Size="1" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s81">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s82">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s83">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s84">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s85">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="#,##0.0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s86">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s94">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s95">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s103">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s104">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="#,##0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s105">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#CCCCCC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s106">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFF00" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s113">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" ss:Size="8" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#00B050" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s118">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Verdana" x:CharSet="204" x:Family="Swiss" ss:Size="8"
+    ss:Color="#FF0000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s121">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+  </Style>
+  <Style ss:ID="s122">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <NumberFormat ss:Format="0"/>
+  </Style>
+  <Style ss:ID="s123">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" x:CharSet="204" x:Family="Swiss" ss:Size="11"
+    ss:Color="#FF0000"/>
+  </Style>
+  <Style ss:ID="s127">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#808080"/>
+   </Borders>
+   <Font ss:FontName="verdana" ss:Size="8" ss:Color="#000000"/>
+   <Interior ss:Color="#00B050" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0"/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Page1">
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="77" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="0.75"/>
+   <Column ss:Width="128.25"/>
+   <Column ss:Width="444.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="38.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="42.75" ss:Span="6"/>
+   <Column ss:Index="12" ss:AutoFitWidth="0" ss:Width="30"/>
+   <Column ss:AutoFitWidth="0" ss:Width="41.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="0.75"/>
+   <Row ss:AutoFitHeight="0" ss:Height="13.6875">
+    <Cell ss:MergeAcross="12" ss:StyleID="s63"><Data ss:Type="String">Анализ остатков ТМЦ (упаковка)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="2.8125"/>
+   <Row ss:AutoFitHeight="0" ss:Height="35.8125">
+    <Cell ss:MergeAcross="12" ss:StyleID="s65"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="5.8125"/>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:MergeAcross="12" ss:StyleID="s65"><Data ss:Type="String">Валюта отчёта: USD</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="2.25"/>
+   <Row ss:AutoFitHeight="0" ss:Height="21.9375">
+    <Cell ss:MergeAcross="1" ss:MergeDown="1" ss:StyleID="m63475036"><Data
+      ss:Type="String">Проекты</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="m63475056"><Data ss:Type="String">Товар</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63475076"><Data ss:Type="String">Остатки на 01.01.18</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63475096"><Data ss:Type="String">Приход</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63475116"><Data ss:Type="String">Списание</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63475136"><Data ss:Type="String">Остатки на 01.01.19</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="m63475156"><Data ss:Type="String">% от общ. сум.</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="m63505504"><Data ss:Type="String">Обор. тов., год</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:Index="4" ss:StyleID="s79"><Data ss:Type="String">Сумма</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Кол-во</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Сумма</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Кол-во</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Сумма</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Кол-во</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Сумма</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Кол-во</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Барная группа проект</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка Сиерра голд 3л.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">804</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">295</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">804</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">295</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:MergeAcross="2" ss:StyleID="m63505524"><Data ss:Type="String">Итого - Барная группа проект</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">804</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">295</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">804</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">295</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Вода Evian проект </Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Упаковка для 4-х бутылок Эвиан</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1237</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">7420</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">569</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3412</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">668</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4008</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик Эвиан 287*282*210 4 pack</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">466</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1751</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">226</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">853</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">240</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">898</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:MergeAcross="2" ss:StyleID="m63505544"><Data ss:Type="String">Итого - Вода Evian проект </Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">1702</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">9171</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">795</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">4265</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">908</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">4906</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Комплекс-Бар проект</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Интеро Американо 340*265*190 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5107</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8039</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4980</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">7839</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">4%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Пакеты ПКС 70*220 Ф(20+20)(MatteOPP20/LDPE80) ц.ш</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3530</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">94840</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3530</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">94840</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">3%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Френч Пресс массой 250 гр. + заварник</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3336</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8806</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3336</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8806</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">3%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для кофе в капсулах Бруно Декаф 18 шт. 105*220*95 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2703</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3610</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2703</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3610</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">2%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Пакет Stabilo 150х375 (40+40) Бруно Рико клапан 1кг</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5413</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">18665</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2513</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8665</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">2%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Эспрессо Итальяно Домик массой 125 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2182</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">10913</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2181</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">10911</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">2%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Пакет Stabilo 150х375 (40+40) Бруно Крема клапан 1кг</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4858</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">16750</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1958</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">6750</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Подложка из микрогофры для кофе Интеро</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1848</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">29416</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1848</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">29415</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно 125 гр. 396х272х175 мм Домик перфорированный</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1431</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2647</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1431</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2646</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">1431</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для кофе в монодозах Бруно Декаф 18 шт. 100*190*100 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1255</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2996</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1255</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2996</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Турецкая Традиция массой 250 гр. 45*145*82 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1167</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8138</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1092</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">7652</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Френч Пресс массой 125 гр. &quot;Домик&quot;</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1091</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5458</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1091</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5456</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно молотого 36*125 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">934</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1958</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">933</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1956</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">934</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для наборов кофе Бруно + чашка 435х380х240 мм Домик</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">917</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1055</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">915</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1053</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">458</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для кофе в капсулах Бруно Рикко 18 шт. 105*220*95 мм мешок</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">535</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1175</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">535</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1175</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Пакет Интеро п/е 36(2*8)х60 2+0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">629</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">9086</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">21</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">302</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">504</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">7286</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">27</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно молотого Френч Пресс 250 гр. 470*275*172 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">477</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">870</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">477</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">869</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">477</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Пакет ВП 85*300 Ф30 ц.шов</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">360</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4080</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">358</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4060</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">180</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Турецкая традиция Домик массой 250 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">347</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2633</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">346</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2632</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Френч Пресс &quot;Домик&quot; FLAT массой 250 гр. </Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">373</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4285</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">330</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3785</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно 250 гр. 366х170х214 мм Домик перфорированный</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">350</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">945</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">284</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">745</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно молотого 125 гр. 340*255*140</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">265</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">806</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">265</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">805</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Пакет St 100*280 (30+30) Кофе Лайф клапан</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">214</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">800</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">214</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">800</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Интеро 380*246*123 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">207</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">480</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">207</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">480</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Турецкая традиция &quot;Домик&quot; FLAT массой 250 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">371</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4261</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">197</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2261</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно молотого 250 гр. 360*155*166 перфорированный &quot;АТБ&quot;</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">260</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">571</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">169</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">371</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Турецкая Традиция &quot;Домик&quot; FLAT массой 125 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">229</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2622</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">128</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1472</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно в капсулах 575*320*235</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">91</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">194</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">91</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">194</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Интеро 70гр. (14шт.) с перфорацией 380х196х133</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">71</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">169</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">71</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">169</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Наклейка -50% на вторую пачку Бруно</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">63</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1288</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">63</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1288</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно в таблетках 18*126 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная для молотого кофе Бруно Эспрессо Итальяно &quot;Домик&quot; FLAT массой 250 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">83</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">952</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">457</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Интеро 140гр. (10шт.) с перфорацией 380х246х142</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">154</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">154</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик для кофе Бруно молотого 250 гр. 438*364*173</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Комплект наклеек на пачку кофе &quot;Эсперанто&quot; Итальяно бленд 250 гр.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Наклейка на гофротару Бруно Эфиопия Йергачиф 500 г зерно</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Расхождение с 4.1</Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Пакет St 100*280 (30+30) крафт+клапан</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">$</Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">шт.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:MergeAcross="2" ss:StyleID="m63505564"><Data ss:Type="String">Итого - Комплекс-Бар проект</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="Number">30519</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="Number">213543</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">10270</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">35415</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">28</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">335</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">34138</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">221894</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Index="15" ss:StyleID="s118"><Data ss:Type="Number">30522</Data></Cell>
+    <Cell ss:StyleID="s122" ss:Formula="=RC[-1]-RC[-12]"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="Number">214157</Data></Cell>
+    <Cell ss:StyleID="s122" ss:Formula="=RC[-1]-RC[-13]"><Data ss:Type="Number">614</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Трино проект </Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Бутылка Трино 0,5 л оливковая Design 2013</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">4671</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">29206</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">7956</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">19544</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">12626</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">48748</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">9%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Колпачек Трино Бьянко 0,5 л Design 2013</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">2523</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">86032</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2523</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">86032</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">2%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Этикетка Трино Бианко 1,0 л Design 2013</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">1800</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">60000</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1800</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">60000</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Колпачек Трино Бьянко 1,0 л Design 2013</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">1767</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">34375</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1767</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">34375</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик Трино 1 л 420*269*330 Design 2013&#160; </Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">1219</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">2284</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1219</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2284</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик Трино 0,5 л 492*289*272 Design 2013&#160; </Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">835</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">1715</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">835</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1715</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Контрэтикетка Трино Бианко&#160;1,0 л Design 2013</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">833</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">60000</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">833</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">60000</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Колпачек Трино Бьянко 0,5 л</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">302</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">8805</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">302</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8805</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик Трино 1 л 420*269*330</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">174</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">149</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">174</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">149</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Стикер на гофроящик Вермут Трино Бьянко 1л</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">166</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">18000</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">166</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">18000</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик&#160;Марио&#160;0,75 л&#160;325*244*337</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">144</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">144</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Бутылка Трино 1,0 л белая Design 2013</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">106</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">972</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">106</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">972</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Расхождение с 4.1</Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофроящик под подарочный набор Трино 350*320*350 мм</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">84</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="Number">261</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">71</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">$</Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">шт.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:MergeAcross="2" ss:StyleID="m63505584"><Data ss:Type="String">Итого - Трино проект </Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="Number">14518</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="Number">300977</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">8061</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">20516</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">22518</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">321301</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:Index="15" ss:StyleID="s118"><Data ss:Type="Number">16198</Data></Cell>
+    <Cell ss:StyleID="s122" ss:Formula="=RC[-1]-RC[-12]"><Data ss:Type="Number">1680</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="Number">302957</Data></Cell>
+    <Cell ss:StyleID="s122" ss:Formula="=RC[-1]-RC[-13]"><Data ss:Type="Number">1980</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Шотландский виски проект</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка Ханки Баннистер 1,0л Design 2017</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">19621</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">31690</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">43224</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">79760</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">20517</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">33770</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">42327</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">77680</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">32%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка Ханки Баннистер 0,7л Design 2017</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">28300</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">86882</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">90077</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">301536</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">95857</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">310801</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">22519</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">77617</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">17%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">0,3</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофрокомплект г/я Ханки Баннистер Ориджинал 12*1,0 324*282*306 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">257</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">651</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5641</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">15150</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1025</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2814</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4873</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">12987</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">4%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">3</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Гофрокомплект г/я Ханки Баннистер Ориджинал 12*0,7 271*248*290 мм</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2397</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5696</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">9645</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">33768</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8095</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">25775</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3948</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">13689</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">3%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">0,4</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка Мак Артурс 0,7л</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1271</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2118</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1271</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2118</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">1%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка Ханки Баннистер 1 л.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">34</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">34</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка картонная Ханки Баннистер&#160;1,0л New Design Inver House</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">339</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">339</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка для Шотл Виски Ханки Баннистер  бленд 0,7</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Упаковка Ханки Баннистер 4,5 л. New Design</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Коробка Ханки Баннистер 0,7 л.</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">0%</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">нет движ.</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:MergeAcross="2" ss:StyleID="m63505604"><Data ss:Type="String">Итого - Шотландский виски проект</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">51866</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">127435</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">148586</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">430214</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">125493</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">373160</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">74959</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="Number">184489</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="Number">0</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="11.0625">
+    <Cell ss:MergeAcross="2" ss:StyleID="m63505728"><Data ss:Type="String">Общий итог</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">99411</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">651421</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">166917</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">486145</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">126316</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">377762</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">133327</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="Number">732885</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">100%</Data></Cell>
+    <Cell ss:StyleID="s105"><Data ss:Type="String"></Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <PageMargins x:Bottom="0.56000000000000005" x:Left="0.94"
+     x:Right="0.56000000000000005" x:Top="0.75"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>8</SplitHorizontal>
+   <TopRowBottomPane>44</TopRowBottomPane>
+   <ActivePane>2</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>63</ActiveRow>
+     <ActiveCol>4</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

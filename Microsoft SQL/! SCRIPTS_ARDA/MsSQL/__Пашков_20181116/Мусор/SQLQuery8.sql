@@ -1,0 +1,58 @@
+/*
+update t_sale
+set KursMC = 27
+from t_sale where DocDate >= '2016-11-01'
+and StockID = 1315 and KursMC <> 27
+and chid not in (100389702,100389925,100391247,100391313,100391322)
+*/
+
+select * from t_sale where DocDate >= '2016-11-01'
+and StockID = 1315 and KursMC <> 27
+and chid not in (100389702,100389925,100391247,100391313,100391322) 
+
+select * from t_sale where DocDate >= '2016-10-01'
+and StockID = 1315 and KursMC <> 27
+--order by DocDate desc
+
+except
+
+select * from [s-sql-d4].elitr.dbo.t_sale where DocDate >= '2016-11-01'
+and StockID = 1315 and KursMC <> 27
+--order by DocDate desc
+
+except
+
+select * from t_sale where DocDate >= '2016-11-01'
+and StockID = 1315 and KursMC <> 27
+order by ChID 
+
+
+
+select * from t_sale where DocDate >= '2016-11-01'
+and StockID = 1315 and KursMC <> 27
+except
+select * from [s-sql-d4].elitr.dbo.t_sale where DocDate >= '2016-11-01'
+and StockID = 1315 and KursMC <> 27
+--order by DocDate desc
+
+order by ChID 
+
+select * from t_sale where chid in  (100388149,100388426,100388430,100388602,100388608,100388968,100389304,100389702,100389925,100389931,100390145,100390148,100390156,100390163,100390169,100390172,100390174,100390444,100390754,100390774,100390778,100390780,100390785,100391081,100391083,100391089,100391094,100391247,100391282,100391289,100391313,100391322,100391326,100391332)
+
+select * from [s-sql-d4].elitr.dbo.t_sale where chid in  (100388149,100388426,100388430,100388602,100388608,100388968,100389304,100389702,100389925,100389931,100390145,100390148,100390156,100390163,100390169,100390172,100390174,100390444,100390754,100390774,100390778,100390780,100390785,100391081,100391083,100391089,100391094,100391247,100391282,100391289,100391313,100391322,100391326,100391332)
+
+
+select * from t_sale where chid in  (100391247)
+
+select * from [s-sql-d4].elitr.dbo.t_sale where chid in  (100391247)
+
+--100391247	129483	2016-11-13 00:00:00	26.000000000	9	1315	1	63	18	27	0	0	0.000000000		154	239		2016-11-13 12:26:00	0	1900-01-01 00:00:00	<Нет дисконтной карты>	10299	11111	0.000000000	0.000000000	980	26.984000000	5.396000000	32.380000000	140	431	5	28.340000000	5.396000000	34.000000000	2016-11-13 14:17:09.000	0	0	0			1900-01-01 00:00:00	0	34.000000000	1.620000000	0
+--100391247	129483	2016-11-13 00:00:00.000	26.000000000	9	1315	1	63	18	27	0	0	0.000000000		154	239		2016-11-13 12:26:00.000	143	2016-11-13 00:00:00.000	<Нет дисконтной карты>	10299	11111	0.000000000	0.000000000	980	34.000000000	0.000000000	34.000000000	140	431	5	28.340000000	5.396000000	34.000000000	2016-11-13 14:17:09.000	0	0	0			1900-01-01 00:00:00.000	0	34.000000000	0.000000000	0
+
+/*
+update t_sale
+set KursMC = 27
+ChID, DocID, DocDate, KursMC, OurID, StockID, CompID, CodeID1, CodeID2, CodeID3, CodeID4, CodeID5, Discount, Notes, CRID, OperID, CreditID, DocTime, TaxDocID, TaxDocDate, DCardID, EmpID, IntDocID, CashSumCC, ChangeSumCC, CurrID, TSumCC_nt, TTaxSum, TSumCC_wt, StateCode, DeskCode, Visitors, TPurSumCC_nt, TPurTaxSum, TPurSumCC_wt, DocCreateTime, DepID, ClientID, InDocID, ExpTime, DeclNum, DeclDate, BLineID, TRealSum, TLevySum, RemSchID
+from t_sale where chid in (100391247)
+*/
+

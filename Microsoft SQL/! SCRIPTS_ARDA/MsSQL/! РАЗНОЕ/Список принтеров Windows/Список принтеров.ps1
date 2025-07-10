@@ -1,0 +1,1 @@
+#https://winitpro.ru/index.php/2014/03/05/powershell-manage-printer-windows-8/

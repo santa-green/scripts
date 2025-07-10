@@ -1,0 +1,3 @@
+SELECT COUNT(*) FROM ##tVenA
+
+SELECT TSrcPosID,* FROM ##tVenA

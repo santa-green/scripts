@@ -1,0 +1,48 @@
+-- Clear tables.
+
+--BEGIN TRAN;
+
+--DELETE r_MenuM
+--DELETE r_MenuP
+
+--;WITH
+--ForDelete AS (SELECT * FROM r_Menu where ChID > 1200000000)
+--DELETE FROM ForDelete
+
+--SELECT * FROM r_Menu
+--SELECT * FROM r_MenuM
+--SELECT * FROM r_MenuP
+TRUNCATE TABLE t_Sale
+TRUNCATE TABLE t_SaleC
+TRUNCATE TABLE t_SaleD
+TRUNCATE TABLE t_SaleDLV
+TRUNCATE TABLE t_SaleM
+TRUNCATE TABLE t_SalePays
+
+TRUNCATE TABLE t_SaleTemp
+TRUNCATE TABLE t_SaleTempD
+TRUNCATE TABLE t_SaleTempM
+TRUNCATE TABLE t_SaleTempPays
+
+
+SELECT * FROM t_Sale
+SELECT * FROM t_SaleC
+SELECT * FROM t_SaleD
+SELECT * FROM t_SaleDLV
+SELECT * FROM t_SaleM
+SELECT * FROM t_SalePays
+
+SELECT * FROM t_SaleTemp
+SELECT * FROM t_SaleTempD
+SELECT * FROM t_SaleTempM
+SELECT * FROM t_SaleTempPays
+
+
+TRUNCATE TABLE z_LogCreate
+TRUNCATE TABLE z_LogDiscRec
+TRUNCATE TABLE z_DocDC
+
+;WITH
+ForDelete2 AS (SELECT * FROM; r_Mods where ModCode > 0)
+DELETE FROM ForDelete2
+--ROLLBACK TRAN;

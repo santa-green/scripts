@@ -1,0 +1,14 @@
+ap_VC_Exprot_Sale
+750579
+700579	<Нет дисконтной карты>	True	1011	200032495	1	0	0,000000000	20,009460738	2017-02-01 12:56:00	0	NULL	NULL	6
+
+SELECT * FROM t_sale where ChID = 100411331
+
+SELECT * FROM z_LogDiscExp where LogID in (750579,700579)
+
+
+SELECT * FROM z_LogDiscExp where ChID = 100411331
+
+
+SELECT * FROM t_sale where ChID in (200032495, 500000069)
+

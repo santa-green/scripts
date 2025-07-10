@@ -1,0 +1,41 @@
+USE Elit_test
+go
+
+SELECT top(20) 
+    --MAX(Qty) OVER(PARTITION BY PRODID) 'MAX_QTY',
+    --ROW_NUMBER() OVER(PARTITION BY PRODID ORDER BY qty) 'ROW_NUMBER',
+    --ROW_NUMBER() OVER(ORDER BY qty ASC) 'ROW_NUMBER',
+    --RANK() OVER(PARTITION BY PRODID ORDER BY qty) 'RANK',
+    --DENSE_RANK() OVER(PARTITION BY PRODID ORDER BY qty) 'DENSE_RANK',
+    NTILE(3) OVER(PARTITION BY PRODID ORDER BY qty) 'NTILE',
+    * FROM t_InvD WHERE QTY > 100
+
+SELECT * FROM t_InvD WHERE ProdID = 3 ORDER BY Qty DESC
+
+SELECT  top(10)
+    MAX(Qty) OVER(PARTITION BY PRODID) 'MAX_QTY',
+    MIN(Qty) OVER(PARTITION BY PRODID) 'MIN_QTY',   
+    COUNT(Qty) OVER(PARTITION BY PRODID) 'COUNT',   
+    * FROM t_InvD
+--WHERE ProdID = 3
+
+SELECT top(10)
+      ProdID    
+,     MAX(Qty)   'max'
+,     MIN(Qty)   'min'
+,     COUNT(Qty) 'count'
+FROM t_InvD
+--WHERE ProdID = 3
+GROUP BY ProdID
+ORDER BY ProdID
+
+
+SELECT  
+    DISTINCT top(10) d.ProdID
+    ,(select MAX(QTY) FROM t_InvD WHERE ProdID = d.ProdID) 'MAX_qty'
+    ,(select COUNT(Qty) FROM t_InvD WHERE ProdID = d.ProdID) 'count'
+FROM t_InvD d
+--WHERE ProdID = 3
+ORDER BY ProdID
+
+

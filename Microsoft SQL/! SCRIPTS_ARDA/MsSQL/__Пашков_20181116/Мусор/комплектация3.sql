@@ -1,0 +1,31 @@
+  SELECT * FROM [dbo].[af_GetMissSpecs](12,1202,1312,'20161214',611470)
+
+
+	SELECT TOP 1 ChID
+	FROM dbo.it_Spec m WITH(NOLOCK)
+	WHERE StockID = 1202 AND DocDate <='2016-12-09' AND ProdID = 607152
+	AND EXISTS(SELECT * FROM dbo.it_SpecD d WITH(NOLOCK) WHERE d.ChID = m.ChID)
+	ORDER BY DocDate DESC, DocID DESC
+	
+SELECT   ChID, *
+	FROM dbo.it_Spec m WITH(NOLOCK)
+	WHERE StockID = 1202 AND DocDate <= '2016-12-09' AND ProdID = 607152 and OurID = 12
+	AND EXISTS(SELECT * FROM dbo.it_SpecD d WITH(NOLOCK) WHERE d.ChID = m.ChID)
+	ORDER BY DocDate DESC, DocID DESC
+	
+12361
+12362
+12115
+7431
+	12361
+	
+		 	SELECT DISTINCT ProdID ,*
+		FROM it_SpecD d WITH(NOLOCK)
+		WHERE ChID = 12361
+		AND UseSubItems = 1
+		
+		
+SELECT * FROM [dbo].[af_GetMissSpecs](12,1202,1207,'2016-12-01',606473)
+
+
+

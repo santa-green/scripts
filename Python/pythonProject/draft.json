@@ -1,0 +1,14 @@
+{
+  "detail-type": ["Object Created"],
+  "source": ["aws.s3"],
+  "account": ["064963113358"],
+  "region": ["us-east-1"],
+  "resources": ["arn:aws:s3:::rds-snapshots-kirl"],
+  "detail": {
+    "eventName": ["PutObject"],
+    "version": "0",
+    "bucket": {
+      "name": "rds-snapshots-kirl"
+    }
+  }
+}

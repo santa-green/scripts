@@ -1,0 +1,33 @@
+USE Alef_Elit
+--SELECT
+--	*
+--FROM ALEF_AKCIA_OBJECTS
+--WHERE AO_CODE IN (29875, 29874, 29876)
+--select * from ALEF_AKCIA_OBJECTS where (AO_CODE = 29875  AND AO_CODE = 29874     AND AO_CODE = 29876)
+
+--создаем таблицу с кодами, по которым надо делать выборку.
+IF OBJECT_ID(N'tempdb..#TMP', N'U') IS NOT NULL
+DROP TABLE #TMP;
+CREATE TABLE #TMP(AO_ID INT NULL);
+INSERT INTO #TMP
+
+		  SELECT 29875
+UNION ALL SELECT 29874
+UNION ALL SELECT 29876
+
+--select * from #TMP;
+
+--SELECT DISTINCT
+--	AO_ID
+--FROM ALEF_AKCIA_OBJECTS
+--WHERE AO_CODE IN (29875, 29874, 29876)
+
+SELECT AO_ID, COUNT(AO_CODE) AS count_AO_CODE
+FROM ( SELECT DISTINCT 
+              AO_ID, AO_CODE
+       FROM ALEF_AKCIA_OBJECTS
+       WHERE AO_CODE IN ( SELECT * FROM #TMP m
+                        )
+     ) AS s1
+GROUP BY AO_ID
+HAVING COUNT(AO_CODE) = (select count(*) from (select distinct * from #TMP) s2);

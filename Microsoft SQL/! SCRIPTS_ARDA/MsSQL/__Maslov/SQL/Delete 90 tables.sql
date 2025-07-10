@@ -1,0 +1,137 @@
+BEGIN TRAN;
+
+--TRUNCATE TABLE	r_UniTypes
+--TRUNCATE TABLE	r_Uni
+--TRUNCATE TABLE	r_Currs
+--TRUNCATE TABLE	r_Ours
+--TRUNCATE TABLE	r_OursCC
+--TRUNCATE TABLE	r_OursAC
+--TRUNCATE TABLE	r_OurValues
+--TRUNCATE TABLE	r_Deps
+--TRUNCATE TABLE	r_Emps;
+
+--DISABLE TRIGGER ALL ON r_Users;
+--DISABLE TRIGGER ALL ON z_DataSets;
+--ALTER TABLE [dbo].[r_StateRuleUsers]  NOCHECK  CONSTRAINT [FK_r_StateRuleUsers_r_Users]; 
+--ALTER TABLE [dbo].[z_LogState]  NOCHECK  CONSTRAINT [FK_z_LogState_r_Users];
+--delete  r_Users; 
+--ALTER TABLE [dbo].[r_StateRuleUsers]  CHECK  CONSTRAINT [FK_r_StateRuleUsers_r_Users];
+--ALTER TABLE [dbo].[z_LogState]  CHECK  CONSTRAINT [FK_z_LogState_r_Users];
+--ENABLE  TRIGGER ALL ON z_DataSets;
+--ENABLE  TRIGGER ALL ON r_Users;
+
+
+--TRUNCATE TABLE	r_Codes1
+--TRUNCATE TABLE	r_Codes2
+--TRUNCATE TABLE	r_Codes3
+--TRUNCATE TABLE	r_Codes4
+--TRUNCATE TABLE	r_Codes5
+--TRUNCATE TABLE	r_PLs
+--TRUNCATE TABLE	ir_PLProdGrs
+--TRUNCATE TABLE	r_Spends
+--TRUNCATE TABLE	r_States
+
+
+
+--TRUNCATE TABLE	r_StateRules
+--TRUNCATE TABLE	r_StateRuleUsers
+--TRUNCATE TABLE	r_StateDocs
+--TRUNCATE TABLE	r_StateDocsChange
+--TRUNCATE TABLE	r_CompGrs1
+--TRUNCATE TABLE	r_CompGrs2
+--TRUNCATE TABLE	r_CompGrs3
+--TRUNCATE TABLE	r_CompGrs4
+--TRUNCATE TABLE	r_CompGrs5;
+--DISABLE TRIGGER ALL ON r_Comps; delete  r_Comps; ENABLE  TRIGGER ALL ON r_Comps;
+
+
+
+--TRUNCATE TABLE	r_CompsAC
+--TRUNCATE TABLE	r_CompsCC
+--TRUNCATE TABLE	r_CompsAdd
+--TRUNCATE TABLE	r_CompValues
+--TRUNCATE TABLE	r_CompContacts
+--TRUNCATE TABLE	r_StockGs
+--TRUNCATE TABLE	r_Stocks
+--TRUNCATE TABLE	r_StockCRProds
+--TRUNCATE TABLE	ir_StockSubs
+--TRUNCATE TABLE	ir_StockFilters
+
+
+
+--TRUNCATE TABLE	r_ProdC
+--TRUNCATE TABLE	r_ProdG
+--TRUNCATE TABLE	r_ProdG1
+--TRUNCATE TABLE	r_ProdG2
+--TRUNCATE TABLE	r_ProdG3
+--TRUNCATE TABLE	r_ProdA
+--TRUNCATE TABLE	r_ProdBG;
+--DISABLE TRIGGER ALL ON r_Prods; delete  r_Prods; ENABLE  TRIGGER ALL ON r_Prods;
+--TRUNCATE TABLE	t_PInP
+--TRUNCATE TABLE	r_ProdMQ
+
+
+
+--TRUNCATE TABLE	r_ProdMP
+--TRUNCATE TABLE	r_ProdMA
+--TRUNCATE TABLE	r_ProdMS
+--TRUNCATE TABLE	r_ProdME
+--TRUNCATE TABLE	r_ProdAC
+--TRUNCATE TABLE	r_ProdEC
+--TRUNCATE TABLE	r_ProdCV
+--TRUNCATE TABLE	r_ProdMSE
+--TRUNCATE TABLE	r_ProdValues
+--TRUNCATE TABLE	r_ProdLV
+
+
+--TRUNCATE TABLE	ir_ProdMPA
+--TRUNCATE TABLE	ir_ProdOpers
+--TRUNCATE TABLE	r_DCTypeG;
+--DISABLE TRIGGER ALL ON r_DCTypes; delete  r_DCTypes; ENABLE  TRIGGER ALL ON r_DCTypes;
+
+--ALTER TABLE [dbo].[z_LogDiscRec]  NOCHECK  CONSTRAINT [FK_z_LogDiscRec_r_DCards];
+--ALTER TABLE [dbo].[z_LogDiscExp]  NOCHECK  CONSTRAINT [FK_z_LogDiscExp_r_DCards];
+--ALTER TABLE [dbo].[z_DocDC]  NOCHECK  CONSTRAINT [FK_z_DocDC_r_DCards];
+--delete	r_DCards;
+--ALTER TABLE [dbo].[z_DocDC]  CHECK  CONSTRAINT [FK_z_DocDC_r_DCards];
+--ALTER TABLE [dbo].[z_LogDiscExp]  CHECK  CONSTRAINT [FK_z_LogDiscExp_r_DCards];
+--ALTER TABLE [dbo].[z_LogDiscRec]  CHECK  CONSTRAINT [FK_z_LogDiscRec_r_DCards];
+
+--TRUNCATE TABLE	r_PayForms
+--TRUNCATE TABLE	r_CRs
+--TRUNCATE TABLE	r_CRMP
+--TRUNCATE TABLE	r_CRMM
+--TRUNCATE TABLE	r_CRDeskG
+
+
+
+--TRUNCATE TABLE	r_CRShed
+--TRUNCATE TABLE	r_Opers
+--TRUNCATE TABLE	r_OperCRs
+--TRUNCATE TABLE	r_CRUniInput
+--TRUNCATE TABLE	r_POSPays
+
+--ALTER TABLE [dbo].[z_LogDiscExp]  NOCHECK  CONSTRAINT [FK_z_LogDiscExp_r_Discs];
+--ALTER TABLE [dbo].[z_LogDiscRec]  NOCHECK  CONSTRAINT [FK_z_LogDiscRec_r_Discs]; 
+--delete  r_Discs; 
+--ALTER TABLE [dbo].[z_LogDiscExp]  CHECK  CONSTRAINT [FK_z_LogDiscExp_r_Discs];
+--ALTER TABLE [dbo].[z_LogDiscRec]  CHECK  CONSTRAINT [FK_z_LogDiscRec_r_Discs];
+
+--TRUNCATE TABLE	r_DiscDC
+--TRUNCATE TABLE	r_CRPOSPays
+--TRUNCATE TABLE	r_Taxes
+--TRUNCATE TABLE	r_TaxRates
+
+
+
+--TRUNCATE TABLE	r_Levies
+--TRUNCATE TABLE	r_LevyRates
+--TRUNCATE TABLE	r_LevyCR
+--TRUNCATE TABLE	at_r_ProdsAmort
+--TRUNCATE TABLE	at_r_Regions
+--TRUNCATE TABLE	at_r_ProdG4
+--TRUNCATE TABLE	at_r_ProdG5
+--TRUNCATE TABLE	at_r_ProdG6
+--TRUNCATE TABLE	at_r_ProdG7
+--TRUNCATE TABLE	ir_OperTypes
+ROLLBACK TRAN;

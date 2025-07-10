@@ -1,0 +1,248 @@
+    USE ElitR
+
+	--задублированые позиции
+	--;WITH CTE as (SELECT ROW_NUMBER()OVER(PARTITION BY DocID ORDER BY DocID) n,* FROM  [192.168.42.6].FFood601.dbo.t_MonRec  m WHERE m.ChID BETWEEN 1700000000 AND 1799999999 )
+	--;WITH CTE as (SELECT ChID, DocID,ROW_NUMBER()OVER(PARTITION BY DocID ORDER BY DocID) n FROM  dbo.t_MonRec  m WHERE m.ChID BETWEEN 1700000000 AND 1799999999 )
+
+	;WITH CTE as (SELECT ChID, DocID,ROW_NUMBER()OVER(PARTITION BY DocID ORDER BY DocID) n FROM  [192.168.42.6].FFood601.dbo.t_MonRec  m WHERE m.ChID BETWEEN 1700000000 AND 1799999999 )
+	SELECT * FROM CTE where N > 1 ORDER BY 1,2
+
+	SELECT * FROM t_MonRec tmr WHERE tmr.ChID BETWEEN 1700000000 AND 1799999999	AND tmr.ChID NOT IN (SELECT m.ChID FROM [192.168.42.6].FFood601.dbo.t_MonRec m WHERE m.ChID BETWEEN 1700000000 AND 1799999999);
+
+/*
+	--Удалить дубликаты в [192.168.42.6].FFood601.dbo.t_MonRec
+	;WITH CTE as (SELECT ChID, DocID,ROW_NUMBER()OVER(PARTITION BY DocID ORDER BY DocID) n FROM  [192.168.42.6].FFood601.dbo.t_MonRec  m WHERE m.ChID BETWEEN 1700000000 AND 1799999999 )
+	delete  CTE where N > 1 
+	--Удалить дубликаты в t_MonRec
+	DELETE t_MonRec  WHERE ChID BETWEEN 1700000000 AND 1799999999	AND ChID NOT IN (SELECT m.ChID FROM [192.168.42.6].FFood601.dbo.t_MonRec m WHERE m.ChID BETWEEN 1700000000 AND 1799999999);
+*/
+
+
+	SELECT 'проверка потеряных оплат в t_MonRec'
+	SELECT * FROM t_Sale m 
+	LEFT join (SELECT * FROM t_MonRec  m2 WHERE m2.ChID BETWEEN 1700000000 AND 1799999999) m3 on m3.DocID = m.DocID
+	WHERE m.ChID BETWEEN 1700000000 AND 1799999999
+	AND m3.DocID IS NULL AND TRealSum <> 0
+
+	SELECT 'проверка разных сумм в t_Sale и t_MonRec '
+	SELECT m.TRealSum , m3.SumAC,m.ChID t_Sale, m3.ChID t_MonRec,* FROM t_Sale m 
+	join (SELECT * FROM t_MonRec  m2 WHERE m2.ChID BETWEEN 1700000000 AND 1799999999) m3 on m3.DocID = m.DocID
+	WHERE m.ChID BETWEEN 1700000000 AND 1799999999
+	AND m.TRealSum <> m3.SumAC
+
+
+
+	SELECT ChID, OurID, AccountAC, DocDate, DocID, StockID, CompID, CompAccountAC, CurrID, KursMC, KursCC, SumAC, Subject, CodeID1, CodeID2, CodeID3, CodeID4, CodeID5, EmpID, StateCode, 0
+	FROM [192.168.42.6].FFood601.dbo.t_MonRec tmr WHERE tmr.ChID BETWEEN 1700000000 AND 1799999999
+	AND tmr.ChID NOT IN (SELECT m.ChID FROM t_MonRec m WHERE m.ChID BETWEEN 1700000000 AND 1799999999);
+
+
+	SELECT SUM(SumAC) FROM [192.168.42.6].FFood601.dbo.t_MonRec  tmr WHERE ChID BETWEEN 1700000000 AND 1799999999
+	SELECT SUM(SumAC) FROM t_MonRec tmr WHERE ChID BETWEEN 1700000000 AND 1799999999
+
+--проверка сумм
+	SELECT * FROM t_Sale m 
+	join (SELECT * FROM [192.168.42.6].FFood601.dbo.t_Sale  m2 WHERE m2.ChID BETWEEN 1700000000 AND 1799999999) m3 on m3.ChID = m.ChID
+	WHERE m.ChID BETWEEN 1700000000 AND 1799999999
+	AND m.TRealSum <> m3.TRealSum
+
+/*
+
+--добавить не достающий приход денег в t_MonRec
+--INSERT [192.168.42.6].FFood601.dbo.t_MonRec
+SELECT (SELECT MAX([ChID])+1 FROM [192.168.42.6].FFood601.dbo.t_MonRec) [ChID]
+,[OurID],0 [AccountAC],[DocDate],[DocID],[StockID],[CompID],0 [CompAccountAC],[CurrID],[KursMC]
+,1.000000000 [KursCC],[TRealSum] [SumAC],'' [Subject],[CodeID1],[CodeID2],[CodeID3],[CodeID4],[CodeID5],[EmpID],0 [StateCode] 
+FROM [192.168.42.6].FFood601.dbo.t_Sale  m2 WHERE m2.ChID IN (1700009040)
+
+SELECT * FROM [192.168.42.6].FFood601.dbo.t_MonRec  m2 WHERE m2.docid IN (SELECT docid FROM [192.168.42.6].FFood601.dbo.t_Sale  m2 WHERE m2.ChID IN (1700009040))
+SELECT * FROM t_MonRec  m2 WHERE m2.docid IN (SELECT docid FROM [192.168.42.6].FFood601.dbo.t_Sale  m2 WHERE m2.ChID IN (1700009040))
+
+	
+
+	SELECT SUM(TRealSum) FROM [192.168.42.6].FFood601.dbo.t_Sale  tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate = '2018-11-11'
+	SELECT SUM(TRealSum) FROM t_Sale tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate = '2018-11-11'
+	SELECT SUM(SumAC) FROM [192.168.42.6].FFood601.dbo.t_MonRec  tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate = '2018-11-11'
+	SELECT SUM(SumAC) FROM t_MonRec tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate = '2018-11-11'
+
+
+
+
+	SELECT SUM(TRealSum) FROM [192.168.42.6].FFood601.dbo.t_Sale  tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate < '2018-11-27'
+	SELECT SUM(TRealSum) FROM t_Sale tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate < '2018-11-27'
+	SELECT SUM(SumAC) FROM [192.168.42.6].FFood601.dbo.t_MonRec  tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate < '2018-11-27'
+	SELECT SUM(SumAC) FROM t_MonRec tmr WHERE ChID BETWEEN 1700000000 AND 1799999999 and docdate < '2018-11-27'
+
+
+	--  SELECT * FROM t_MonRec m WHERE m.ChID BETWEEN 1700000000 AND 1799999999 AND DocID IN (1700006431,1700006742)
+	--  SELECT * FROM [192.168.42.6].FFood601.dbo.t_MonRec m WHERE m.ChID BETWEEN 1700000000 AND 1799999999 AND DocID IN (1700006431,1700006742)
+
+
+
+GO	
+DECLARE 1700000000 INT = 1700000000, 1799999999 INT = 1799999999;
+
+SELECT * FROM t_Sale m WHERE m.ChID BETWEEN 1700000000 AND 1799999999
+AND CodeID1 = 0 AND TRealSum <> 0
+
+SELECT * FROM [192.168.42.6].FFood601.dbo.t_Sale m WHERE m.ChID BETWEEN 1700000000 AND 1799999999
+AND CodeID1 = 0 AND TRealSum <> 0
+1700011023	1700011566	2
+SELECT * FROM t_Sale m WHERE m.docid in (1700011566)
+SELECT * FROM t_MonRec m WHERE m.docid in (1700011566)
+SELECT * FROM [192.168.42.6].FFood601.dbo.t_Sale m WHERE m.ChID in (1700011023)
+
+
+SELECT * FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34
+AND rpm.ProdID IN (603829,603766,603752,603744,603778,603796,607683,607682,603816,603817,603823,603874,607132,607133,607135,607137,607203,607205,607877,607878,603839,603840,603842,603845,603848,603850,603853,611078,611596,801117,603606,603593,603605,603863,801438,603597,801051,603583,801121,603599,603601)
+ORDER BY 1
+
+
+BEGIN
+SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603583
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603593
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603597
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603599
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603601
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603605
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603606
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603744
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603752
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603766
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603778
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603796
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603816
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603817
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603823
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603829
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603839
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603840
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603842
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603845
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603848
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603850
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603853
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603863
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603874
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607132
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607133
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607135
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607137
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607203
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607205
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607682
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607683
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607877
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607878
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 611078
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 611596
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801051
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801117
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801121
+union all SELECT ProdID,PriceMC FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801438
+ORDER BY 1
+END
+
+SELECT CAST(GETDATE() AS DATE)
+
+--Акция на кофепоинт по запросу Капустина
+IF CAST(GETDATE() AS DATE) = '20181123' --SELECT CAST(GETDATE() AS DATE)
+BEGIN
+
+BEGIN TRAN
+
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603583
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603593
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603597
+UPDATE rpm SET PriceMC = 200 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603599
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603601
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603605
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603606
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603744
+UPDATE rpm SET PriceMC = 10 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603752
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603766
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603778
+UPDATE rpm SET PriceMC = 15 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603796
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603816
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603817
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603823
+UPDATE rpm SET PriceMC = 10 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603829
+UPDATE rpm SET PriceMC = 350 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603839
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603840
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603842
+UPDATE rpm SET PriceMC = 300 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603845
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603848
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603850
+UPDATE rpm SET PriceMC = 270 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603853
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603863
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603874
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607132
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607133
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607135
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607137
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607203
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607205
+UPDATE rpm SET PriceMC = 15 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607682
+UPDATE rpm SET PriceMC = 15 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607683
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607877
+UPDATE rpm SET PriceMC = 5 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607878
+UPDATE rpm SET PriceMC = 500 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 611078
+UPDATE rpm SET PriceMC = 450 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 611596
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801051
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801117
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801121
+UPDATE rpm SET PriceMC = 400 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801438
+
+
+ROLLBACK TRAN
+END
+
+
+IF CAST(GETDATE() AS DATE) = '20181124' --SELECT CAST(GETDATE() AS DATE)
+BEGIN
+
+UPDATE rpm SET PriceMC = 600 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603583
+UPDATE rpm SET PriceMC = 500 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603593
+UPDATE rpm SET PriceMC = 700 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603597
+UPDATE rpm SET PriceMC = 460 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603599
+UPDATE rpm SET PriceMC = 600 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603601
+UPDATE rpm SET PriceMC = 600 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603605
+UPDATE rpm SET PriceMC = 750 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603606
+UPDATE rpm SET PriceMC = 25 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603744
+UPDATE rpm SET PriceMC = 17 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603752
+UPDATE rpm SET PriceMC = 18 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603766
+UPDATE rpm SET PriceMC = 18 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603778
+UPDATE rpm SET PriceMC = 20 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603796
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603816
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603817
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603823
+UPDATE rpm SET PriceMC = 17 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603829
+UPDATE rpm SET PriceMC = 580 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603839
+UPDATE rpm SET PriceMC = 470 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603840
+UPDATE rpm SET PriceMC = 580 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603842
+UPDATE rpm SET PriceMC = 580 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603845
+UPDATE rpm SET PriceMC = 580 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603848
+UPDATE rpm SET PriceMC = 465 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603850
+UPDATE rpm SET PriceMC = 580 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603853
+UPDATE rpm SET PriceMC = 750 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603863
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 603874
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607132
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607133
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607135
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607137
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607203
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607205
+UPDATE rpm SET PriceMC = 25 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607682
+UPDATE rpm SET PriceMC = 21 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607683
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607877
+UPDATE rpm SET PriceMC = 12 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 607878
+UPDATE rpm SET PriceMC = 850 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 611078
+UPDATE rpm SET PriceMC = 650 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 611596
+UPDATE rpm SET PriceMC = 700 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801051
+UPDATE rpm SET PriceMC = 700 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801117
+UPDATE rpm SET PriceMC = 690 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801121
+UPDATE rpm SET PriceMC = 600 FROM [192.168.42.6].FFood601.dbo.r_ProdMP rpm WHERE rpm.PLID = 34 AND rpm.ProdID = 801438
+
+END
+
+*/

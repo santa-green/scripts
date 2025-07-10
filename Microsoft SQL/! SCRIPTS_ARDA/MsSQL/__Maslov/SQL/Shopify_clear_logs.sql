@@ -1,0 +1,37 @@
+DECLARE @RegionID INT, @ProdID INT, @UpdateState INT
+DECLARE CLEAR_LOGS_IM CURSOR LOCAL FAST_FORWARD 
+FOR 
+SELECT DISTINCT RegionID, ProdID, UpdateState
+FROM z_Logs_IM
+--WHERE ProdID = 603418
+WHERE RegionID = 5
+
+OPEN CLEAR_LOGS_IM
+	FETCH NEXT FROM CLEAR_LOGS_IM INTO @RegionID, @ProdID, @UpdateState
+WHILE @@FETCH_STATUS = 0	 
+BEGIN
+	
+	IF (SELECT COUNT(*) FROM z_Logs_IM WHERE RegionID = @RegionID AND ProdID = @ProdID AND UpdateState = @UpdateState AND CAST( DATEADD(MONTH, -1, GETDATE()) AS DATE) > CAST(UpdateDate AS DATE) ) > 100
+	BEGIN
+		--SELECT COUNT(*), @ProdID, @UpdateState FROM z_Logs_IM WHERE RegionID = @RegionID AND ProdID = @ProdID AND UpdateState = @UpdateState AND CAST( DATEADD(MONTH, -1, GETDATE()) AS DATE) > CAST(UpdateDate AS DATE)
+		DELETE z_Logs_IM WHERE RegionID = @RegionID AND ProdID = @ProdID AND UpdateState = @UpdateState AND CAST(DATEADD(MONTH, -1, GETDATE()) AS DATE) > CAST(UpdateDate AS DATE)
+	END;
+		
+	FETCH NEXT FROM CLEAR_LOGS_IM INTO @RegionID, @ProdID, @UpdateState
+END
+CLOSE CLEAR_LOGS_IM
+DEALLOCATE CLEAR_LOGS_IM
+
+/*
+https://ae2cd8b5024636640b29d6c8a7c5e1b7:f61cd35b8e1ab1a377abd1c9f5a0e28d@vintagemarket-dp.myshopify.com/admin/api/2019-04/orders.xml?since_id=2056214446177
+
+SELECT DATEADD( DAY, -15, DATEADD(MONTH, -1, GETDATE()) );
+
+SELECT * FROM z_Logs_IM WHERE RegionID = 1 AND ProdID = 600363 AND UpdateState = 3 AND CAST(DATEADD(MONTH, -1, GETDATE()) AS DATE) > CAST(UpdateDate AS DATE)
+
+SELECT 112876 - 111928
+
+SELECT *
+FROM z_Logs_IM
+WHERE RegionID = 1 AND ProdID = 800779 AND UpdateState = 3
+*/

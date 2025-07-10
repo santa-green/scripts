@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="windows-1251"?>
+<ZVIT>
+  <Transport>
+    <VERSION>4.1</VERSION>
+    <CreateDate>13.05.2019</CreateDate>
+  </Transport>
+  <ORG>
+    <FIELDS>
+      <EDRPOU>37029549</EDRPOU>
+    </FIELDS>
+    <CARD RTFDOC="1">
+      <FIELDS>
+        <DOCID>DocID</DOCID>
+        <OUTID />
+        <GLOBALTMPLID>GLOBALTMPLID</GLOBALTMPLID>
+        <TMPLEDRPOUOWNER>41542224</TMPLEDRPOUOWNER>
+        <DOCNAME>Акт звіряння</DOCNAME>
+        <CHARCODE />
+        <PARTCODE />
+        <GRPID />
+        <NOTATION />
+        <SIGNERNAME />
+        <SDOCTYPE>10106</SDOCTYPE>
+        <PCTTYPE />
+        <AUTHORNAME>Бибик Анжелика Григорьевна</AUTHORNAME>
+        <COMMENT />
+        <CRTDATE>13.05.2019</CRTDATE>
+      </FIELDS>
+      <DOCUMENT>
+        <ROW LINE="0" TAB="0" NAME="DATA1">
+          <VALUE>12.04.2019</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DATA_BEG">
+          <VALUE>01.04.2019</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DATA_DOG">
+          <VALUE>від</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DATA_END">
+          <VALUE>12.04.2019</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOCDATE">
+          <VALUE>12.04.2019</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOCSUM">
+          <VALUE>-1925.88</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOG_DATE">
+          <VALUE>05.03.2019</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOG_NUM">
+          <VALUE>5911КИЕ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_ADR">
+          <VALUE>м.Дніпро, Днiпропетровська обл., вул.Собінова, буд.1, 49083</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_ADR_FIZ">
+          <VALUE>м.Дніпро, Днiпропетровська обл., вул.Собінова, буд.1, 49083</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_BUH">
+          <VALUE>Нікоян Лілія Меружанівна</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_CBANK">
+          <VALUE>305749</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_EDRPOU">
+          <VALUE>37029549</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_EMAILORG">
+          <VALUE />
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_INN">
+          <VALUE>370295404124</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_NAME">
+          <VALUE>"АРДА-ТРЕЙДИНГ" Общество с ограниченной ответственностью</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_NM">
+          <VALUE>ТОВ "АРДА-ТРЕЙДИНГ"</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_NMBANK">
+          <VALUE>ПАТ "Банк Кредит Дніпро"</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_RS">
+          <VALUE>2600030539301</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_RUK">
+          <VALUE>Маймур Максим Анатолійович</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_RUKPOS">
+          <VALUE>директор</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_TELEFON">
+          <VALUE>(056) 732-28-26</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_TEL_FIZ">
+          <VALUE>(056) 732-28-26</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="MISZE_SKL">
+          <VALUE>Дніпро</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="NA_KORIST">
+          <VALUE>Фуд Ком Частное предприятие</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="NUM_DOG">
+          <VALUE>№</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="OB_DT_ORG">
+          <VALUE>0</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="OB_KT_ORG">
+          <VALUE>3451.56</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="ROUTE">
+          <VALUE>2</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_BUILDNUM">
+          <VALUE>вул. Хорива, буд. 3 А</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_COUNTRY">
+          <VALUE>УКРАЇНА</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_LOCALITY">
+          <VALUE>м. Київ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_STREET">
+          <VALUE>вул. Хорива, буд. 3 А</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_ZIP">
+          <VALUE>04070</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_CDADR_K">
+          <VALUE>вул. Хорива, буд. 3 А</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_CDINDTAXNUM_K">
+          <VALUE>415422226562</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_CD_K">
+          <VALUE>Фуд Ком Частное предприятие</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_EDRPOU_K">
+          <VALUE>41542224</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_EMAILORG_K" />
+        <ROW LINE="0" TAB="0" NAME="SIDE_SHORTNAME_K">
+          <VALUE>Фуд Ком ЧП</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SK_DT_ORG">
+          <VALUE>-1925.88</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SND_ORG">
+          <VALUE>1525.68</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="TAXSYSTEM">
+          <VALUE>загальна</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="TEXT_FIRM_E_D">
+          <VALUE>ЄДРПОУ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="TEXT_SIDE_E_D">
+          <VALUE>код за ЄДРПОУ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VERSION">
+          <VALUE />
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_CODE">
+          <VALUE>22</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_FIRSTNAME">
+          <VALUE>Максим</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_IDORG">
+          <VALUE />
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_LASTNAME">
+          <VALUE>Маймур</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_MIDDLENAME">
+          <VALUE>Анатолійович</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_NAME">
+          <VALUE>Маймур М. А.</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_PIB">
+          <VALUE>Маймур М. А.</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="ZA_DOGOVOROM">
+          <VALUE>за договором</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>повернення</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>1336.32</VALUE>
+        </ROW>
+        <ROW LINE="1" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="1" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>повернення</VALUE>
+        </ROW>
+        <ROW LINE="1" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>613.80</VALUE>
+        </ROW>
+        <ROW LINE="2" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="2" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>повернення</VALUE>
+        </ROW>
+        <ROW LINE="2" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>693.00</VALUE>
+        </ROW>
+        <ROW LINE="3" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="3" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>повернення</VALUE>
+        </ROW>
+        <ROW LINE="3" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>808.44</VALUE>
+        </ROW>
+      </DOCUMENT>
+      <DOCKVT />
+    </CARD>
+  </ORG>
+</ZVIT>

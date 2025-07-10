@@ -1,0 +1,9 @@
+TRUNCATE TABLE	ElitR_316.dbo.z_LogCreate
+TRUNCATE TABLE	ElitR_316.dbo.z_LogDelete
+TRUNCATE TABLE	ElitR_316.dbo.z_LogUpdate
+TRUNCATE TABLE	ElitR_316.dbo.z_LogAU
+truncate table	ElitR_316.dbo.z_LogProcessingOPs
+truncate table	ElitR_316.dbo.z_LogProcessingExchange
+truncate table	ElitR_316.dbo.z_LogDiscRecTemp
+truncate table	ElitR_316.dbo.z_LogDiscRec
+truncate table	ElitR_316.dbo.z_LogDiscExp

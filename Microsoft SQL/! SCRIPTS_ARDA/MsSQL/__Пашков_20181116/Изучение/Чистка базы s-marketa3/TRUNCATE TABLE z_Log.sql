@@ -1,0 +1,5 @@
+TRUNCATE TABLE z_LogUpdate
+
+TRUNCATE TABLE z_LogDelete
+
+TRUNCATE TABLE z_LogCreate

@@ -1,0 +1,26 @@
+CREATE PROCEDURE dbo.I_ReExpSInv AS
+BEGIN
+
+DECLARE @ChID int, @SrcPosID int
+DECLARE ReExpDoc CURSOR FAST_FORWARD FOR
+SELECT m.ChID, d.SrcPosID
+FROM s_Inv m INNER JOIN s_InvD d ON d.ChID=m.ChID
+WHERE d.PPID=0 OR ISNULL((SELECT Sum(Qty) FROM s_Rem r WHERE r.OurID=m.OurID AND r.StockID=m.StockID AND r.ProdID=d.ProdID AND r.PPID=d.PPID), 0)<0
+AND EXISTS(SELECT * FROM s_Rem r WHERE r.OurID=m.OurID AND r.StockID=m.StockID AND r.ProdID=d.ProdID AND r.Qty>0)
+ORDER BY m.DocDate, m.DocID, d.SrcPosID
+OPEN ReExpDoc
+FETCH NEXT FROM ReExpDoc INTO @ChID, @SrcPosID
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+  EXEC dbo.I_ReExpSInvRow @ChID
+
+  FETCH NEXT FROM ReExpDoc INTO @ChID, @SrcPosID
+END
+CLOSE ReExpDoc
+DEALLOCATE ReExpDoc
+
+END
+
+
+GO

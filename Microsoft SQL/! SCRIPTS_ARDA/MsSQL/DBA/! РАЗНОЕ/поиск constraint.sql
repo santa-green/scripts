@@ -1,0 +1,1 @@
+SELECT * FROM sys.objects JOIN sys.indexes ON sys.objects.object_id = sys.indexes.object_id WHERE sys.objects.name = 'alef_edi_status'

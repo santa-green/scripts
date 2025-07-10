@@ -1,0 +1,30 @@
+DECLARE 
+@BDate SMALLDATETIME = '2018-01-16',
+@EDate SMALLDATETIME = '2018-01-16',
+@StockID INT = 1257,
+@OurID INT = 6
+
+
+
+SELECT * FROM t_sale 
+WHERE DocDate BETWEEN @BDate AND @EDate
+AND StockID = @StockID AND OurID = @OurID
+
+BEGIN TRAN 
+
+update t_Sale
+set StateCode = 22
+FROM t_sale 
+WHERE DocDate BETWEEN @BDate AND @EDate
+AND StockID = @StockID AND OurID = @OurID 
+
+SELECT * FROM t_sale 
+WHERE DocDate BETWEEN @BDate AND @EDate
+AND StockID = @StockID AND OurID = @OurID
+
+
+--ROLLBACK TRAN 
+
+SELECT @@TRANCOUNT
+IF @@TRANCOUNT > 0 COMMIT TRAN
+

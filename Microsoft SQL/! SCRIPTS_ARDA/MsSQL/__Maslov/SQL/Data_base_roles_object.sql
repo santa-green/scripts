@@ -1,0 +1,1 @@
+EXEC sp_helprotect @name = NULL /*object name*/, @username = NULL /*user login name*/

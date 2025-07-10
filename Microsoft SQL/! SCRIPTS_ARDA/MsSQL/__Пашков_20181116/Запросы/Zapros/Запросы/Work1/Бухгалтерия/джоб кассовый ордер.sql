@@ -1,0 +1,67 @@
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+WAITFOR DELAY '00:00:2'
+exec bux
+

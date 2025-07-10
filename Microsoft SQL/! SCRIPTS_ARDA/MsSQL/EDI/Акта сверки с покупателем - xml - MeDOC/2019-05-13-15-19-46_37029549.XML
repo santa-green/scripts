@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<ZVIT>
+  <TRANSPORT>
+    <VERSION>4.1</VERSION>
+    <CREATEDATE>13.05.2019</CREATEDATE>
+  </TRANSPORT>
+  <ORG>
+    <FIELDS>
+      <EDRPOU>37029549</EDRPOU>
+    </FIELDS>
+    <CARD RTFDOC="1">
+      <FIELDS>
+        <DOCID>A87ADB27-D92B-4E7E-AC0D-210325F16FF8</DOCID>
+        <OUTID />
+        <GLOBALTMPLID>68af884e-70de-45d3-875e-150aed319198</GLOBALTMPLID>
+        <TMPLEDRPOUOWNER>30436756</TMPLEDRPOUOWNER>
+        <DOCNAME>Акт звіряння</DOCNAME>
+        <CHARCODE>ALD_AZV</CHARCODE>
+        <PARTCODE>7</PARTCODE>
+        <GRPID>932044A8-AE69-4AA5-B0FB-FA15089A1002</GRPID>
+        <NOTATION />
+        <SIGNERNAME />
+        <SDOCTYPE>10106</SDOCTYPE>
+        <PCTTYPE>-1</PCTTYPE>
+        <AUTHORNAME>Пашков Владимир Николаевич</AUTHORNAME>
+        <COMMENT />
+        <CRTDATE>13.05.2019</CRTDATE>
+      </FIELDS>
+      <DOCUMENT>
+        <ROW LINE="0" TAB="0" NAME="DATA1">
+          <VALUE>12.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DATA_BEG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DATA_DOG">
+          <VALUE>від</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DATA_END">
+          <VALUE>12.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOCDATE">
+          <VALUE>13.05.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOCSUM">
+          <VALUE>-1925.88</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOG_DATE">
+          <VALUE>23.01.2018 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="DOG_NUM">
+          <VALUE>5911КИЕ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_ADR">
+          <VALUE>вулиця Собінова, буд. 1, Амур-Нижньодніпровський р-н, м. ДНІПРО, ДНІПРОПЕТРОВСЬКА обл., 49083</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_ADR_FIZ">
+          <VALUE>вулиця Собінова, буд. 1, Амур-Нижньодніпровський р-н, м. ДНІПРО, ДНІПРОПЕТРОВСЬКА обл., 49083</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_BUH">
+          <VALUE>Нікоян Лілія Меружанівна</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_CBANK">
+          <VALUE>305749</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_EDRPOU">
+          <VALUE>37029549</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_EMAILORG">
+          <VALUE>37029549@ukr.net</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_INN">
+          <VALUE>370295404124</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_NAME">
+          <VALUE>Товариство з обмеженою відповідальністю "Арда-Трейдинг"</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_NM">
+          <VALUE>ТОВ "Арда-Трейдинг"</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_NMBANK">
+          <VALUE>ПАТ "БАНК КРЕДИТ ДНІПРО"</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_RS">
+          <VALUE>2600530539322</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_RUK">
+          <VALUE>Маймур Максим Анатолійович</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_RUKPOS">
+          <VALUE>директор</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_TELEFON">
+          <VALUE>7322806</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="FIRM_TEL_FIZ">
+          <VALUE>7322806</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="MISZE_SKL">
+          <VALUE>Дніпро</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="NA_KORIST">
+          <VALUE>Приватне Підприємство "ФУД КОМ "</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="NUM_DOG">
+          <VALUE>№</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="OB_DT_ORG">
+          <VALUE>0</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="OB_KT_ORG">
+          <VALUE>3451.56</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="ROUTE">
+          <VALUE>2</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_BUILDNUM">
+          <VALUE>3А</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_COUNTRY">
+          <VALUE>УКРАЇНА</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_LOCALITY">
+          <VALUE>КИЇВ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_STREET">
+          <VALUE>1656</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_ADDR_ZIP">
+          <VALUE>04070</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_CDADR_K">
+          <VALUE>вулиця Хорива, буд. 3А, М.КИЇВ, 04070</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_CDINDTAXNUM_K">
+          <VALUE>415422226562</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_CD_K">
+          <VALUE>Приватне Підприємство "ФУД КОМ "</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_EDRPOU_K">
+          <VALUE>41542224</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_EMAILORG_K">
+          <VALUE>fudkom@mastergood.kiev.ua</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SIDE_SHORTNAME_K">
+          <VALUE>Приватне Підприємство "ФУД КОМ "</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SK_DT_ORG">
+          <VALUE>-1925.88</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="SND_ORG">
+          <VALUE>1525.68</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="TAXSYSTEM">
+          <VALUE>загальна</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="TEXT_FIRM_E_D">
+          <VALUE>ЄДРПОУ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="TEXT_SIDE_E_D">
+          <VALUE>код за ЄДРПОУ</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VERSION">
+          <VALUE>1</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_CODE">
+          <VALUE>22</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_FIRSTNAME">
+          <VALUE>Максим</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_IDORG">
+          <VALUE>781</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_LASTNAME">
+          <VALUE>Маймур</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_MIDDLENAME">
+          <VALUE>Анатолійович</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_NAME">
+          <VALUE>Маймур М. А.</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="VO_PIB">
+          <VALUE>Маймур М. А.</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="0" NAME="ZA_DOGOVOROM">
+          <VALUE>за договором</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>Повернення</VALUE>
+        </ROW>
+        <ROW LINE="0" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>808.44</VALUE>
+        </ROW>
+        <ROW LINE="1" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="1" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>Повернення</VALUE>
+        </ROW>
+        <ROW LINE="1" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>693</VALUE>
+        </ROW>
+        <ROW LINE="2" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="2" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>Повернення</VALUE>
+        </ROW>
+        <ROW LINE="2" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>613.8</VALUE>
+        </ROW>
+        <ROW LINE="3" TAB="1" NAME="TAB1_DATA_ORG">
+          <VALUE>01.04.2019 00:00:00</VALUE>
+        </ROW>
+        <ROW LINE="3" TAB="1" NAME="TAB1_DOC_ORG">
+          <VALUE>Повернення</VALUE>
+        </ROW>
+        <ROW LINE="3" TAB="1" NAME="TAB1_KT_ORG">
+          <VALUE>1336.32</VALUE>
+        </ROW>
+      </DOCUMENT>
+      <DOCKVT />
+    </CARD>
+  </ORG>
+</ZVIT>

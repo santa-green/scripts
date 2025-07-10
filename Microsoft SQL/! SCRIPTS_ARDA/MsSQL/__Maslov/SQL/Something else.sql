@@ -1,0 +1,4 @@
+insert r_Users
+SELECT 3000 ChID, 3000 UserID, 'CONST\vintagednepr1' UserName, EmpID, Admin, Active, Emps, s_PPAcc, s_Cost, s_CCPL, s_CCPrice, s_CCDiscount, ValidOurs, ValidStocks, ValidPLs, ValidProds, CanCopyRems, BDate, EDate, UseOpenAge, CanInitAltsPL, ShowPLCange, CanChangeStatus, CanChangeDiscount, CanPrintDoc, CanBuffDoc, CanChangeDocID, CanChangeKursMC, AllowRestEditDesk, AllowRestReserve, AllowRestMove, CanExportPrint, p_SalaryAcc, AllowRestChequeUnite, AllowRestChequeDel, OpenAgeBType, OpenAgeBQty, OpenAgeEType, OpenAgeEQty, AllowRestViewDesk
+ FROM r_Users where UserName = 'sa'
+ EXEC [dbo].[ap_PF_TTN_Master] @DocCode = 11021, @OurID = :OurID, @DocIDs = :DocIDs, @AAccountCC = :AAccountCC
