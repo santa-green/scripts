@@ -781,6 +781,192 @@ rollback;
 /* MISC */
 -----------------------------------------------------------------------------------------------------------------------------------
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* FILTER instead of Case When */
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select sum(case when id > 0 then id end) from id_test;
+select sum(case when id < 0 then id end) from id_test;
+
+select sum(id) filter (where id > 0) from id_test;
+select sum(id) filter (where id < 0) from id_test;
+
+select
+	date_part('year', log_date) "year",
+	count(distinct case when message ~* 'App:iOS.' then user_id end) "Users iOS",
+	count(distinct case when message ~* 'App:Android.' then user_id end) "Users Android",
+	count(distinct case when message ~* 'App:AndroidLib.' then user_id end) "Users AndroidLib",
+	count(distinct case when message ~* 'App:iOS.|App:Android.|App:AndroidLib.' then user_id end) "Total mobile users" 
+	count(distinct user_id) filter (where message ~* 'App:iOS.') "Users iOS",
+	count(distinct user_id) filter (where message ~* 'App:Android.') "Users Android",
+	count(distinct user_id) filter (where message ~* 'App:AndroidLib.') "Users AndroidLib",
+	count(distinct user_id) filter (where message ~* 'App:iOS.|App:Android.|App:AndroidLib.') "Total mobile users"
+from
+	accesslog a …
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* 10th highest salary of employees */
+-----------------------------------------------------------------------------------------------------------------------------------
+--Postgres specific.
+select distinct * from employees e order by salary desc limit 1 offset 9;
+
+--with window functions.
+with top_ten_cte as (
+	select distinct row_number() over (order by salary desc) "rn", * from employees e order by salary desc limit 10
+)
+select * from top_ten_cte where rn = 10;
+
+--with sorting.
+with top_ten_cte as (
+	select distinct * from employees e order by salary desc limit 10
+)
+select * from top_ten_cte order by salary limit 1;
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* Helper function to generate random names */
+-----------------------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION generate_random_name(min_length INTEGER, max_length INTEGER)
+    RETURNS VARCHAR AS
+$$
+DECLARE
+    alphabet VARCHAR := 'abcdefghijklmnopqrstuvwxyz';
+    name_length INTEGER := floor(random() * (max_length - min_length + 1) + min_length);
+    random_name VARCHAR := '';
+    i INTEGER;
+BEGIN
+    FOR i IN 1..name_length LOOP
+        random_name := random_name || substr(alphabet, floor(random() * length(alphabet) + 1)::integer, 1);
+    END LOOP;
+    RETURN random_name;
+END;
+$$ LANGUAGE plpgsql;
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* REGEX */
+-----------------------------------------------------------------------------------------------------------------------------------
+--https://www.postgresql.org/docs/9.0/functions-matching.html
+--https://www.postgresql.org/docs/current/functions-matching.html
+--https://www.postgresql.org/docs/current/functions-matching.html#FUNCTIONS-POSIX-REGEXP
+/*
+
+[] - matching any of the chars.
+() - group items into a single logical item e.g.: select * from accesslog where message ~ 'UnitAccessLog(s|d) read'
+\ - escape. select * from accesslog where message ~ 'UnitAccessLog\(s\) read'
+| - alternation (or..or..)
+
+. - dot matches any single character (analog of _ in like)
+* - repetition of the previous item >= 0 times e.g.: select * from accesslog where message ~* 'do*r' --door, dr
+.* - analog of % in the LIKE operator.
+
++ - repetition of the previous item >= 1 times.
+	? - ...zero or one time. 
+	{m} - ... exactly m times e.g.: select * from accesslog where message ~* 'do{2}r'
+	{m,} - ...m or more times.
+	{m,n} - ...m <= times <= n.
+^ begin anchor, $ - end anchor.
+~* - case insensitive.
+^\d - starts with a digit.
+\d$ - ends with a digit.	
+^\D - starts with not a digit.
+\D$ - ends with not a digit.
+\s - space.
+\mSM - matches only at the beginning of a word e.g.: select * from accesslog where message ~* '\mSM'
+ound\m - matches only at the end of a word e.g.: select * from accesslog where message ~* 'ound\M'
+
+*/
+select * from xaddress where distrct_name ~* '^Red\s.....\sDistrict';
+select * from xaddress where distrct_name ~* '^Red\s.*\sDistrict';
+select * from xaddress where distrct_name ~* 'red.*district';
+select * from xaddress where distrct_name ~* 'district.*red';
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/* https://www.postgresqltutorial.com/dollar-quoted-string-constants/ */
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+select $$I'm a string constant that contains a backslash \\\''''"'    $$;
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* IN predicate */
+-----------------------------------------------------------------------------------------------------------------------------------
+select * from address where address = '898 Jining Lane' or address2 = '898 Jining Lane' or district = '898 Jining Lane';
+select * from address where '898 Jining Lane' in (address, address2, district);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* joins */
+-----------------------------------------------------------------------------------------------------------------------------------
+--cross join (Cartesian product)
+select * from address a join city on 1 = 1;
+select * from address a join city on true;
+select * from address a, city c;
+select * from address a cross join city c;
+
+--join using
+select * from address join city using(city_id); --USING implies that only one of each pair of equivalent columns will be included in the join output, not both.
+
+--natural join (not recommended due to ambiguity, explicit is better than implicit)
+select * from address natural join city; --mentions all columns in the two tables that have matching names.
+
+--lateral join (correlated subquery). Postgres specific.
+select * from address a join lateral (
+	select c.city, count(*) "city_count" from city c where a.city_id = c.city_id group by c.city
+) ac on true;
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* update with join */
+-----------------------------------------------------------------------------------------------------------------------------------
+--ver 1
+start transaction;
+	update address
+	set postal_code = '1111'
+	where city_id = (select city_id from city where city = 'Adana')
+	select * from address where postal_code = '1111';
+rollback;
+
+--ver 2
+start transaction;
+	update address a
+	set postal_code = '1111'
+	from city c
+	where a.city_id = c.city_id and c.city = 'Adana'
+	returning *; --Postgres specific.
+	select * from address where postal_code = '1111';
+rollback;
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* Copy a table with select!*/
+-----------------------------------------------------------------------------------------------------------------------------------
+drop table if exists address_2;
+
+select
+	* 
+into
+	address_2
+from
+	address a
+limit 10; --or choose other conditions if you need. 
+
+select * from address_2 ;
+--Drawbacks: fields only are copied (no indexes, constraints...).
+
+start transaction;
+	select * from address_2 ;
+	truncate table address_2;
+rollback;
+--commit;
+	select * from address_2 ;
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+/* DISTINCT ON */
+-----------------------------------------------------------------------------------------------------------------------------------
+--distinct on (district) -> this field will be unique (first in the group)
+select distinct district, address from address where district = 'Hubei';
+select distinct on (district) district, address from address where district = 'Hubei' order by district, address;
+
+
+
+
+
 analyze customer; --stats update.
 vacuum analyze customer; --removes dead tuples and updates stats (marks pages as all-visible if no recent tuple changes exist).
 vacuum full customer; --fully rewrites the entire table and its indexes to reclaim disk space and compact the data.
