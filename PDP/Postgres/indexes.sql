@@ -1,4 +1,3 @@
-----------------------------------------------------------------------------------------------------
 /* objects creation */
 ---------------------------------------------------------------------------------------------------- 1
 drop table if exists customer;
@@ -37,7 +36,6 @@ select * from pg_indexes where schemaname = 'public' and tablename = 'customer';
 create index idx_mul_full_name on public.customer using btree (first_name, last_name);
 --create index idx_mul_full_name on public.customer (first_name, last_name);
 
-----------------------------------------------------------------------------------------------------
 /* queries */
 ----------------------------------------------------------------------------------------------------
 
