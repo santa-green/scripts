@@ -1,4 +1,3 @@
-----------------------------------------------------------------------------------------------------
 /* DDL triggers */
 ----------------------------------------------------------------------------------------------------
 drop table if exists ddl_history;
@@ -80,7 +79,6 @@ select * from ddl_history;
 select current_user;
 
 
-----------------------------------------------------------------------------------------------------
 /* Optimization */
 ----------------------------------------------------------------------------------------------------
 select
@@ -95,7 +93,6 @@ order by
 
 
 
-----------------------------------------------------------------------------------------------------
 /* SYSTEM */
 ----------------------------------------------------------------------------------------------------
 select * from pg_database; --databases
@@ -134,16 +131,13 @@ alter table students add column phone_numbers text;
 
 
 
-----------------------------------------------------------------------------------------------------
 /* information_schema */
 ----------------------------------------------------------------------------------------------------
-
 select * from information_schema.SCHEMATA s ; -- information about all schemas within the current database.
 
 
 
 
-----------------------------------------------------------------------------------------------------
 /* password */
 ----------------------------------------------------------------------------------------------------
 
@@ -186,7 +180,7 @@ ALTER USER 'kirill' IDENTIFIED BY 'new_password...';
 -- ALTER USER 'kirill' IDENTIFIED BY '5ph:eP41]2D'; -- Noga
 ALTER USER 'kirill' IDENTIFIED BY 'as*^&*(43:LJK'; -- me
 
-----------------------------------------------------------------------------------------------------
+
 /* check restored snapshot */
 ----------------------------------------------------------------------------------------------------
 
@@ -263,7 +257,6 @@ SHOW VARIABLES LIKE '%version%';
 SELECT * from mysql.general_log;
 show grants;
 
-----------------------------------------------------------------------------------------------------
 /* Transactions */
 ----------------------------------------------------------------------------------------------------
 
@@ -278,7 +271,6 @@ select * from pg_stat_activity where state = 'active';
 
 
 
-----------------------------------------------------------------------------------------------------
 /* REGEX */
 ----------------------------------------------------------------------------------------------------
 -- [i] https://www.geeksforgeeks.org/mysql-regular-expressions-regexp/
@@ -287,7 +279,6 @@ select * from mysql.user WHERE lower(`User`) like '%nischal%' or lower(`User`) l
 select * from mysql.user WHERE `User` REGEXP 'nischal|sharma|kirill';
 select * from mysql.user WHERE `User` RLIKE 'nischal|sharma|kirill';
 
-----------------------------------------------------------------------------------------------------
 /* server */
 ----------------------------------------------------------------------------------------------------
 
@@ -298,120 +289,6 @@ select * from test_me;
 show create table test_me;
 show create table ACTIVITY;
 
-/*
-=====================================
-2024-11-15 13:21:32 0x6d78 INNODB MONITOR OUTPUT
-=====================================
-Per second averages calculated from the last 1 seconds
------------------
-BACKGROUND THREAD
------------------
-srv_master_thread loops: 20 srv_active, 0 srv_shutdown, 90528 srv_idle
-srv_master_thread log flush and writes: 0
-----------
-SEMAPHORES
-----------
-OS WAIT ARRAY INFO: reservation count 51
-OS WAIT ARRAY INFO: signal count 54
-RW-shared spins 0, rounds 0, OS waits 0
-RW-excl spins 0, rounds 0, OS waits 0
-RW-sx spins 0, rounds 0, OS waits 0
-Spin rounds per wait: 0.00 RW-shared, 0.00 RW-excl, 0.00 RW-sx
-------------
-TRANSACTIONS
-------------
-Trx id counter 4094
-Purge done for trx's n:o < 4094 undo n:o < 0 state: running but idle
-History list length 0
-LIST OF TRANSACTIONS FOR EACH SESSION:
----TRANSACTION 283191197700032, not started
-0 lock struct(s), heap size 1128, 0 row lock(s)
----TRANSACTION 283191197699256, not started
-0 lock struct(s), heap size 1128, 0 row lock(s)
----TRANSACTION 283191197698480, not started
-0 lock struct(s), heap size 1128, 0 row lock(s)
---------
-FILE I/O
---------
-I/O thread 0 state: wait Windows aio ((null))
-I/O thread 1 state: wait Windows aio (insert buffer thread)
-I/O thread 2 state: wait Windows aio (read thread)
-I/O thread 3 state: wait Windows aio (read thread)
-I/O thread 4 state: wait Windows aio (read thread)
-I/O thread 5 state: wait Windows aio (read thread)
-I/O thread 6 state: wait Windows aio (write thread)
-I/O thread 7 state: wait Windows aio (write thread)
-I/O thread 8 state: wait Windows aio (write thread)
-Pending normal aio reads: [0, 0, 0, 0] , aio writes: [0, 0, 0, 0] ,
- ibuf aio reads:
-Pending flushes (fsync) log: 0; buffer pool: 0
-1760 OS file reads, 4989 OS file writes, 2599 OS fsyncs
-0.00 reads/s, 0 avg bytes/read, 0.00 writes/s, 0.00 fsyncs/s
--------------------------------------
-INSERT BUFFER AND ADAPTIVE HASH INDEX
--------------------------------------
-Ibuf: size 1, free list len 0, seg size 2, 0 merges
-merged operations:
- insert 0, delete mark 0, delete 0
-discarded operations:
- insert 0, delete mark 0, delete 0
-Hash table size 34679, node heap has 6 buffer(s)
-Hash table size 34679, node heap has 2 buffer(s)
-Hash table size 34679, node heap has 2 buffer(s)
-Hash table size 34679, node heap has 2 buffer(s)
-Hash table size 34679, node heap has 4 buffer(s)
-Hash table size 34679, node heap has 3 buffer(s)
-Hash table size 34679, node heap has 2 buffer(s)
-Hash table size 34679, node heap has 9 buffer(s)
-0.00 hash searches/s, 0.00 non-hash searches/s
----
-LOG
----
-Log sequence number          46603599
-Log buffer assigned up to    46603599
-Log buffer completed up to   46603599
-Log written up to            46603599
-Log flushed up to            46603599
-Added dirty pages up to      46603599
-Pages flushed up to          46603599
-Last checkpoint at           46603599
-Log minimum file id is       10
-Log maximum file id is       14
-2448 log i/o's done, 0.00 log i/o's/second
-----------------------
-BUFFER POOL AND MEMORY
-----------------------
-Total large memory allocated 0
-Dictionary memory allocated 931147
-Buffer pool size   8191
-Free buffers       6358
-Database pages     1803
-Old database pages 645
-Modified db pages  0
-Pending reads      0
-Pending writes: LRU 0, flush list 0, single page 0
-Pages made young 1161, not young 2219
-0.00 youngs/s, 0.00 non-youngs/s
-Pages read 1108, created 702, written 1616
-0.00 reads/s, 0.00 creates/s, 0.00 writes/s
-No buffer pool page gets since the last printout
-Pages read ahead 0.00/s, evicted without access 0.00/s, Random read ahead 0.00/s
-LRU len: 1803, unzip_LRU len: 0
-I/O sum[0]:cur[0], unzip sum[0]:cur[0]
---------------
-ROW OPERATIONS
---------------
-0 queries inside InnoDB, 0 queries in queue
-0 read views open inside InnoDB
-Process ID=27484, Main thread ID=17840 , state=sleeping
-Number of rows inserted 52618, updated 0, deleted 0, read 248
-0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
-Number of system rows inserted 848, updated 2766, deleted 783, read 19225
-0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
-----------------------------
-END OF INNODB MONITOR OUTPUT
-============================
-*/
 SELECT * FROM INFORMATION_SCHEMA.INNODB_TABLESPACES; -- SQL Error [1227] [42000]: Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
 
 select
@@ -434,192 +311,6 @@ show variables like 'innodb_log_buffer_size'; -- 16,777,216 -> 16 MB (CLONE)
 show variables like 'innodb_buffer_pool_size'; -- 134,217,728 (classimodels) ~128 MB
 
 
-----------------------------------------------------------------------------------------------------
-/* Structure */
-----------------------------------------------------------------------------------------------------
-
--- db schema:
-SELECT @@hostname, CONNECTION_ID(), database(); -- nb
-
-
--- CLONE
-SHOW DATABASES;
--- Summary:
--- 31 DBs
--- Main DB: nb
-/*PROD
-analytics
-archive
-auto_submit
-clhm
-course_data_2019
-course_data_2022_18587_922690
-cxp
-deprovision
-googledoc
-information_schema
-innodb
-lpg
-maintenance
-messagecenter
-mtprod
-mysql
-nb
-offline
-onedrive
-percona
-performance_schema
-sam_templates
-soa
-sys
-test
-test_data
-test_data_2022
-test_data_2023_07
-tmp
-weblink*/
-
-SELECT table_name FROM information_schema.tables WHERE table_schema = 'nb';
-
--- 136 tables.
-/*AA_SHARED_SECRET
-ACTIVITY
-ACTIVITY_COMMENT
-ACTIVITY_OUTCOME
-ACTIVITY_OUTCOME_DETAIL
-ACTIVITY_OUTCOME_SUMMARY
-ANALYTICS_COURSE_SYNC_SNAPSHOT_VIEW
-ANALYTICS_DURATION
-ANNOTATION_INFO
-ANNOTATION_INFO_ANNOTATION_TYPES
-API_ACCESS
-APP
-APP_ACTION
-APP_ACTION_CAPABILITIES
-APP_ACTION_CATEGORIES
-APP_ACTION_ROLES
-APP_ACTIVITY
-APP_CATEGORY
-APP_CATEGORY_ROLES
-APP_FEATURE
-APP_GATING
-APP_INTERACTIONS
-APP_LIFE_CYCLE_EVENT
-APP_LIFE_CYCLE_EVENTS
-APP_LTI_ROLE_MAPPING
-APP_OAUTH
-APP_PROVISION
-APP_PROVISION_BACKUP
-APP_PROVISION_TEMP
-APP_SCORE
-ASSIGNABLE_ACTIVITY
-ASSIGNABLE_ACTIVITY_TAKE
-ATTEMPT_STATUS
-BLOG_INFO
-BLOG_SOURCE
-CAPABILITY
-COMPONENT_STATUS
-COURSE
-COURSE_INFO_VIEW
-COURSE_TYPE
-CXP_ACTIVITY
-EVERNOTE_NB_USER
-EVERNOTE_NOTEBOOK
-FLASH_CARD
-FLASH_CARD_USER_PREF
-GRADEBOOK
-GRADEBOOK_ACTION
-GRADEBOOK_ACTION_ROLES
-GRADEBOOK_CALCULATION_QUEUE
-GRADEBOOK_CATEGORY
-GRADEBOOK_CATEGORY_OUTCOME
-GRADEBOOK_ITEM
-GRADEBOOK_QRTZ_BLOB_TRIGGERS
-GRADEBOOK_QRTZ_CALENDARS
-GRADEBOOK_QRTZ_CRON_TRIGGERS
-GRADEBOOK_QRTZ_FIRED_TRIGGERS
-GRADEBOOK_QRTZ_JOB_DETAILS
-GRADEBOOK_QRTZ_LOCKS
-GRADEBOOK_QRTZ_PAUSED_TRIGGER_GRPS
-GRADEBOOK_QRTZ_SCHEDULER_STATE
-GRADEBOOK_QRTZ_SIMPLE_TRIGGERS
-GRADEBOOK_QRTZ_SIMPROP_TRIGGERS
-GRADEBOOK_QRTZ_TRIGGERS
-GRADE_SYNC_STATUS
-ILOVEAPPS_QRTZ_BLOB_TRIGGERS
-ILOVEAPPS_QRTZ_CALENDARS
-ILOVEAPPS_QRTZ_CRON_TRIGGERS
-ILOVEAPPS_QRTZ_FIRED_TRIGGERS
-ILOVEAPPS_QRTZ_JOB_DETAILS
-ILOVEAPPS_QRTZ_LOCKS
-ILOVEAPPS_QRTZ_PAUSED_TRIGGER_GRPS
-ILOVEAPPS_QRTZ_SCHEDULER_STATE
-ILOVEAPPS_QRTZ_SIMPLE_TRIGGERS
-ILOVEAPPS_QRTZ_SIMPROP_TRIGGERS
-ILOVEAPPS_QRTZ_TRIGGERS
-IN_PROGRESS_ATTEMPT
-JOB_LAST_COMPLETED
-KEY_PAIR
-LEARNING_GROUP
-LEARNING_PATH
-LEARNING_UNIT
-LTI_LAUNCH_PARAMETER
-NBCORE_JOBS_QRTZ_BLOB_TRIGGERS
-NBCORE_JOBS_QRTZ_CALENDARS
-NBCORE_JOBS_QRTZ_CRON_TRIGGERS
-NBCORE_JOBS_QRTZ_FIRED_TRIGGERS
-NBCORE_JOBS_QRTZ_JOB_DETAILS
-NBCORE_JOBS_QRTZ_LOCKS
-NBCORE_JOBS_QRTZ_PAUSED_TRIGGER_GRPS
-NBCORE_JOBS_QRTZ_SCHEDULER_STATE
-NBCORE_JOBS_QRTZ_SIMPLE_TRIGGERS
-NBCORE_JOBS_QRTZ_SIMPROP_TRIGGERS
-NBCORE_JOBS_QRTZ_TRIGGERS
-NBCORE_QRTZ_BLOB_TRIGGERS
-NBCORE_QRTZ_CALENDARS
-NBCORE_QRTZ_CRON_TRIGGERS
-NBCORE_QRTZ_FIRED_TRIGGERS
-NBCORE_QRTZ_JOB_DETAILS
-NBCORE_QRTZ_LOCKS
-NBCORE_QRTZ_PAUSED_TRIGGER_GRPS
-NBCORE_QRTZ_SCHEDULER_STATE
-NBCORE_QRTZ_SIMPLE_TRIGGERS
-NBCORE_QRTZ_SIMPROP_TRIGGERS
-NBCORE_QRTZ_TRIGGERS
-NELSON_ISBN
-NEXTBOOK
-NODE
-NODE_PASSWORD
-ORG
-ORG_SETTINGS
-PERMISSION
-PROGRESS_APP_ACTIVITY_VIEW
-READ_SPEAKER_USER_PREF
-ROLE
-ROLE_CAPABILITY
-ROLE_PERMISSION
-RSSFEED_ACTIVITY
-RSSFEED_FEED
-SNAPSHOT
-SNAPSHOT_APP_DATA
-SNAPSHOT_COMPONENT_STATUS
-SNAPSHOT_DISCIPLINE
-SNAPSHOT_USER_VIEW
-SSOGuids_Tracker
-STUDENT_OUTCOME_SUMMARY
-STUDENT_SUMMARY_VIEW
-USER
-USER_APP_CATEGORY_PREFERENCE
-USER_CAPABILITY
-USER_CREDENTIALS
-USER_NODE
-USER_ORG_PROFILE
-WEBVIDEO_ACTIVITY
-ZERO_GRADE_STATUS
-dbmaintain_scripts
-tmp_all_masters*/
-
------------------------------------------------------------------------------------------------------------------------------------
 /* connection info */
 -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -649,7 +340,6 @@ SHOW ENGINE INNODB STATUS;
 
 
     
------------------------------------------------------------------------------------------------------------------------------------
 /* tables sizes */
 -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -800,7 +490,6 @@ SELECT
 
     SELECT * FROM information_schema.TABLES where table_schema = 'classicmodels';
 	
-----------------------------------------------------------------------------------------------------
 /* data vs index size */
 ----------------------------------------------------------------------------------------------------
 
@@ -830,7 +519,6 @@ order by 3 DESC; -- column number works..
 
 
 
------------------------------------------------------------------------------------------------------------------------------------
 /* information schema */
 -----------------------------------------------------------------------------------------------------------------------------------
 -- https://dev.mysql.com/doc/refman/8.3/en/information-schema.html
@@ -877,7 +565,6 @@ select * from mysql.`user` u WHERE u.`User` = 'kirill'; -- global user account i
 -- CREATE USER: Allows the user to create new user accounts.   
 -- GRANT OPTION: Allows the user to grant privileges to other users.  
 
-----------------------------------------------------------------------------------------------------
 /* Built-in functions */
 ----------------------------------------------------------------------------------------------------
 
@@ -890,7 +577,6 @@ SELECT TRIM('x' FROM 'xxxHello, World!');  -- Removes leading 'x'
 SELECT TRIM('x' FROM 'Hello, World!xxx');  -- Removes trailing 'x'
 
 
-----------------------------------------------------------------------------------------------------
 /* RAND */
 ----------------------------------------------------------------------------------------------------
 
@@ -899,13 +585,11 @@ select SUBSTR(RAND() FROM 3 FOR 15);
 SELECT rand();
 select SUBSTR('0.5448935856529452' FROM 3 FOR 15);
 
-----------------------------------------------------------------------------------------------------
 /* reserved keywords */
 ----------------------------------------------------------------------------------------------------
 
 select * from information_schema.keywords WHERE reserved = 1;
 
-----------------------------------------------------------------------------------------------------
 /* mysql server log */
 ----------------------------------------------------------------------------------------------------
 set GLOBAL general_log = 'on';
@@ -919,7 +603,6 @@ select * from mysql.general_log;
 
 set GLOBAL general_log = 'off';
 
-----------------------------------------------------------------------------------------------------
 /* execution plans */
 ----------------------------------------------------------------------------------------------------
 
@@ -984,7 +667,6 @@ derived_condition_pushdown = on
 
 
 
-----------------------------------------------------------------------------------------------------
 /* Process list */
 ----------------------------------------------------------------------------------------------------
 
@@ -998,7 +680,9 @@ select * from INFORMATION_SCHEMA.PROCESSLIST;
 SHOW BINARY LOG STATUS;
 SHOW SLAVE STATUS;
 select current_user();
-----------------------------------------------------------------------------------------------------
+
+
+
 /* variable */
 ----------------------------------------------------------------------------------------------------	
 
@@ -1022,14 +706,16 @@ WHERE
 	routine_type = 'PROCEDURE'
 	AND routine_name = 'delete_course_data_2022_local';
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* delimiters online */
 -----------------------------------------------------------------------------------------------------------------------------------
 -- https://convert.town/column-to-comma-separated-list
 -- https://delim.co/#
 
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* crate sp */
 -----------------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE GetSnapshotDetailsByExternalID (IN external_id VARCHAR(255))
@@ -1070,7 +756,8 @@ SHOW CREATE PROCEDURE get_course_details_by_external_id;  -- Replace with your p
 
 select * from test.tmp_write_experience_activity_outcome_detail_51770 tweaod ;
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* checking privileges */
 -----------------------------------------------------------------------------------------------------------------------------------
 use archive;
@@ -1089,7 +776,8 @@ select * from SAM_MT_CUSTOMER_COURSES where sectionID = 193520;
 
 rollback;
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* MISC */
 -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -1199,7 +887,8 @@ select * from information_schema.tables where table_name like '%user%';
 select * from GRADEBOOK_ITEM gi ;
 
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* autocommit mode */
 -----------------------------------------------------------------------------------------------------------------------------------
 set autocommit = 0;
