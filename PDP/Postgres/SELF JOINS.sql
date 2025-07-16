@@ -150,7 +150,7 @@ CROSS APPLY dbo.GetXEmployeeTopSale(e.id) f
 ORDER BY e.id;
 
 ----------------------------------------------------------------------------------------------------
-/* lateral join */
+/* lateral join (postgres) */
 ----------------------------------------------------------------------------------------------------
 -- Example of using LATERAL join in PostgreSQL to get each employee with their top sale
 
@@ -194,4 +194,140 @@ JOIN LATERAL (
 ) s ON true
 ORDER BY e.id;
 
+select * from xemployees;
+select * from xsales;
 
+----------------------------------------------------------------------------------------------------
+/* example PDP */
+----------------------------------------------------------------------------------------------------
+-- Create tables
+CREATE TABLE product
+(
+    id    serial PRIMARY KEY,
+    name  text,
+    price numeric
+);
+
+CREATE TABLE wishlist
+(
+    id        serial PRIMARY KEY,
+    username  text,
+    max_price numeric
+);
+
+-- Insert data into wishlist
+INSERT INTO wishlist (id, username, max_price) VALUES
+(1, 'bfligg0', 15.6),
+(2, 'oweiser1', 22),
+(3, 'adwerryhouse2', 21),
+(4, 'slinstead3', 27.2),
+(5, 'ahalliday4', 46.5)
+returning *;
+
+-- Insert data into product
+INSERT INTO product (id, name, price) VALUES
+(1, 'bibendum felis sed interdum', 27.2),
+(2, 'scelerisque mauris sit amet eros', 95.5),
+(3, 'sit amet lobortis sapien sapien', 39),
+(4, 'metus vitae ipsum aliquam', 66.8),
+(5, 'cursus id turpis integer', 58.7),
+(6, 'dignissim vestibulum vestibulum ante ipsum', 77.4),
+(7, 'ac neque duis bibendum', 39.1),
+(99, 'nulla neque libero convallis', 8.8),
+(100, 'blandit ultrices enim', 85.8)
+returning *;
+
+--find the top 3 products that satisfy the max price customers are ready to pay. In this case, LATERAL join is beneficial for us since it allows us to pass some value from main SELECT to subquery SELECT.
+select * from wishlist;
+select * from product order by price;
+
+SELECT *
+FROM wishlist AS w,
+     LATERAL (SELECT *
+              FROM product AS p
+              WHERE p.price < w.max_price
+              ORDER BY p.price DESC
+              LIMIT 3) AS p
+ORDER BY w.id, price DESC;
+
+SELECT *
+  FROM product AS p
+  WHERE p.price < 46.5
+  ORDER BY p.price DESC
+  LIMIT 3
+  
+ ----------------------------------------------------------------------------------------------------
+ /* example Claude */
+ ----------------------------------------------------------------------------------------------------
+-- Create test tables
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100)
+);
+drop table if exists orders cascade;
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    customer_id INTEGER REFERENCES customers(id),
+    amount DECIMAL(10,2),
+    order_date DATE
+);
+
+-- Insert test data
+INSERT INTO customers (name) VALUES 
+('Alice'), ('Bob'), ('Charlie');
+
+INSERT INTO orders (customer_id, amount, order_date) VALUES 
+(1, 100.00, '2024-01-15'),
+(1, 150.00, '2024-01-20'),
+(2, 200.00, '2024-01-18'),
+(3, 75.00, '2024-01-22'),
+(3, 300.00, '2024-01-25'),
+(3, 125.00, '2024-01-28');
+
+-- This WORKS - correlated subquery (my example was wrong!)
+SELECT c.name, 
+       (SELECT COUNT(*) FROM orders WHERE customer_id = c.id) as order_count
+FROM customers c;
+
+-- Better example showing LATERAL's advantage:
+-- Regular subquery limitation - can't return multiple columns easily
+SELECT c.name,
+       (SELECT COUNT(*) FROM orders WHERE customer_id = c.id) as order_count,
+       (SELECT AVG(amount) FROM orders WHERE customer_id = c.id) as avg_amount,
+       (SELECT MAX(order_date) FROM orders WHERE customer_id = c.id) as last_order
+FROM customers c;
+
+-- LATERAL join - cleaner for multiple columns
+SELECT c.name, stats.*
+FROM customers c
+LATERAL (
+    SELECT COUNT(*) as order_count, 
+           AVG(amount) as avg_amount,
+           MAX(order_date) as last_order
+    FROM orders 
+    WHERE customer_id = c.id
+) stats;
+
+-- LATERAL's real advantage: set-returning functions
+-- This WON'T work with regular subquery
+-- SELECT c.name, unnest(ARRAY[1,2,3]) FROM customers c;
+
+-- This WORKS with LATERAL
+SELECT c.name, t.value
+FROM customers c
+LATERAL unnest(ARRAY[c.id, c.id*2, c.id*3]) AS t(value);
+
+-- Another LATERAL advantage: TOP-N per group
+SELECT c.name, recent_orders.*
+FROM customers c,
+LATERAL (
+    SELECT amount, order_date
+    FROM orders 
+    WHERE customer_id = c.id 
+    ORDER BY order_date DESC 
+    LIMIT 2
+) recent_orders;
+
+-- Clean up
+DROP TABLE orders;
+DROP TABLE customers;
