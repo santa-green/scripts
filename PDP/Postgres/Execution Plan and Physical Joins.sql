@@ -1,6 +1,7 @@
 --explain (analyze)
 --explain (analyze, verbose, costs, settings, buffers, wal, timing, summary)
-explain (analyze, verbose, buffers, format json)
+--explain (analyze, verbose, buffers, format json)
+explain (generic_plan)
 select * from customer where first_name = 'firstname78078';
 
 [
@@ -54,4 +55,18 @@ select * from customer where first_name = 'firstname78078';
     "Execution Time": 0.043
   }
 ]
+
+
+
+select * from pg_stats where tablename = 'customer'; --view on pg_statistic
+select * from pg_statistic;
+select * from pg_stats where tablename = 'employeepayhistory'; --view on pg_statistic
+-- [ ! ] pg_statistic should not be readable by the public, since even statistical information about a table's contents might be considered sensitive. (Example: minimum and maximum values of a salary column might be quite interesting.) pg_stats is a publicly readable view on pg_statistic that only exposes information about those tables that are readable by the current user;
+
+select * from customer;
+analyze (verbose) customer(age); --analyzing "public.customer"
+--"customer": scanned 14190 of 14190 pages, containing 1000000 live rows and 0 dead rows; 30000 rows in sample, 1000000 estimated total rows
+ 
+
+
 
