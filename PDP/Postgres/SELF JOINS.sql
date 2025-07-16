@@ -88,3 +88,110 @@ inner join orders o2 on o1.id <> o2.id
     and o1.customer_id = o2.customer_id
     and o2.total_amount > o1.total_amount;
 
+----------------------------------------------------------------------------------------------------
+/* cross apply (ms sql server) */
+----------------------------------------------------------------------------------------------------
+-- Full example script demonstrating CROSS APPLY with renamed tables prefixed by 'X'
+
+-- 1. Create XEmployees table
+CREATE TABLE XEmployees (
+    id INT PRIMARY KEY,
+    name NVARCHAR(100)
+);
+
+-- 2. Insert sample data into XEmployees
+INSERT INTO XEmployees (id, name) VALUES
+(1, 'Alice'),
+(2, 'Bob'),
+(3, 'Charlie');
+
+-- 3. Create XSales table to simulate employee sales
+CREATE TABLE XSales (
+    sale_id INT PRIMARY KEY,
+    employee_id INT,
+    sale_amount MONEY,
+    sale_date DATE
+);
+
+-- 4. Insert sample sales data into XSales
+INSERT INTO XSales (sale_id, employee_id, sale_amount, sale_date) VALUES
+(1, 1, 500.00, '2023-01-15'),
+(2, 1, 700.00, '2023-02-20'),
+(3, 2, 300.00, '2023-01-10'),
+(4, 3, 450.00, '2023-03-05'),
+(5, 3, 650.00, '2023-03-10');
+
+-- 5. Create a table-valued function to get the top sale for an employee
+CREATE FUNCTION dbo.GetXEmployeeTopSale(@EmployeeID INT)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT TOP 1
+        sale_amount,
+        sale_date
+    FROM XSales
+    WHERE employee_id = @EmployeeID
+    ORDER BY sale_amount DESC
+);
+
+-- 6. Query using CROSS APPLY to get each employee with their top sale
+select * from xemployees;
+select * from xsales;
+
+
+SELECT
+    e.id,
+    e.name,
+    f.sale_amount,
+    f.sale_date
+FROM XEmployees e
+CROSS APPLY dbo.GetXEmployeeTopSale(e.id) f
+ORDER BY e.id;
+
+----------------------------------------------------------------------------------------------------
+/* lateral join */
+----------------------------------------------------------------------------------------------------
+-- Example of using LATERAL join in PostgreSQL to get each employee with their top sale
+
+-- 1. Create tables with prefix X to avoid conflicts
+CREATE TABLE XEmployees (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE XSales (
+    sale_id SERIAL PRIMARY KEY,
+    employee_id INT REFERENCES XEmployees(id),
+    sale_amount NUMERIC,
+    sale_date DATE
+);
+
+-- 2. Insert sample data
+INSERT INTO XEmployees (name) VALUES
+('Alice'), ('Bob'), ('Charlie');
+
+INSERT INTO XSales (employee_id, sale_amount, sale_date) VALUES
+(1, 500, '2023-01-15'),
+(1, 700, '2023-02-20'),
+(2, 300, '2023-01-10'),
+(3, 450, '2023-03-05'),
+(3, 650, '2023-03-10');
+
+-- 3. Query using LATERAL join to get top sale per employee
+SELECT
+    e.id,
+    e.name,
+    s.sale_amount,
+    s.sale_date
+FROM XEmployees e
+JOIN LATERAL (
+    SELECT sale_amount, sale_date
+    FROM XSales
+    WHERE employee_id = e.id
+    ORDER BY sale_amount DESC
+    LIMIT 1
+) s ON true
+ORDER BY e.id;
+
+
