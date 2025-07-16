@@ -1,3 +1,14 @@
+/* MISC */
+-----------------------------------------------------------------------------------------------------------------------------------
+-- Sample rows randomly from a table
+SELECT * FROM customer TABLESAMPLE SYSTEM (1);
+-- List all available extensions
+SELECT * FROM pg_available_extensions;
+
+
+
+
+
 /* DDL triggers */
 ----------------------------------------------------------------------------------------------------
 drop table if exists ddl_history;
@@ -342,6 +353,11 @@ SHOW ENGINE INNODB STATUS;
     
 /* tables sizes */
 -----------------------------------------------------------------------------------------------------------------------------------
+
+-- Quickly list table bloat
+CREATE EXTENSION pgstattuple;
+SELECT * FROM pgstattuple('customer');
+
 
 -- Check DB Size (archival process)
 SELECT 
@@ -777,9 +793,6 @@ select * from SAM_MT_CUSTOMER_COURSES where sectionID = 193520;
 rollback;
 
 
-
-/* MISC */
------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /* FILTER instead of Case When */
