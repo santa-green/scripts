@@ -67,3 +67,5 @@ ORDER BY dpg.name
 
 select * from sys.database_role_members SRM
 JOIN sys.database_principals SR ON SR.principal_id = SRM.role_principal_id
+
+
