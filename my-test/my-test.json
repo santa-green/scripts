@@ -1,0 +1,41 @@
+{
+  "name" : "my-test",
+  "jobMode" : "VISUAL",
+  "description" : "",
+  "role" : "arn:aws:iam::062823296394:role/my-glue-role",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-062823296394-us-east-1/scripts/my-test.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-062823296394-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-062823296394-us-east-1/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 480,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "5.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "codeGenConfigurationNodes" : "{\"node-1753970356787\":{\"S3JsonSource\":{\"AdditionalOptions\":{\"EnableSamplePath\":false,\"SamplePath\":\"s3://databrew-public-datasets-us-east-1/dataset-national-baby-names.json\"},\"Exclusions\":[],\"JsonPath\":\"\",\"Multiline\":false,\"Name\":\"Amazon S3\",\"OutputSchemas\":[{\"Columns\":[{\"Name\":\"id\",\"Type\":\"int\"},{\"Name\":\"name\",\"Type\":\"string\"},{\"Name\":\"year\",\"Type\":\"int\"},{\"Name\":\"gender\",\"Type\":\"string\"},{\"Name\":\"count\",\"Type\":\"int\"}]}],\"Paths\":[\"s3://databrew-public-datasets-us-east-1/dataset-national-baby-names.json\"],\"Recurse\":true}}}",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "scripts",
+    "branch" : "main",
+    "folder" : "my-test"
+  }
+}
