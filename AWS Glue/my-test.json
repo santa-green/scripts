@@ -26,7 +26,7 @@
   "allocatedCapacity" : 2,
   "timeout" : 5,
   "maxCapacity" : 2.0,
-  "glueVersion" : "5.0",
+  "glueVersion" : "4.0",
   "numberOfWorkers" : 2,
   "workerType" : "G.1X",
   "executionClass" : "STANDARD",
