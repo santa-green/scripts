@@ -1,3 +1,111 @@
+
+----------------------------------------------------------------------------------------------------
+/* CONTENTS */
+----------------------------------------------------------------------------------------------------
+
+--/ PERFORMANCE /
+--
+--/ MISC /
+--
+--/ DDL triggers /
+--
+--/ Optimization /
+--
+--/ SYSTEM /
+--
+--/ information_schema /
+--
+--/ password /
+--
+--/ check restored snapshot /
+--
+--/ Transactions /
+--
+--/ REGEX /
+--
+--/ server /
+--
+--/ connection info /
+--
+--/ tables sizes /
+--
+--/ data vs index size /
+--
+--/ information schema / (a second one, different queries)
+--
+--/ Built-in functions /
+--
+--/ RAND /
+--
+--/ reserved keywords /
+--
+--/ execution plans /
+--
+--/ variable /
+--
+--/ delimiters online /
+--
+--/ crate sp /
+--
+--/ checking privileges /
+--
+--/ FILTER instead of Case When /
+--
+--/ 10th highest salary of employees /
+--
+--/ Helper function to generate random names /
+--
+--/ REGEX / (a second, PostgreSQL-focused one)
+--
+--/ https://www.postgresqltutorial.com/dollar-quoted-string-constants/ /
+--
+--/ IN predicate /
+--
+--/ joins /
+--
+--/ update with join /
+--
+--/ Copy a table with select!/**
+--
+--/ DISTINCT ON /
+--
+--/ autocommit mode /
+
+----------------------------------------------------------------------------------------------------
+/* PERFORMANCE */
+----------------------------------------------------------------------------------------------------
+-- find temp spills (RAM bottleneck sign):
+SELECT datname, temp_files, temp_bytes
+--SELECT *
+FROM pg_stat_database
+ORDER BY temp_bytes DESC;
+
+
+--Spot I/O pressure (buffers read from disk vs cache):
+SELECT sum(blks_read) AS disk_reads, sum(blks_hit) AS cache_hits,
+       round(100.0*sum(blks_hit)/nullif(sum(blks_hit)+sum(blks_read),0),2) AS hit_pct
+FROM pg_stat_database;
+
+-- who's blocking whom:
+SELECT bl.pid AS blocked_pid, ka.query AS blocked_query,
+       kl.pid AS locker_pid, pa.query AS locker_query
+FROM pg_locks bl
+JOIN pg_stat_activity ka ON ka.pid = bl.pid
+JOIN pg_locks kl ON bl.locktype = kl.locktype
+  AND bl.DATABASE IS NOT DISTINCT FROM kl.DATABASE
+  AND bl.relation IS NOT DISTINCT FROM kl.relation
+  AND bl.page IS NOT DISTINCT FROM kl.page
+  AND bl.tuple IS NOT DISTINCT FROM kl.tuple
+  AND bl.classid IS NOT DISTINCT FROM kl.classid
+  AND bl.objid IS NOT DISTINCT FROM kl.objid
+  AND bl.objsubid IS NOT DISTINCT FROM kl.objsubid
+  AND kl.GRANTED
+JOIN pg_stat_activity pa ON pa.pid = kl.pid
+WHERE NOT bl.granted;
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
 /* MISC */
 -----------------------------------------------------------------------------------------------------------------------------------
 -- Sample rows randomly from a table
@@ -6,7 +114,29 @@ SELECT * FROM customer TABLESAMPLE SYSTEM (1);
 SELECT * FROM pg_available_extensions;
 
 
+select * from public.actor;
 
+-- nested functions.
+SELECT schemaname, funcname, calls
+FROM pg_stat_user_functions
+WHERE schemaname = 'public';
+
+select * from pg_stat_reset();
+SELECT * FROM pg_proc WHERE proname = 'my_nested_func';
+
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+
+SELECT *
+FROM pg_stat_statements;
+
+SELECT sum(blks_hit)::numeric / nullif(sum(blks_hit)+sum(blks_read),0) AS cache_hit_ratio
+FROM pg_stat_database;
+select * from pg_stat_database;
+
+SELECT query, calls, total_exec_time, mean_exec_time
+FROM pg_stat_statements
+ORDER BY total_exec_time DESC
+LIMIT 5;
 
 
 /* DDL triggers */
@@ -268,6 +398,8 @@ SHOW VARIABLES LIKE '%version%';
 SELECT * from mysql.general_log;
 show grants;
 
+
+
 /* Transactions */
 ----------------------------------------------------------------------------------------------------
 
@@ -506,6 +638,8 @@ SELECT
 
     SELECT * FROM information_schema.TABLES where table_schema = 'classicmodels';
 	
+
+    
 /* data vs index size */
 ----------------------------------------------------------------------------------------------------
 
@@ -606,18 +740,6 @@ select SUBSTR('0.5448935856529452' FROM 3 FOR 15);
 
 select * from information_schema.keywords WHERE reserved = 1;
 
-/* mysql server log */
-----------------------------------------------------------------------------------------------------
-set GLOBAL general_log = 'on';
-set global log_output = 'table';
-
-SHOW GLOBAL VARIABLES LIKE 'general_log';
-SHOW GLOBAL VARIABLES LIKE 'log_output';
-
-select * from customers c ;
-select * from mysql.general_log;
-
-set GLOBAL general_log = 'off';
 
 /* execution plans */
 ----------------------------------------------------------------------------------------------------
@@ -683,22 +805,6 @@ derived_condition_pushdown = on
 
 
 
-/* Process list */
-----------------------------------------------------------------------------------------------------
-
--- select * from performance_schema.processlist;
-
--- deprecated:
-show processlist;
-select 177694/3600;
-show full processlist;
-select * from INFORMATION_SCHEMA.PROCESSLIST;
-SHOW BINARY LOG STATUS;
-SHOW SLAVE STATUS;
-select current_user();
-
-
-
 /* variable */
 ----------------------------------------------------------------------------------------------------	
 
@@ -732,7 +838,7 @@ WHERE
 
 
 
-/* crate sp */
+/* create sp */
 -----------------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE GetSnapshotDetailsByExternalID (IN external_id VARCHAR(255))
 BEGIN
@@ -794,7 +900,6 @@ rollback;
 
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /* FILTER instead of Case When */
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 select sum(case when id > 0 then id end) from id_test;
@@ -816,7 +921,8 @@ select
 from
 	accesslog a …
 
------------------------------------------------------------------------------------------------------------------------------------
+
+	
 /* 10th highest salary of employees */
 -----------------------------------------------------------------------------------------------------------------------------------
 --Postgres specific.
@@ -834,7 +940,8 @@ with top_ten_cte as (
 )
 select * from top_ten_cte order by salary limit 1;
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* Helper function to generate random names */
 -----------------------------------------------------------------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION generate_random_name(min_length INTEGER, max_length INTEGER)
@@ -853,7 +960,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 /* REGEX */
 -----------------------------------------------------------------------------------------------------------------------------------
 --https://www.postgresql.org/docs/9.0/functions-matching.html
@@ -891,19 +1001,22 @@ select * from xaddress where distrct_name ~* '^Red\s.*\sDistrict';
 select * from xaddress where distrct_name ~* 'red.*district';
 select * from xaddress where distrct_name ~* 'district.*red';
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* https://www.postgresqltutorial.com/dollar-quoted-string-constants/ */
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 select $$I'm a string constant that contains a backslash \\\''''"'    $$;
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* IN predicate */
 -----------------------------------------------------------------------------------------------------------------------------------
 select * from address where address = '898 Jining Lane' or address2 = '898 Jining Lane' or district = '898 Jining Lane';
 select * from address where '898 Jining Lane' in (address, address2, district);
 
 
------------------------------------------------------------------------------------------------------------------------------------
+
+
 /* joins */
 -----------------------------------------------------------------------------------------------------------------------------------
 --cross join (Cartesian product)
@@ -923,7 +1036,7 @@ select * from address a join lateral (
 	select c.city, count(*) "city_count" from city c where a.city_id = c.city_id group by c.city
 ) ac on true;
 
------------------------------------------------------------------------------------------------------------------------------------
+
 /* update with join */
 -----------------------------------------------------------------------------------------------------------------------------------
 --ver 1
@@ -945,7 +1058,7 @@ start transaction;
 rollback;
 
 
------------------------------------------------------------------------------------------------------------------------------------
+
 /* Copy a table with select!*/
 -----------------------------------------------------------------------------------------------------------------------------------
 drop table if exists address_2;
@@ -969,7 +1082,7 @@ rollback;
 	select * from address_2 ;
 
 
------------------------------------------------------------------------------------------------------------------------------------
+
 /* DISTINCT ON */
 -----------------------------------------------------------------------------------------------------------------------------------
 --distinct on (district) -> this field will be unique (first in the group)

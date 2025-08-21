@@ -59,8 +59,9 @@ select * from v$sql;
 
 --null (Oracle treats '' (empty string) as NULL — unlike most other RDBMSs!)
 select 1 from dual where null is null; -- 1
-select 1 from dual where null = '';
-select 1 from dual where null = null;
+select 1 from dual where null = ''; -- empty
+select 1 from dual where null = null; -- empty
+select 1 from dual where '' is null; -- 1
 SELECT CASE WHEN '' IS NULL THEN 'Yes' ELSE 'No' END FROM dual; -- Output: Yes
 
 
@@ -71,6 +72,45 @@ SELECT * FROM all_tables WHERE owner = 'SYS';
 select * from dba_users;
 -- users with password hashes:
 SELECT * FROM dba_users_with_defpwd;
+-- current user;
+select user from dual;
+SELECT SYS_CONTEXT('USERENV', 'SESSION_USER') FROM dual;
+SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') FROM dual;
+
+-- all session details:
+SELECT 
+  username, 
+  osuser, 
+  sid, 
+  serial#, 
+  status, 
+  machine, 
+  program
+FROM v$session
+WHERE audsid = USERENV('SESSIONID');
+
+-- server version:
+SELECT * FROM v$version;
+
+-- NVL
+SELECT NVL(NULL, 5) FROM DUAL;
+
+
+-- FLASHBACK
+SHOW PARAMETER undo_retention;
+SELECT table_name, flashback_archive_name 
+FROM user_flashback_archive_tables;
+
+
+SELECT * 
+FROM countries
+AS OF TIMESTAMP (SYSTIMESTAMP - INTERVAL '15' MINUTE);
+
+
+update countries set country_name = 'AR-na' where region_id = 20 and country_id= 'AR';
+select * from countries where region_id = 20 and country_id= 'AR';
+rollback;
+commit;
 
 
 

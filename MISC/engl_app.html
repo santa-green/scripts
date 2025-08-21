@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>English IPA + Alphabet Trainer</title>
+  <style>
+    :root{
+      --bg:#0f172a; --card:#0c1226; --muted:#a7b0c2; --text:#e7ebf2;
+      --border:#20304a;
+      --danger:#ef4444;          /* red */
+      --success:#22c55e;         /* green */
+      --tab:#1b2a4a;             /* brighter UI */
+      --tab-active:#2563eb;
+      --chip:#18223a; 
+      --chip-active:#1f2d4a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+      color:var(--text);
+      background:radial-gradient(1200px 800px at 10% -10%, #1f2937 0, #0b1022 55%, #050814 100%);
+      min-height:100vh; padding:24px;
+    }
+    header{max-width:1200px;margin:0 auto 18px auto;display:grid;gap:10px}
+    h1{margin:0;font-size:28px;letter-spacing:.2px}
+    .sub{color:var(--muted)}
+
+    /* Tabs + quiz toggles (one block) */
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .tab{
+      padding:10px 16px;border-radius:999px;cursor:pointer;border:1px solid transparent;
+      background:linear-gradient(180deg,var(--tab),#1e3160);
+      color:#e9f0ff;font-weight:600; box-shadow:0 4px 16px rgba(0,0,0,.2);
+      transition:transform .12s ease, box-shadow .12s ease, background .2s ease, border-color .2s ease;
+    }
+    .tab:hover{transform:translateY(-1px); box-shadow:0 8px 22px rgba(0,0,0,.28)}
+    .tab.active{
+      background:linear-gradient(180deg,#3b82f6,var(--tab-active));
+      border-color:#7fb0ff;
+      color:white;
+    }
+
+    .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .chip{
+      border:1px solid #2a3d63;background:linear-gradient(180deg,var(--chip),#1a2745);
+      color:var(--text); padding:9px 14px;border-radius:999px;cursor:pointer;user-select:none;
+      font-weight:600; letter-spacing:.2px;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+      transition:background .2s, transform .12s, box-shadow .2s;
+    }
+    .chip:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.25)}
+    .chip.active{background:linear-gradient(180deg,#334d7d,#2a4070)}
+
+    .grow{flex:1}
+    .search{
+      width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);
+      background:#0b1224;color:var(--text);outline:none
+    }
+
+    .grid{max-width:1200px;margin:10px auto 24px auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+    .card{
+      background:linear-gradient(180deg,#0f1631, var(--card)); border:1px solid var(--border);border-radius:14px; padding:14px;
+      display:flex;gap:10px;flex-direction:column; min-height:170px;transition:transform .15s ease, box-shadow .15s ease
+    }
+    .card:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .ipa{font-size:34px; font-weight:800}
+    .letter{font-size:34px;font-weight:900}
+    .tag{font-size:12px;color:#cbd5ff;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.35);padding:4px 8px;border-radius:999px;display:inline-block}
+    .ru{color:#d8deea}
+    .examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .ex{border:1px dashed var(--border);padding:6px 8px;border-radius:10px;display:flex;gap:8px;align-items:center;background:#0a0f20}
+
+    /* Buttons */
+    .btn{
+      background:linear-gradient(180deg,#1b2a4a,#15233f); border:1px solid #2c4475; color:#f0f6ff;
+      padding:9px 14px;border-radius:12px;cursor:pointer;transition:.15s; user-select:none;font-weight:700;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 6px 16px rgba(37,99,235,.15);
+    }
+    .btn:hover{border-color:#3a5ba2; background:linear-gradient(180deg,#23375b,#1b2d53)}
+    .btn.warn{background:linear-gradient(180deg,#f59e0b,#d97706);border-color:#fbbf24;color:#201400}
+
+    .bar{max-width:1200px;margin:0 auto 16px auto;display:flex;gap:8px;flex-wrap:wrap}
+    .muted{color:var(--muted)}
+
+    /* Quiz box */
+    .quiz{max-width:1200px;margin:0 auto;border:1px solid var(--border);border-radius:14px;padding:14px;background:linear-gradient(180deg,#0b1224,#0a0f20); display:none}
+    .q-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap}
+    .q-symbol{font-size:42px;font-weight:900;color:#fff} /* white on dark bg */
+    .answers{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+    .ans{
+      padding:12px;border:2px solid #2a3e6a;border-radius:12px;background:#0a1430;cursor:pointer;text-align:left;
+      transition:border-color .15s, background .2s, transform .08s;
+      color:#e7ebf2; /* make the base text light, not black */
+    }
+    .ans:hover{transform:translateY(-1px)}
+    /* Make the WORD inside answers white (matches transcription visibility) */
+    .ans b{color:#fff}
+    /* Stronger right/wrong highlights */
+    .ans.correct{border-color:var(--success); background:rgba(34,197,94,.12); color:#fff}
+    .ans.wrong{border-color:var(--danger); background:rgba(239,68,68,.12); color:#fff}
+    .pill{display:inline-flex;gap:8px;align-items:center}
+
+    /* Alphabet */
+    .imgbox{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .emoji{font-size:42px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+    .wru{font-size:13px;color:var(--muted)}
+    .section{display:none}
+    .section.active{display:block}
+    .footer{max-width:1200px;margin:12px auto;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>English IPA + Alphabet Trainer <span class="muted" style="font-size:13px">offline • beginner-friendly</span></h1>
+    <div class="sub">Две части: <b>Транскрипция (IPA)</b> и <b>Алфавит</b>. Есть озвучка слов и две викторины.</div>
+
+    <!-- One block: tabs + quiz toggles -->
+    <div class="tabs" role="tablist">
+      <button id="tabIpa" class="tab active" role="tab" aria-selected="true">Транскрипция</button>
+      <button id="tabAbc" class="tab" role="tab" aria-selected="false">Алфавит</button>
+      <button id="toggleQuizIpa" class="tab" role="tab" aria-selected="false">Викторина по IPA</button>
+      <button id="toggleQuizAbc" class="tab" role="tab" aria-selected="false">Викторина по алфавиту</button>
+    </div>
+  </header>
+
+  <!-- IPA SECTION -->
+  <section id="secIpa" class="section active" aria-labelledby="tabIpa">
+    <div class="toolbar">
+      <div class="pill" role="group" aria-label="filters">
+        <div class="chip active" data-filter="all">Все</div>
+        <div class="chip" data-filter="vowel">Гласные</div>
+        <div class="chip" data-filter="diphthong">Дифтонги</div>
+        <div class="chip" data-filter="consonant">Согласные</div>
+      </div>
+      <div class="grow"><input id="search" class="search" type="search" placeholder="Поиск: символ, слово, перевод…" aria-label="Поиск"/></div>
+      <button id="ttsTest" class="btn warn">Проверить звук 🔊</button>
+    </div>
+
+    <section id="cards" class="grid" aria-live="polite"></section>
+
+    <div class="bar">
+      <button id="resetFilters" class="btn">Сбросить фильтры</button>
+      <button id="shuffle" class="btn">Перемешать</button>
+    </div>
+
+    <section id="quizIpa" class="quiz" aria-live="polite">
+      <div class="q-head">
+        <div class="pill">
+          <div class="q-symbol" id="qSymbol">/iː/</div>
+          <span class="tag" id="qTag">vowel</span>
+        </div>
+        <div class="pill">
+          <label class="muted" for="modeIpa">режим:</label>
+          <select id="modeIpa" class="btn">
+            <option value="word">Найди слово по символу</option>
+            <option value="symbol">Выбери символ по слову</option>
+          </select>
+        </div>
+        <div class="pill">
+          <span id="qProgress" class="muted">Вопрос 1 из 10</span>
+          <button id="qSkip" class="btn">Пропустить</button>
+          <button id="qNext" class="btn">Дальше</button>
+        </div>
+      </div>
+      <div id="qTip" class="ru" style="margin:0 0 10px 0"></div>
+      <div id="answers" class="answers"></div>
+    </section>
+  </section>
+
+  <!-- ALPHABET SECTION -->
+  <section id="secAbc" class="section" aria-labelledby="tabAbc">
+    <div class="toolbar">
+      <div class="grow"><input id="searchAbc" class="search" type="search" placeholder="Поиск: буква, слово…" aria-label="Поиск по алфавиту"/></div>
+    </div>
+
+    <section id="abcCards" class="grid" aria-live="polite"></section>
+
+    <section id="quizAbc" class="quiz" aria-live="polite">
+      <div class="q-head">
+        <div class="pill">
+          <div class="q-symbol" id="aSymbol">A</div>
+          <span class="tag">alphabet</span>
+        </div>
+        <div class="pill">
+          <label class="muted" for="modeAbc">режим:</label>
+          <select id="modeAbc" class="btn">
+            <option value="pickWord">Выбери слово по букве</option>
+            <option value="pickLetter">Выбери букву по слову</option>
+          </select>
+        </div>
+        <div class="pill">
+          <span id="aProgress" class="muted">Вопрос 1 из 10</span>
+          <button id="aSkip" class="btn">Пропустить</button>
+          <button id="aNext" class="btn">Дальше</button>
+        </div>
+      </div>
+      <div id="aTip" class="ru" style="margin:0 0 10px 0">Выберите правильный ответ</div>
+      <div id="aAnswers" class="answers"></div>
+    </section>
+  </section>
+
+  <div class="footer">
+    Совет: в алфавите обращайте внимание на <b>названия букв</b> (A /eɪ/, B /biː/, C /siː/ …) — они помогают при диктовке e-mail и имён. А для чтения слов важнее <b>звуки IPA</b>.
+  </div>
+
+<script>
+/***************** DATA: IPA *****************/
+const IPA = [
+  {cat:"vowel", sym:"/iː/", ru:"долгий «и», губы в улыбке", ex:[{w:"see", ipa:"/siː/", ru:"видеть"},{w:"green", ipa:"/ɡriːn/", ru:"зелёный"}]},
+  {cat:"vowel", sym:"/ɪ/",  ru:"краткий «и», более расслабленно", ex:[{w:"sit", ipa:"/sɪt/", ru:"сидеть"},{w:"ship", ipa:"/ʃɪp/", ru:"корабль"}]},
+  {cat:"vowel", sym:"/e/",  ru:"как «э» в «это»", ex:[{w:"bed", ipa:"/bed/", ru:"кровать"},{w:"ten", ipa:"/ten/", ru:"десять"}]},
+  {cat:"vowel", sym:"/æ/",  ru:"между «а» и «э», широко", ex:[{w:"cat", ipa:"/kæt/", ru:"кот"},{w:"black", ipa:"/blæk/", ru:"чёрный"}]},
+  {cat:"vowel", sym:"/ɑː/", ru:"долгое открытое «а»", ex:[{w:"car", ipa:"/kɑː/", ru:"машина"},{w:"start", ipa:"/stɑːt/", ru:"начинать"}]},
+  {cat:"vowel", sym:"/ɒ/",  ru:"краткое «o» (BrE)", ex:[{w:"hot", ipa:"/hɒt/", ru:"горячий"},{w:"not", ipa:"/nɒt/", ru:"нет, не"}]},
+  {cat:"vowel", sym:"/ɔː/", ru:"долгое «о» (губы округлить)", ex:[{w:"door", ipa:"/dɔː/", ru:"дверь"},{w:"talk", ipa:"/tɔːk/", ru:"говорить"}]},
+  {cat:"vowel", sym:"/ʊ/",  ru:"краткое «у», расслабленно", ex:[{w:"book", ipa:"/bʊk/", ru:"книга"},{w:"good", ipa:"/ɡʊd/", ru:"хороший"}]},
+  {cat:"vowel", sym:"/uː/", ru:"долгое «у»", ex:[{w:"blue", ipa:"/bluː/", ru:"синий"},{w:"food", ipa:"/fuːd/", ru:"еда"}]},
+  {cat:"vowel", sym:"/ʌ/",  ru:"краткое «а/ʌ», центральное", ex:[{w:"cup", ipa:"/kʌp/", ru:"чашка"},{w:"bus", ipa:"/bʌs/", ru:"автобус"}]},
+  {cat:"vowel", sym:"/ɜː/", ru:"долгое «ё/ö» (BrE)", ex:[{w:"bird", ipa:"/bɜːd/", ru:"птица"},{w:"learn", ipa:"/lɜːn/", ru:"учить(ся)"}]},
+  {cat:"vowel", sym:"/ə/",  ru:"шва: безударный, очень короткий", ex:[{w:"about", ipa:"/əˈbaʊt/", ru:"о, около"},{w:"teacher", ipa:"/ˈtiːtʃə/", ru:"учитель"}]},
+  {cat:"diphthong", sym:"/eɪ/", ru:"как «эй»", ex:[{w:"name", ipa:"/neɪm/", ru:"имя"},{w:"day", ipa:"/deɪ/", ru:"день"}]},
+  {cat:"diphthong", sym:"/aɪ/", ru:"как «ай»", ex:[{w:"time", ipa:"/taɪm/", ru:"время"},{w:"five", ipa:"/faɪv/", ru:"пять"}]},
+  {cat:"diphthong", sym:"/ɔɪ/", ru:"как «ой»", ex:[{w:"boy", ipa:"/bɔɪ/", ru:"мальчик"},{w:"coin", ipa:"/kɔɪn/", ru:"монета"}]},
+  {cat:"diphthong", sym:"/aʊ/", ru:"как «ау»", ex:[{w:"house", ipa:"/haʊs/", ru:"дом"},{w:"now", ipa:"/naʊ/", ru:"сейчас"}]},
+  {cat:"diphthong", sym:"/əʊ/", ru:"как «оу» (BrE), AmE: /oʊ/", ex:[{w:"go", ipa:"/gəʊ/", ru:"идти"},{w:"home", ipa:"/həʊm/", ru:"дом"}]},
+  {cat:"diphthong", sym:"/ɪə/", ru:"«иэ» (BrE, реже)", ex:[{w:"ear", ipa:"/ɪə/", ru:"ухо"},{w:"idea", ipa:"/aɪˈdɪə/", ru:"идея"}]},
+  {cat:"diphthong", sym:"/eə/", ru:"«эа» (BrE)", ex:[{w:"hair", ipa:"/heə/", ru:"волосы"},{w:"care", ipa:"/keə/", ru:"забота"}]},
+  {cat:"diphthong", sym:"/ʊə/", ru:"«уэ» (BrE, редкий)", ex:[{w:"tour", ipa:"/tʊə/", ru:"тур"},{w:"sure", ipa:"/ʃʊə/ (BrE)", ru:"уверенный"}]},
+  {cat:"consonant", sym:"/p/",  ru:"глухой, как рус. «п»", ex:[{w:"pen", ipa:"/pen/", ru:"ручка"},{w:"cap", ipa:"/kæp/", ru:"кепка"}]},
+  {cat:"consonant", sym:"/b/",  ru:"звонкий, как «б»", ex:[{w:"bag", ipa:"/bæɡ/", ru:"сумка"},{w:"cab", ipa:"/kæb/", ru:"такси"}]},
+  {cat:"consonant", sym:"/t/",  ru:"глухой «т», кончик у зубов", ex:[{w:"ten", ipa:"/ten/", ru:"десять"},{w:"time", ipa:"/taɪm/", ru:"время"}]},
+  {cat:"consonant", sym:"/d/",  ru:"звонкий «д», кончик у зубов", ex:[{w:"day", ipa:"/deɪ/", ru:"день"},{w:"red", ipa:"/red/", ru:"красный"}]},
+  {cat:"consonant", sym:"/k/",  ru:"глухой «к»", ex:[{w:"cat", ipa:"/kæt/", ru:"кот"},{w:"back", ipa:"/bæk/", ru:"назад/спина"}]},
+  {cat:"consonant", sym:"/ɡ/",  ru:"звонкий «г»", ex:[{w:"go", ipa:"/gəʊ/", ru:"идти"},{w:"big", ipa:"/bɪɡ/", ru:"большой"}]},
+  {cat:"consonant", sym:"/f/",  ru:"губно-зубной «ф»", ex:[{w:"fish", ipa:"/fɪʃ/", ru:"рыба"},{w:"coffee", ipa:"/ˈkɒfi/", ru:"кофе"}]},
+  {cat:"consonant", sym:"/v/",  ru:"звонкий «в»", ex:[{w:"five", ipa:"/faɪv/", ru:"пять"},{w:"very", ipa:"/ˈveri/", ru:"очень"}]},
+  {cat:"consonant", sym:"/θ/",  ru:"глухой межзубный: язык между зубами", ex:[{w:"think", ipa:"/θɪŋk/", ru:"думать"},{w:"thanks", ipa:"/θæŋks/", ru:"спасибо"}]},
+  {cat:"consonant", sym:"/ð/",  ru:"звонкий межзубный", ex:[{w:"this", ipa:"/ðɪs/", ru:"этот"},{w:"mother", ipa:"/ˈmʌðə/", ru:"мама"}]},
+  {cat:"consonant", sym:"/s/",  ru:"глухой «с»", ex:[{w:"see", ipa:"/siː/", ru:"видеть"},{w:"bus", ipa:"/bʌs/", ru:"автобус"}]},
+  {cat:"consonant", sym:"/z/",  ru:"звонкий «з»", ex:[{w:"zoo", ipa:"/zuː/", ru:"зоопарк"},{w:"busy", ipa:"/ˈbɪzi/", ru:"занятой"}]},
+  {cat:"consonant", sym:"/ʃ/",  ru:"глухой «ш»", ex:[{w:"she", ipa:"/ʃiː/", ru:"она"},{w:"fish", ipa:"/fɪʃ/", ru:"рыба"}]},
+  {cat:"consonant", sym:"/ʒ/",  ru:"звонкий «ж» (заимств.)", ex:[{w:"vision", ipa:"/ˈvɪʒən/", ru:"зрение"},{w:"measure", ipa:"/ˈmeʒə/", ru:"мера"}]},
+  {cat:"consonant", sym:"/h/",  ru:"выдох «х/хъ»", ex:[{w:"hot", ipa:"/hɒt/", ru:"горячий"},{w:"house", ipa:"/haʊs/", ru:"дом"}]},
+  {cat:"consonant", sym:"/tʃ/", ru:"как «ч»", ex:[{w:"chair", ipa:"/tʃeə/", ru:"стул"},{w:"teacher", ipa:"/ˈtiːtʃə/", ru:"учитель"}]},
+  {cat:"consonant", sym:"/dʒ/", ru:"как «дж»", ex:[{w:"jam", ipa:"/dʒæm/", ru:"варенье"},{w:"orange", ipa:"/ˈɒrɪndʒ/", ru:"апельсин"}]},
+  {cat:"consonant", sym:"/m/",  ru:"носовой «м»", ex:[{w:"man", ipa:"/mæn/", ru:"мужчина"},{w:"time", ipa:"/taɪm/", ru:"время"}]},
+  {cat:"consonant", sym:"/n/",  ru:"носовой «н»", ex:[{w:"no", ipa:"/nəʊ/", ru:"нет"},{w:"ten", ipa:"/ten/", ru:"десять"}]},
+  {cat:"consonant", sym:"/ŋ/",  ru:"носовой заднеязычный (как «нг»)", ex:[{w:"sing", ipa:"/sɪŋ/", ru:"петь"},{w:"long", ipa:"/lɒŋ/", ru:"длинный"}]},
+  {cat:"consonant", sym:"/l/",  ru:"английский «л» (часто затемнённый)", ex:[{w:"look", ipa:"/lʊk/", ru:"смотреть"},{w:"feel", ipa:"/fiːl/", ru:"чувствовать"}]},
+  {cat:"consonant", sym:"/r/",  ru:"англ. «р», не трём", ex:[{w:"red", ipa:"/red/", ru:"красный"},{w:"car", ipa:"/kɑː/", ru:"машина"}]},
+  {cat:"consonant", sym:"/j/",  ru:"как «й»", ex:[{w:"you", ipa:"/juː/", ru:"ты/вы"},{w:"yes", ipa:"/jes/", ru:"да"}]},
+  {cat:"consonant", sym:"/w/",  ru:"губно-губной полугласный", ex:[{w:"we", ipa:"/wiː/", ru:"мы"},{w:"wet", ipa:"/wet/", ru:"мокрый"}]},
+];
+
+/***************** DATA: ALPHABET (emoji images + IPA) *****************/
+const ABC = [
+  {L:'A', name:'/eɪ/', w:[{e:'apple', ipa:'/ˈæpəl/', ru:'яблоко', img:'🍎'},{e:'ant', ipa:'/ænt/', ru:'муравей', img:'🐜'}]},
+  {L:'B', name:'/biː/', w:[{e:'ball', ipa:'/bɔːl/', ru:'мяч', img:'⚽'},{e:'bird', ipa:'/bɜːd/', ru:'птица', img:'🐦'}]},
+  {L:'C', name:'/siː/', w:[{e:'cat', ipa:'/kæt/', ru:'кот', img:'🐱'},{e:'cake', ipa:'/keɪk/', ru:'торт', img:'🎂'}]},
+  {L:'D', name:'/diː/', w:[{e:'dog', ipa:'/dɒɡ/', ru:'собака', img:'🐶'},{e:'door', ipa:'/dɔː/', ru:'дверь', img:'🚪'}]},
+  {L:'E', name:'/iː/', w:[{e:'egg', ipa:'/eɡ/', ru:'яйцо', img:'🥚'},{e:'elephant', ipa:'/ˈelɪfənt/', ru:'слон', img:'🐘'}]},
+  {L:'F', name:'/ef/', w:[{e:'fish', ipa:'/fɪʃ/', ru:'рыба', img:'🐟'},{e:'frog', ipa:'/frɒɡ/', ru:'лягушка', img:'🐸'}]},
+  {L:'G', name:'/dʒiː/', w:[{e:'goat', ipa:'/gəʊt/', ru:'козёл', img:'🐐'},{e:'grapes', ipa:'/ɡreɪps/', ru:'виноград', img:'🍇'}]},
+  {L:'H', name:'/eɪtʃ/', w:[{e:'hat', ipa:'/hæt/', ru:'шляпа', img:'🎩'},{e:'house', ipa:'/haʊs/', ru:'дом', img:'🏠'}]},
+  {L:'I', name:'/aɪ/', w:[{e:'ice', ipa:'/aɪs/', ru:'лёд', img:'🧊'},{e:'insect', ipa:'/ˈɪnsekt/', ru:'насекомое', img:'🐞'}]},
+  {L:'J', name:'/dʒeɪ/', w:[{e:'juice', ipa:'/dʒuːs/', ru:'сок', img:'🧃'},{e:'jelly', ipa:'/ˈdʒeli/', ru:'желе', img:'🍮'}]},
+  {L:'K', name:'/keɪ/', w:[{e:'kite', ipa:'/kaɪt/', ru:'воздушный змей', img:'🪁'},{e:'key', ipa:'/kiː/', ru:'ключ', img:'🔑'}]},
+  {L:'L', name:'/el/', w:[{e:'lion', ipa:'/ˈlaɪən/', ru:'лев', img:'🦁'},{e:'leaf', ipa:'/liːf/', ru:'лист', img:'🍃'}]},
+  {L:'M', name:'/em/', w:[{e:'moon', ipa:'/muːn/', ru:'луна', img:'🌙'},{e:'milk', ipa:'/mɪlk/', ru:'молоко', img:'🥛'}]},
+  {L:'N', name:'/en/', w:[{e:'nose', ipa:'/nəʊz/', ru:'нос', img:'👃'},{e:'nest', ipa:'/nest/', ru:'гнездо', img:'🪺'}]},
+  {L:'O', name:'/əʊ/ ~ /oʊ/', w:[{e:'orange', ipa:'/ˈɒrɪndʒ/', ru:'апельсин', img:'🍊'},{e:'octopus', ipa:'/ˈɒktəpəs/', ru:'осьминог', img:'🐙'}]},
+  {L:'P', name:'/piː/', w:[{e:'panda', ipa:'/ˈpændə/', ru:'панда', img:'🐼'},{e:'pen', ipa:'/pen/', ru:'ручка', img:'🖊️'}]},
+  {L:'Q', name:'/kjuː/', w:[{e:'queen', ipa:'/kwiːn/', ru:'королева', img:'👑'},{e:'question', ipa:'/ˈkwestʃən/', ru:'вопрос', img:'❓'}]},
+  {L:'R', name:'/ɑː(r)/', w:[{e:'rain', ipa:'/reɪn/', ru:'дождь', img:'🌧️'},{e:'robot', ipa:'/ˈrəʊbɒt/', ru:'робот', img:'🤖'}]},
+  {L:'S', name:'/es/', w:[{e:'sun', ipa:'/sʌn/', ru:'солнце', img:'☀️'},{e:'star', ipa:'/stɑː/', ru:'звезда', img:'⭐'}]},
+  {L:'T', name:'/tiː/', w:[{e:'tiger', ipa:'/ˈtaɪɡə/', ru:'тигр', img:'🐯'},{e:'tree', ipa:'/triː/', ru:'дерево', img:'🌳'}]},
+  {L:'U', name:'/juː/', w:[{e:'umbrella', ipa:'/ʌmˈbrelə/', ru:'зонт', img:'☂️'},{e:'unicorn', ipa:'/ˈjuːnɪkɔːn/', ru:'единорог', img:'🦄'}]},
+  {L:'V', name:'/viː/', w:[{e:'violin', ipa:'/ˌvaɪəˈlɪn/', ru:'скрипка', img:'🎻'},{e:'van', ipa:'/væn/', ru:'фургон', img:'🚐'}]},
+  {L:'W', name:'/ˈdʌbəl.juː/', w:[{e:'whale', ipa:'/weɪl/', ru:'кит', img:'🐋'},{e:'water', ipa:'/ˈwɔːtə/', ru:'вода', img:'💧'}]},
+  {L:'X', name:'/eks/', w:[{e:'x-ray', ipa:'/ˈeksreɪ/', ru:'рентген', img:'🩻'},{e:'box', ipa:'/bɒks/', ru:'коробка', img:'📦'}]},
+  {L:'Y', name:'/waɪ/', w:[{e:'yogurt', ipa:'/ˈjɒɡət/', ru:'йогурт', img:'🥣'},{e:'yoyo', ipa:'/ˈjəʊjəʊ/', ru:'йо-йо', img:'🪀'}]},
+  {L:'Z', name:'/zed/ (BrE) ~ /ziː/ (AmE)', w:[{e:'zebra', ipa:'/ˈzebrə/', ru:'зебра', img:'🦓'},{e:'zoo', ipa:'/zuː/', ru:'зоопарк', img:'🦒'}]},
+];
+
+/***************** RENDER: IPA *****************/
+const cardsEl = document.getElementById('cards');
+const searchEl = document.getElementById('search');
+const chips = [...document.querySelectorAll('.chip')];
+const resetBtn = document.getElementById('resetFilters');
+const shuffleBtn = document.getElementById('shuffle');
+const ttsBtn = document.getElementById('ttsTest');
+const quizIpaEl = document.getElementById('quizIpa');
+const toggleQuizIpaBtn = document.getElementById('toggleQuizIpa');
+
+let state = {filter:'all', query:''};
+
+function renderIPA(){
+  const q = state.query.trim().toLowerCase();
+  cardsEl.innerHTML = '';
+  let list = IPA.filter(x => state.filter==='all' || x.cat===state.filter);
+  if(q){
+    list = list.filter(x =>
+      x.sym.toLowerCase().includes(q) ||
+      x.ru.toLowerCase().includes(q) ||
+      x.ex.some(e => (e.w+e.ru+e.ipa).toLowerCase().includes(q))
+    );
+  }
+  for(const x of list){
+    const card = document.createElement('article');
+    card.className='card';
+    card.innerHTML = `
+      <div class="pill" style="justify-content:space-between;display:flex;width:100%">
+        <div class="ipa" aria-label="IPA symbol">${x.sym}</div>
+        <span class="tag">${x.cat}</span>
+      </div>
+      <div class="ru">${x.ru}</div>
+      <div class="examples">
+        ${x.ex.map(e=>`
+          <div class="ex">
+            <button class="btn" data-say="${e.w}" title="Произнести">🔊</button>
+            <div>
+              <div><b>${e.w}</b> <span class="muted">${e.ipa}</span></div>
+              <div class="muted">${e.ru}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    cardsEl.appendChild(card);
+  }
+  attachSayHandlers();
+}
+
+function attachSayHandlers(){
+  cardsEl.querySelectorAll('button[data-say]').forEach(btn=>{
+    btn.onclick = ()=>speak(btn.getAttribute('data-say'));
+  });
+}
+
+chips.forEach(ch=>{
+  ch.onclick = ()=>{
+    chips.forEach(c=>c.classList.remove('active'));
+    ch.classList.add('active');
+    state.filter = ch.dataset.filter;
+    renderIPA();
+  };
+});
+resetBtn.onclick = ()=>{
+  state.filter='all'; state.query=''; searchEl.value='';
+  chips.forEach(c=>c.classList.toggle('active', c.dataset.filter==='all'));
+  renderIPA();
+};
+searchEl.addEventListener('input', e=>{ state.query = e.target.value; renderIPA(); });
+shuffleBtn.onclick = ()=>{
+  for(let i=IPA.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [IPA[i],IPA[j]]=[IPA[j],IPA[i]]; }
+  renderIPA();
+};
+
+/***************** TTS *****************/
+function speak(text){
+  if(!('speechSynthesis' in window)){ alert('Упс! В этом браузере нет TTS. Попробуйте Chrome/Edge/Safari.'); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  const pickVoice = ()=>{
+    const voices = window.speechSynthesis.getVoices();
+    let v = voices.find(v=>/en-GB/i.test(v.lang)) || voices.find(v=>/en-US/i.test(v.lang)) || voices.find(v=>/en/i.test(v.lang));
+    if(v) u.voice = v;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  };
+  if(window.speechSynthesis.getVoices().length===0){ window.speechSynthesis.onvoiceschanged = pickVoice; }
+  else { pickVoice(); }
+}
+ttsBtn.onclick = ()=>speak('English pronunciation test');
+
+/***************** QUIZ: IPA *****************/
+const qSymbol = document.getElementById('qSymbol');
+const qTag = document.getElementById('qTag');
+const qTip = document.getElementById('qTip');
+const qProgress = document.getElementById('qProgress');
+const answersEl = document.getElementById('answers');
+const qSkip = document.getElementById('qSkip');
+const qNext = document.getElementById('qNext');
+const modeIpa = document.getElementById('modeIpa');
+
+let quiz = {order:[], idx:0, score:0, active:false};
+
+function startQuizIPA(){
+  quiz.active = true; quiz.idx = 0; quiz.score=0;
+  const pool = [...IPA];
+  for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+  quiz.order = pool.slice(0,10);
+  quizIpaEl.style.display='block';
+  window.scrollTo({top:quizIpaEl.offsetTop-10, behavior:'smooth'});
+  showQuestionIPA();
+}
+function endQuizIPA(){
+  quizIpaEl.style.display='block';
+  qSymbol.textContent = 'Готово!';
+  qTag.textContent = 'результат';
+  qTip.innerHTML = `Ваш результат: <b>${quiz.score}</b> из 10. Нажмите «Дальше», чтобы начать заново.`;
+  answersEl.innerHTML='';
+  qProgress.textContent = 'Викторина завершена';
+  qNext.onclick = ()=>startQuizIPA();
+  qSkip.style.display='none';
+}
+function pickAnswersIPA(correct){
+  const others = IPA.filter(x=>x!==correct);
+  const opts = [];
+  while(opts.length<3 && others.length){
+    const r = others.splice(Math.floor(Math.random()*others.length),1)[0];
+    if(modeIpa.value==='word'){
+      const e = r.ex[Math.floor(Math.random()*r.ex.length)];
+      opts.push({label:`<b>${e.w}</b> <span class="muted">${e.ipa||''}</span>`, ok:false});
+    } else {
+      opts.push({label:`<b>${r.sym}</b> <span class="muted">${r.cat}</span>`, ok:false});
+    }
+  }
+  if(modeIpa.value==='word'){
+    const right = correct.ex[Math.floor(Math.random()*correct.ex.length)];
+    opts.push({label:`<b>${right.w}</b> <span class="muted">${right.ipa||''}</span>`, ok:true});
+  } else {
+    opts.push({label:`<b>${correct.sym}</b> <span class="muted">${correct.cat}</span>`, ok:true});
+  }
+  for(let i=opts.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [opts[i],opts[j]]=[opts[j],opts[i]]; }
+  return opts;
+}
+function showQuestionIPA(){
+  if(quiz.idx>=quiz.order.length){ endQuizIPA(); return; }
+  const x = quiz.order[quiz.idx];
+  qSymbol.textContent = modeIpa.value==='word' ? x.sym : (x.ex[0].w);
+  qTag.textContent = x.cat; qTip.textContent = x.ru;
+  qProgress.textContent = `Вопрос ${quiz.idx+1} из ${quiz.order.length}`;
+  const choices = pickAnswersIPA(x);
+  answersEl.innerHTML = choices.map(c=>`<button class="ans" data-ok="${c.ok?1:0}">${c.label}</button>`).join('');
+  const buttons = [...answersEl.querySelectorAll('.ans')];
+  const correctBtn = buttons.find(b=>b.getAttribute('data-ok')==='1');
+  buttons.forEach(btn=>{
+    btn.onclick = ()=>{
+      const ok = btn.getAttribute('data-ok')==='1';
+      if(ok){ btn.classList.add('correct'); }
+      else { btn.classList.add('wrong'); correctBtn.classList.add('correct'); }
+      if(ok) quiz.score++;
+      buttons.forEach(b=>b.disabled=true);
+    };
+  });
+  qSkip.style.display='inline-block';
+  qNext.onclick = ()=>{ quiz.idx++; showQuestionIPA(); };
+  qSkip.onclick = ()=>{ quiz.idx++; showQuestionIPA(); };
+}
+
+/***************** RENDER: ALPHABET *****************/
+const abcCardsEl = document.getElementById('abcCards');
+const searchAbcEl = document.getElementById('searchAbc');
+const quizAbcEl = document.getElementById('quizAbc');
+const toggleQuizAbcBtn = document.getElementById('toggleQuizAbc');
+
+function renderABC(){
+  const q = (searchAbcEl.value||'').trim().toLowerCase();
+  abcCardsEl.innerHTML = '';
+  let list = ABC;
+  if(q){
+    list = list.filter(x => x.L.toLowerCase().includes(q) || x.w.some(o => (o.e+o.ru).toLowerCase().includes(q)));
+  }
+  for(const x of list){
+    const card = document.createElement('article');
+    card.className='card';
+    card.innerHTML = `
+      <div class="pill" style="justify-content:space-between;display:flex;width:100%">
+        <button class="letter btn" data-say-letter="${x.L}" aria-label="Произнести букву ${x.L}" title="Произнести букву">${x.L}</button>
+        <span class="tag">name: ${x.name}</span>
+      </div>
+      <div class="imgbox">
+        ${x.w.map(o=>`
+          <div class="ex" style="min-width:46%">
+            <div class="emoji" aria-hidden="true">${o.img}</div>
+            <div>
+              <div><b>${o.e}</b> <span class="muted">${o.ipa||''}</span></div>
+              <div class="wru">${o.ru}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="muted">Совет: произнесите букву «${x.L}» (${x.name}) и слова — нажмите, чтобы услышать.</div>
+      <div class="examples">
+        <button class="btn" data-say="${x.L}">🔊 ${x.L}</button>
+        ${x.w.map(o=>`<button class="btn" data-say="${o.e}">🔊 ${o.e}</button>`).join('')}
+      </div>
+    `;
+    abcCardsEl.appendChild(card);
+  }
+  // TTS for words & letters
+  abcCardsEl.querySelectorAll('[data-say]').forEach(btn=>{
+    btn.onclick = ()=>speak(btn.getAttribute('data-say'));
+  });
+  abcCardsEl.querySelectorAll('[data-say-letter]').forEach(btn=>{
+    btn.onclick = ()=>speak(btn.getAttribute('data-say-letter'));
+  });
+}
+searchAbcEl.addEventListener('input', renderABC);
+
+/***************** QUIZ: ALPHABET *****************/
+const aSymbol = document.getElementById('aSymbol');
+const aTip = document.getElementById('aTip');
+const aProgress = document.getElementById('aProgress');
+const aAnswers = document.getElementById('aAnswers');
+const aSkip = document.getElementById('aSkip');
+const aNext = document.getElementById('aNext');
+const modeAbc = document.getElementById('modeAbc');
+
+let aQuiz = {order:[], idx:0, score:0, active:false};
+
+function startQuizABC(){
+  aQuiz.active = true; aQuiz.idx = 0; aQuiz.score=0;
+  const pool = [...ABC];
+  for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+  aQuiz.order = pool.slice(0,10);
+  quizAbcEl.style.display='block';
+  window.scrollTo({top:quizAbcEl.offsetTop-10, behavior:'smooth'});
+  showQuestionABC();
+}
+function endQuizABC(){
+  quizAbcEl.style.display='block';
+  aSymbol.textContent = 'Готово!';
+  aTip.innerHTML = `Ваш результат: <b>${aQuiz.score}</b> из 10. Нажмите «Дальше», чтобы начать заново.`;
+  aAnswers.innerHTML='';
+  aProgress.textContent = 'Викторина завершена';
+  aNext.onclick = ()=>startQuizABC();
+  aSkip.style.display='none';
+}
+function pickAnswersABC(correct){
+  const others = ABC.filter(x=>x!==correct);
+  const choices = [];
+  while(choices.length<3 && others.length){
+    const r = others.splice(Math.floor(Math.random()*others.length),1)[0];
+    if(modeAbc.value==='pickWord'){
+      const e = r.w[Math.floor(Math.random()*r.w.length)];
+      choices.push({label:`${e.img} <b>${e.e}</b> <span class="muted">${e.ipa||''}</span>`, ok:false});
+    } else {
+      choices.push({label:`<b>${r.L}</b>`, ok:false});
+    }
+  }
+  if(modeAbc.value==='pickWord'){
+    const right = correct.w[Math.floor(Math.random()*correct.w.length)];
+    choices.push({label:`${right.img} <b>${right.e}</b> <span class="muted">${right.ipa||''}</span>`, ok:true});
+  } else {
+    choices.push({label:`<b>${correct.L}</b>`, ok:true});
+  }
+  for(let i=choices.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [choices[i],choices[j]]=[choices[j],choices[i]]; }
+  return choices;
+}
+function showQuestionABC(){
+  if(aQuiz.idx>=aQuiz.order.length){ endQuizABC(); return; }
+  const x = aQuiz.order[aQuiz.idx];
+  aSymbol.textContent = modeAbc.value==='pickWord' ? x.L : x.w[0].e;
+  aTip.textContent = modeAbc.value==='pickWord' ? `Выберите слово, начинающееся на «${x.L}»` : `Выберите букву, на которую начинается «${x.w[0].e}»`;
+  aProgress.textContent = `Вопрос ${aQuiz.idx+1} из ${aQuiz.order.length}`;
+  const choices = pickAnswersABC(x);
+  aAnswers.innerHTML = choices.map(c=>`<button class="ans" data-ok="${c.ok?1:0}">${c.label}</button>`).join('');
+  const buttons = [...aAnswers.querySelectorAll('.ans')];
+  const correctBtn = buttons.find(b=>b.getAttribute('data-ok')==='1');
+  buttons.forEach(btn=>{
+    btn.onclick = ()=>{
+      const ok = btn.getAttribute('data-ok')==='1';
+      if(ok){ btn.classList.add('correct'); }
+      else { btn.classList.add('wrong'); correctBtn.classList.add('correct'); }
+      if(ok) aQuiz.score++;
+      buttons.forEach(b=>b.disabled=true);
+    };
+  });
+  aSkip.style.display='inline-block';
+  aNext.onclick = ()=>{ aQuiz.idx++; showQuestionABC(); };
+  aSkip.onclick = ()=>{ aQuiz.idx++; showQuestionABC(); };
+}
+
+/***************** HEADER BUTTON BINDINGS *****************/
+const tabIpa = document.getElementById('tabIpa');
+const tabAbc = document.getElementById('tabAbc');
+const secIpa = document.getElementById('secIpa');
+const secAbc = document.getElementById('secAbc');
+const toggleQuizAbcHeader = document.getElementById('toggleQuizAbc');
+
+function activate(tab){
+  if(tab==='ipa'){
+    tabIpa.classList.add('active'); tabIpa.setAttribute('aria-selected','true');
+    tabAbc.classList.remove('active'); tabAbc.setAttribute('aria-selected','false');
+    secIpa.classList.add('active'); secAbc.classList.remove('active');
+  } else {
+    tabAbc.classList.add('active'); tabAbc.setAttribute('aria-selected','true');
+    tabIpa.classList.remove('active'); tabIpa.setAttribute('aria-selected','false');
+    secAbc.classList.add('active'); secIpa.classList.remove('active');
+  }
+}
+tabIpa.onclick = ()=>activate('ipa');
+tabAbc.onclick = ()=>activate('abc');
+
+toggleQuizIpaBtn.onclick = ()=>{
+  if(!quiz.active){ startQuizIPA(); toggleQuizIpaBtn.classList.add('active'); }
+  else { quiz.active=false; quizIpaEl.style.display='none'; toggleQuizIpaBtn.classList.remove('active'); }
+};
+toggleQuizAbcHeader.onclick = ()=>{
+  if(!aQuiz.active){ startQuizABC(); toggleQuizAbcHeader.classList.add('active'); }
+  else { aQuiz.active=false; quizAbcEl.style.display='none'; toggleQuizAbcHeader.classList.remove('active'); }
+};
+
+/***************** INIT *****************/
+renderIPA();
+renderABC();
+</script>
+</body>
+</html>
