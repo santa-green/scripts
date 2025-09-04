@@ -1,0 +1,378 @@
+vpc_name                   = "USE1-DEV-HCMSS-VPC"
+vpc_cidr                   = "10.153.192.0/19"
+manage_default_network_acl = false
+vpc_azs                    = ["us-east-1a", "us-east-1b"]
+vpc_private_subnets        = ["10.153.192.0/22", "10.153.196.0/22"]
+vpc_public_subnets         = ["10.153.200.0/24", "10.153.201.0/24"]
+vpc_enable_nat_gateway     = true
+vpc_default_sg_id          = "sg-03f749e6855d3d4c4"
+
+###VPC
+vpc_id              = "vpc-0be54dd3e18bf3c9a"
+vpc_cidr_block      = "10.153.192.0/19"
+private_subnets_ids = ["subnet-0a945e608ff581d96", "subnet-0ac9e7e41c28d5ae7"]
+
+sg_redshift_name        = "redshift-sg"
+sg_redshift_description = "Security group fro Redshift cluster"
+
+###S3
+s3_buckets = {
+  hcm-poc-silverdata = {
+    acl                      = "private"
+    control_object_ownership = true
+    object_ownership         = "ObjectWriter"
+    region                   = "us-east-1"
+    versioning = {
+      enabled = "false"
+    }
+  }
+  hcm-poc-goldendata = {
+    acl                      = "private"
+    control_object_ownership = true
+    object_ownership         = "ObjectWriter"
+    region                   = "us-east-1"
+    versioning = {
+      enabled = "false"
+    }
+  }
+}
+
+###Redshift
+aws_region                           = "us-east-1"
+redshift_cluster_idnetifier          = "hcm-poc-cluster"
+redshift_allow_version_upgrade       = true
+redshift_node_type                   = "ra3.large"
+redshift_number_of_nodes             = "1"
+database_name                        = "hcm_db"
+master_username                      = "awsuser"
+create_random_password               = true
+manage_master_password               = true
+encrypted                            = true
+kms_key_arn                          = "arn:aws:kms:us-east-1:370519913792:key/18d34fd4-d3e9-46ec-9ca2-c32bfbc80ae0"
+enhanced_vpc_routing                 = true
+availability_zone_relocation_enabled = false
+snapshot_copy = {
+  destination_region = "us-east-2"
+  grant_name         = "hcm-grant"
+}
+parameter_group_name        = "hcm-poc-params"
+parameter_group_description = "Custom parameter group for cluster"
+
+parameter_group_parameters = {
+  wlm_json_configuration = {
+    name  = "wlm_json_configuration"
+    value = "[{\"query_concurrency\":15}]"
+  }
+  require_ssl = {
+    name  = "require_ssl"
+    value = true
+  }
+  use_fips_ssl = {
+    name  = "use_fips_ssl"
+    value = false
+  }
+  enable_user_activity_logging = {
+    name  = "enable_user_activity_logging"
+    value = true
+  }
+  max_concurrency_scaling_clusters = {
+    name  = "max_concurrency_scaling_clusters"
+    value = "3"
+  }
+  enable_case_sensitive_identifier = {
+    name  = "enable_case_sensitive_identifier"
+    value = true
+  }
+}
+parameter_group_tags = {
+  Additional = "CustomParameterGroup"
+}
+
+subnet_group_name        = "hcm-poc-subnet-group"
+subnet_group_description = "Custom subnet group for cluster"
+subnet_group_tags = {
+  Additional = "CustomSubnetGroup"
+}
+create_snapshot_schedule         = true
+snapshot_schedule_identifier     = "hcm-poc-cluster"
+use_snapshot_identifier_prefix   = true
+snapshot_schedule_description    = "snapshot schedule"
+snapshot_schedule_definitions    = ["rate(12 hours)"]
+snapshot_schedule_force_destroy  = true
+create_scheduled_action_iam_role = true
+scheduled_actions = {
+  pause = {
+    name          = "redshift-pause"
+    description   = "Pause cluster every night"
+    schedule      = "cron(0 22 * * ? *)"
+    pause_cluster = true
+    enable        = false
+  }
+  resize = {
+    name        = "redshift-resize"
+    description = "Resize cluster (demo only)"
+    schedule    = "cron(00 13 * * ? *)"
+    resize_cluster = {
+      node_type       = "ds2.xlarge"
+      number_of_nodes = "5"
+    }
+  }
+  resume = {
+    name           = "redshift-resume"
+    description    = "Resume cluster every morning"
+    schedule       = "cron(0 12 * * ? *)"
+    resume_cluster = true
+    enable         = false
+  }
+}
+
+create_endpoint_access          = true
+endpoint_name                   = "redshift-endpoint"
+endpoint_subnet_group_name      = "hcm-poc-subnet-group"
+endpoint_vpc_security_group_ids = ["sg-1", "sg-2"]
+usage_limits = {
+  currency_scaling = {
+    feature_type  = "concurrency-scaling"
+    limit_type    = "time"
+    amount        = "60"
+    breach_action = "emit-metric"
+  }
+  spectrum = {
+    feature_type  = "spectrum"
+    limit_type    = "data-scanned"
+    amount        = "2"
+    breach_action = "disable"
+    tags = {
+      Additional = "CustomUsageLimits"
+    }
+  }
+}
+
+###DMS
+replication_subnet_group_description = "dms subnet group"
+replication_subnet_group_id          = "dms-subnet-group"
+replication_instance_id              = "dms-instance"
+replication_instance_class           = "dms.r5.xlarge"
+allocated_storage                    = "512"
+apply_immediately                    = true
+publicly_accessible                  = false
+sqlserver_secrets_arn                = "arn:aws:secretsmanager:us-east-1:370519913792:secret:poc/hcm-readreplica-l55lPN"
+
+dms_endpoints = {
+  sqlserver = {
+    endpoint_type               = "source"
+    engine_name                 = "sqlserver"
+    secrets_manager_arn         = "secrets_arn"
+    database_name               = "AesopStage"
+    extra_connection_attributes = "ignoreMsReplicationEnablement=true;enableNonSysadminWrapper=true;"
+  }
+  redshift = {
+    endpoint_type       = "target"
+    engine_name         = "redshift"
+    secrets_manager_arn = "secrets_arn"
+    database_name       = "redshift-hcm-db"
+    redshift_settings = {
+      bucket_name = "hcm-poc-goldendata"
+      # bucket_folder           = "exports"
+      encryption_mode         = "SSE_S3"
+      service_access_role_arn = "arn:aws:iam::370519913792:role/dms-s3-access-role"
+    }
+  }
+}
+
+dms_s3_enpoints = {
+  hcm-s3-parquet = {
+    endpoint_type             = "target"
+    bucket_name               = "hcm-poc-silverdata"
+    data_format               = "parquet"
+    compression_type          = "NONE"
+    date_partition_enabled    = false
+    parquet_version           = "parquet-2-0"
+    external_table_definition = null
+    timestamp_column_name     = "cdctimestamp"
+  }
+}
+
+dms_task = {
+  sql-to-s3 = {
+    migration_type = "full-load"
+    src_endpoint   = "sqlserver"
+    dst_endpoint   = "hcm-s3-parquet"
+    table_mappings = "../../configs/table_mapping.json"
+  }
+  sql-to-s3-cdc = {
+    migration_type = "cdc"
+    src_endpoint   = "sqlserver"
+    dst_endpoint   = "hcm-s3-parquet"
+    table_mappings = "../../configs/table_mapping.json"
+  }
+}
+
+iam_roles = {
+  redshift-role = {
+    description           = "Allows Redshift clusters to call AWS services on your behalf."
+    force_detach_policies = false
+    assume_role_policy    = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "redshift.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+    policy_names          = ["AmazonRedshiftAllCommandsFullAccess", "AmazonS3ReadOnlyAccess", "AWSGlueConsoleFullAccess"]
+    tags = {
+    }
+  }
+  glue_hcm_role = {
+    description           = "Allows Glue to call AWS services on your behalf. "
+    force_detach_policies = false
+    assume_role_policy    = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "glue.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+    policy_names          = ["AmazonS3FullAccess", "AWSGlueServiceRole", "CloudWatchEventsFullAccess"]
+    tags = {
+    }
+  }
+}
+
+glue_job = {
+  hcm_to_iceberg = {
+
+    description       = ""
+    glue_version      = "5.0"
+    max_retries       = "0"
+    timeout           = "320"
+    number_of_workers = "10"
+    worker_type       = "G.1X"
+    execution_class   = "STANDARD"
+    iam_role_name     = "glue_hcm_role"
+    command = {
+      script_location = "s3://aws-glue-assets-370519913792-us-east-1/scripts/hcm_to_iceberg.py"
+      name            = "glueetl"
+      python_version  = "3"
+    }
+    execution_property = {
+      max_concurrent_runs = 15
+    }
+    default_arguments = {
+      "--job-language"                 = "python"
+      "--enable-metrics"               = "true"
+      "--enable-auto-scaling"          = "true"
+      "--INPUT_BUCKET_NAME"            = "hcm-poc-silverdata"
+      "--OUTPUT_BUCKET_NAME"           = "hcm-poc-goldendata"
+      "--PATH_TO_FULL_DATA"            = " "
+      "--TempDir"                      = "s3://aws-glue-assets-370519913792-us-east-1/temporary/"
+      "--enable-glue-datacatalog"      = "true"
+      "--enable-job-insights"          = "true"
+      "--enable-observability-metrics" = "true"
+      "--enable-spark-ui"              = "true"
+      "--job-bookmark-option"          = "job-bookmark-disable"
+      "--spark-event-logs-path"        = "s3://aws-glue-assets-370519913792-us-east-1/sparkHistoryLogs/"
+      "--DB_NAME"                      = "hcm_db"
+      "--SECRET_KEY_NAME"              = "hcm_symmetric_key"
+      "--SECRET_NAME"                  = "hcm_encryption"
+      "--NUM_PARTITIONS"               = "240"
+    }
+    tags = {
+    }
+  }
+}
+
+glue_connection = {
+  hcm_poc_connection = {
+    dbtype     = "sqlserver"
+    srcdb      = "10.123.192.174:61096"
+    srcdbname  = "AesopStage"
+    secret_arn = "poc/hcm-readreplica"
+  }
+}
+
+lambda_function = {
+  trigger_cdc_lambda = {
+    runtime = "python3.13"
+    variables = {
+      GLUE_JOB_NAME = "hcm_to_iceberg_cdc"
+    }
+    publish      = false
+    statement_id = "ny-001"
+    action       = "lambda:InvokeFunction"
+    principal    = "events.amazonaws.com"
+  }
+}
+lambda_policy_arns = ["arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess", "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole",
+"arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"]
+
+eventbrdige_rules = {
+  trigger_hcm_cdc_test = {
+    desciption    = ""
+    event_pattern = <<EOF
+{
+  "source": ["aws.s3"],
+  "detail-type": ["Object Created"],
+  "detail": {
+    "bucket": {
+      "name": ["hcm-poc-test-cdc"]
+    },
+    "object": {
+      "key": [{
+        "suffix": ".parquet"
+      }, {
+        "anything-but": {
+          "prefix": "LOAD"
+        }
+      }]
+    }
+  }
+}
+EOF
+  }
+}
+
+eventbridge_target = {
+  rule_id   = "trigger_hcm_cdc_test"
+  target_id = "Id54eddbdf-aa16-4bd7-82fa-73d27439a694"
+  #  input_transformer = {
+  #    input_paths = {
+  #      "bucket" = "$.detail.bucket.name",
+  #      "key"    = "$.detail.object.key"
+  #    }
+  #    "input_template" = {
+  #      "s3_path" = "s3://<bucket>/<key>"
+  #    }
+  #  }
+}
+
+eventbridge_role_arn = "arn:aws:iam::370519913792:role/service-role/Amazon_EventBridge_Invoke_HCM_CDC_Glue"
+eventbridge_policy_arns = ["arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess", "arn:aws:iam::aws:policy/service-role/AWSLambdaRole", "arn:aws:iam::aws:policy/AWSGlueConsoleFullAccess",
+  "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole", "arn:aws:iam::aws:policy/service-role/CloudWatchEventsBuiltInTargetExecutionAccess",
+"arn:aws:iam::aws:policy/service-role/CloudWatchEventsInvocationAccess"]
+
+secrets = {
+  "poc/hcm-readreplica" = {
+    force_overwrite_replica_secret = null
+  }
+}
+
+tags = {
+  Owner      = "Frontline"
+  managed_by = "Terraform"
+}
+
